@@ -70,11 +70,10 @@ Migrating to version 2 implies these changes:
 
 ### Monaco
 
-(1) replace `ngx-markdown-editor-v2` with `@cisstech/nge monaco-editor`. You can also remove `monaco-editor` if you are going to use a CDN for it, which is the default for nge. In this case, remove the corresponding `glob` from `angular.json`.
+(1) replace `ngx-markdown-editor-v2` with `@cisstech/nge monaco-editor`. Also remove the corresponding `glob` for Monaco in `angular.json` if present.
 
 ```bash
 npm uninstall ngx-monaco-editor-v2 --force
-npm uninstall monaco-editor --force
 npm i @cisstech/nge monaco-editor --force
 ```
 
