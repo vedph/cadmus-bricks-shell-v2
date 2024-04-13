@@ -1,0 +1,27 @@
+{
+  "name": "@myrmidon/cadmus-ui-note-set",
+  "version": "5.0.0",
+  "description": "Cadmus - note set component.",
+  "keywords": [
+    "Cadmus",
+    "bricks"
+  ],
+  "homepage": "https://github.com/vedph/cadmus-bricks",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vedph/cadmus-bricks"
+  },
+  "author": {
+    "name": "Daniele Fusi"
+  },
+  "peerDependencies": {
+    "@angular/common": "^17.3.0",
+    "@angular/core": "^17.3.0",
+    "@myrmidon/ng-mat-tools": "^3.0.0",
+    "@cisstech/nge": "^17.7.1"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

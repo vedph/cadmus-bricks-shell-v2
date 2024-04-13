@@ -1,0 +1,63 @@
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { RouterModule, RouterOutlet } from '@angular/router';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+import { EnvService, RamStorageService } from '@myrmidon/ng-tools';
+
+import { WebColorLookup } from './refs/ref-lookup-pg/ref-lookup-pg.component';
+import { ViafRefLookupService } from '../../projects/myrmidon/cadmus-refs-viaf-lookup/src/public-api';
+import { ASSERTED_COMPOSITE_ID_CONFIGS_KEY } from '../../projects/myrmidon/cadmus-refs-asserted-ids/src/public-api';
+import { RefLookupConfig } from '../../projects/myrmidon/cadmus-refs-lookup/src/public-api';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    RouterModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatMenuModule,
+    MatToolbarModule,
+  ],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+})
+export class AppComponent {
+  public version: string;
+
+  constructor(
+    env: EnvService,
+    storage: RamStorageService,
+    viaf: ViafRefLookupService
+  ) {
+    this.version = env.get('version') || '';
+    // configure external lookup for asserted composite IDs
+    storage.store(ASSERTED_COMPOSITE_ID_CONFIGS_KEY, [
+      {
+        name: 'colors',
+        iconUrl: '/assets/img/colors128.png',
+        description: 'Colors',
+        label: 'color',
+        service: new WebColorLookup(),
+        itemIdGetter: (item: any) => item?.value,
+        itemLabelGetter: (item: any) => item?.name,
+      },
+      {
+        name: 'VIAF',
+        iconUrl: '/assets/img/viaf128.png',
+        description: 'Virtual International Authority File',
+        label: 'ID',
+        service: viaf,
+        itemIdGetter: (item: any) => item?.viafid,
+        itemLabelGetter: (item: any) => item?.term,
+      },
+    ] as RefLookupConfig[]);
+  }
+}

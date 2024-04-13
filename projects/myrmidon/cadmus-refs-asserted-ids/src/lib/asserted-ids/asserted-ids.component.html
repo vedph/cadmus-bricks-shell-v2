@@ -1,0 +1,82 @@
+<form [formGroup]="form">
+  <div>
+    <button type="button" mat-flat-button color="primary" (click)="addId()">
+      <mat-icon>add_circle</mat-icon> ID
+    </button>
+  </div>
+  <table *ngIf="entries.value?.length">
+    <thead>
+      <tr>
+        <th></th>
+        <th>scope</th>
+        <th>value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let entry of entries.value;
+          let i = index;
+          let first = first;
+          let last = last
+        "
+      >
+        <td>
+          <button
+            type="button"
+            mat-icon-button
+            color="primary"
+            matTooltip="Edit this ID"
+            (click)="editId(entry, i)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            type="button"
+            mat-icon-button
+            matTooltip="Move this ID up"
+            [disabled]="first"
+            (click)="moveIdUp(i)"
+          >
+            <mat-icon>arrow_upward</mat-icon>
+          </button>
+          <button
+            type="button"
+            mat-icon-button
+            matTooltip="Move this ID down"
+            [disabled]="last"
+            (click)="moveIdDown(i)"
+          >
+            <mat-icon>arrow_downward</mat-icon>
+          </button>
+          <button
+            type="button"
+            mat-icon-button
+            color="warn"
+            matTooltip="Delete this ID"
+            (click)="deleteId(i)"
+          >
+            <mat-icon>remove_circle</mat-icon>
+          </button>
+        </td>
+        <td>{{ entry.scope }}</td>
+        <td>{{ entry.value }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <mat-expansion-panel [expanded]="edited" [disabled]="!edited">
+    <mat-expansion-panel-header>ID {{edited?.value}}</mat-expansion-panel-header>
+    <cadmus-refs-asserted-id
+      [idScopeEntries]="idScopeEntries"
+      [idTagEntries]="idTagEntries"
+      [assTagEntries]="assTagEntries"
+      [refTypeEntries]="refTypeEntries"
+      [refTagEntries]="refTagEntries"
+      [hasSubmit]="true"
+      [id]="edited"
+      (idChange)="onIdChange($event)"
+      (editorClose)="closeId()"
+    ></cadmus-refs-asserted-id>
+  </mat-expansion-panel>
+</form>

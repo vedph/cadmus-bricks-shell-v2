@@ -1,0 +1,127 @@
+<div>
+  <header>
+    <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="start center">
+      <span id="logo"
+        ><img src="./assets/img/logo-white-40.png" alt="Fusisoft"
+      /></span>
+      <a mat-button routerLink="/home">Cadmus Bricks</a>
+
+      <!-- refs -->
+      <button type="button" mat-button [matMenuTriggerFor]="refsMenu">
+        Refs
+      </button>
+      <mat-menu #refsMenu>
+        <a mat-menu-item routerLink="/refs/doc-references">Doc references</a>
+        <!-- <a mat-menu-item routerLink="/refs/external-ids"
+          >External IDs (deprecated)</a
+        > -->
+        <a mat-menu-item routerLink="/refs/decorated-counts"
+          >Decorated counts</a
+        >
+        <a mat-menu-item routerLink="/refs/decorated-ids">Decorated IDs</a>
+        <a mat-menu-item routerLink="/refs/proper-name">Proper name</a>
+        <a mat-menu-item routerLink="/refs/assertion">Assertion</a>
+        <a mat-menu-item [matMenuTriggerFor]="refsAssIds">Asserted IDs</a>
+        <a mat-menu-item [matMenuTriggerFor]="refsChron">Chronology</a>
+        <a mat-menu-item routerLink="/refs/lookup">Ref lookup</a>
+        <a mat-menu-item routerLink="/refs/lookup-set">Ref lookup set</a>
+        <a mat-menu-item routerLink="/refs/dbpedia-lookup">DBPedia lookup</a>
+        <a mat-menu-item routerLink="/refs/viaf-lookup">VIAF lookup</a>
+      </mat-menu>
+
+      <mat-menu #refsAssIds>
+        <a mat-menu-item routerLink="/refs/asserted-id">Asserted ID</a>
+        <a mat-menu-item routerLink="/refs/asserted-ids">Asserted IDs</a>
+        <a mat-menu-item routerLink="/refs/asserted-composite-id"
+          >Asserted composite ID</a
+        >
+        <a mat-menu-item routerLink="/refs/asserted-composite-ids"
+          >Asserted composite IDs</a
+        >
+      </mat-menu>
+
+      <mat-menu #refsChron>
+        <a mat-menu-item routerLink="/refs/chronotope">Chronotope</a>
+        <a mat-menu-item routerLink="/refs/asserted-chronotope"
+          >Asserted chronotope</a
+        >
+        <a mat-menu-item routerLink="/refs/asserted-chronotope-set"
+          >Asserted chronotopes</a
+        >
+        <a mat-menu-item routerLink="/refs/historical-date">Historical date</a>
+      </mat-menu>
+
+      <!-- text -->
+      <button type="button" mat-button [matMenuTriggerFor]="textMenu">
+        Text
+      </button>
+      <mat-menu #textMenu>
+        <a mat-menu-item routerLink="/text/block-view">Text blocks view</a>
+        <a mat-menu-item routerLink="/text/emoji-ime">Emoji IME</a>
+        <a mat-menu-item routerLink="/text/edit">Text Edit</a>
+      </mat-menu>
+
+      <!-- cod -->
+      <button type="button" mat-button [matMenuTriggerFor]="codMenu">
+        Codicology
+      </button>
+      <mat-menu #codMenu>
+        <a mat-menu-item routerLink="/cod/location">Manuscript location</a>
+      </mat-menu>
+
+      <!-- img -->
+      <button type="button" mat-button [matMenuTriggerFor]="imgMenu">
+        Image
+      </button>
+      <mat-menu #imgMenu>
+        <a mat-menu-item routerLink="/img/gallery">Image gallery</a>
+        <a mat-menu-item routerLink="/img/annotator">Image annotator</a>
+        <a mat-menu-item routerLink="/img/toolbar">Image annotator toolbar</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item routerLink="/img/sd-gallery"
+          >Seadragon image gallery</a
+        >
+        <a mat-menu-item routerLink="/img/sd-annotator"
+          >Seadragon image annotator</a
+        >
+      </mat-menu>
+
+      <!-- ui -->
+      <button type="button" mat-button [matMenuTriggerFor]="uiMenu">UI</button>
+      <mat-menu #uiMenu>
+        <a mat-menu-item routerLink="/ui/custom-actions-bar"
+          >Custom actions bar</a
+        >
+        <a mat-menu-item routerLink="/ui/flags-picker">Flags picker</a>
+        <a mat-menu-item routerLink="/ui/note-set">Notes set</a>
+      </mat-menu>
+
+      <!-- material -->
+      <button type="button" mat-button [matMenuTriggerFor]="matMenu">
+        Material
+      </button>
+      <mat-menu #matMenu>
+        <a mat-menu-item routerLink="/mat/physical-size">Physical size</a>
+      </mat-menu>
+    </mat-toolbar>
+  </header>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="info">
+        Cadmus bricks {{ version }} by
+        <a rel="noopener" href="http://www.fusisoft.it" target="_blank"
+          >Daniele Fusi</a
+        >
+        at
+        <a rel="noopener" href="https://www.unive.it/pag/39287" target="_blank"
+          >VeDPH</a
+        >
+      </div>
+    </div>
+  </footer>
+</div>

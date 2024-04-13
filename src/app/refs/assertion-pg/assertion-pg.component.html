@@ -1,0 +1,17 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>Assertion</h2>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <cadmus-refs-assertion
+      [assertion]="assertion"
+      [refTypeEntries]="refTypeEntries"
+      (assertionChange)="onAssertionChange($event)"
+    ></cadmus-refs-assertion>
+    <div *ngIf="assertion">
+      <pre>{{ assertion | json }}</pre>
+    </div>
+  </mat-card-content>
+</mat-card>

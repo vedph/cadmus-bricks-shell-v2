@@ -1,0 +1,50 @@
+<form [formGroup]="form">
+  <div class="form-row">
+    <!-- tag (bound) -->
+    <ng-container *ngIf="ctTagEntries">
+      <mat-form-field>
+        <mat-label>tag</mat-label>
+        <mat-select [formControl]="tag">
+          <mat-option *ngFor="let e of ctTagEntries" [value]="e.id">{{
+            e.value
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-container>
+
+    <!-- tag (free) -->
+    <ng-container *ngIf="!ctTagEntries">
+      <mat-form-field>
+        <mat-label>tag</mat-label>
+        <input matInput [formControl]="tag" />
+        <mat-error
+          *ngIf="tag.hasError('max-length') && (tag.dirty || tag.touched)"
+          >tag too long</mat-error
+        >
+      </mat-form-field>
+    </ng-container>
+
+    <!-- place -->
+    <mat-form-field>
+      <mat-label>place</mat-label>
+      <input matInput [formControl]="place" />
+      <mat-error
+        *ngIf="place.hasError('max-length') && (place.dirty || place.touched)"
+        >place too long</mat-error
+      >
+    </mat-form-field>
+
+    <!-- has date -->
+    <mat-checkbox [formControl]="hasDate">has date</mat-checkbox>
+  </div>
+
+  <!-- date -->
+  @if (hasDate.value) {
+  <div>
+    <cadmus-refs-historical-date
+      [date]="initialDate"
+      (dateChange)="onDateChange($event)"
+    ></cadmus-refs-historical-date>
+  </div>
+  }
+</form>

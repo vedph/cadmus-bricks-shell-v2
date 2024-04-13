@@ -1,0 +1,29 @@
+{
+  "name": "@myrmidon/cadmus-sdimg-gallery",
+  "version": "5.0.0",
+  "description": "Cadmus - minimalist OSD image gallery.",
+  "keywords": [
+    "Cadmus",
+    "bricks"
+  ],
+  "homepage": "https://github.com/vedph/cadmus-bricks",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vedph/cadmus-bricks"
+  },
+  "author": {
+    "name": "Daniele Fusi"
+  },
+  "peerDependencies": {
+    "@angular/common": "^17.3.0",
+    "@angular/core": "^17.3.0",
+    "@myrmidon/ng-mat-tools": "^3.0.0",
+    "@myrmidon/cadmus-img-annotator": "^5.0.0",
+    "@myrmidon/cadmus-sdimg-annotator": "^5.0.0",
+    "@myrmidon/cadmus-img-gallery": "^5.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

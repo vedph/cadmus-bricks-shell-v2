@@ -1,0 +1,52 @@
+<form [formGroup]="form">
+  <div class="form-row">
+    <!-- tag (bound) -->
+    <mat-form-field *ngIf="assTagEntries?.length" class="tag">
+      <mat-label>tag</mat-label>
+      <mat-select [formControl]="tag">
+        <mat-option *ngFor="let e of assTagEntries" [value]="e.id">{{
+          e.value
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- tag (free) -->
+    <mat-form-field *ngIf="!assTagEntries?.length" class="tag">
+      <mat-label>tag</mat-label>
+      <input matInput [formControl]="tag" />
+      <mat-error
+        *ngIf="$any(tag.errors)?.maxLength && (tag.dirty || tag.touched)"
+        >tag too long</mat-error
+      >
+    </mat-form-field>
+
+    <!-- rank -->
+    <mat-form-field class="rank">
+      <mat-label>rank</mat-label>
+      <input matInput [formControl]="rank" type="number" min="0" />
+    </mat-form-field>
+
+    <!-- note -->
+    <mat-form-field class="note">
+      <mat-label>note</mat-label>
+      <input matInput [formControl]="note" />
+      <mat-error
+        *ngIf="$any(note.errors)?.maxLength && (note.dirty || note.touched)"
+        >note too long</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div>
+    <!-- references -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header
+        >assertion references</mat-expansion-panel-header
+      >
+      <cadmus-refs-doc-references
+        [typeEntries]="refTypeEntries"
+        [tagEntries]="refTagEntries"
+        [references]="references.value"
+        (referencesChange)="onReferencesChange($event)"
+      ></cadmus-refs-doc-references>
+    </mat-expansion-panel>
+  </div>
+</form>

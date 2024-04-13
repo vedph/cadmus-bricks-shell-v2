@@ -1,0 +1,27 @@
+{
+  "name": "@myrmidon/cadmus-refs-viaf-lookup",
+  "version": "5.0.0",
+  "description": "Cadmus - VIAF lookup.",
+  "keywords": [
+    "Cadmus",
+    "bricks",
+    "VIAF"
+  ],
+  "homepage": "https://github.com/vedph/cadmus-bricks",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vedph/cadmus-bricks"
+  },
+  "author": {
+    "name": "Daniele Fusi"
+  },
+  "peerDependencies": {
+    "@angular/common": "^17.3.0",
+    "@angular/core": "^17.3.0",
+    "@myrmidon/ng-tools": "^3.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
