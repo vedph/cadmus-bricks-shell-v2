@@ -77,13 +77,20 @@ npm uninstall ngx-monaco-editor-v2 --force
 npm i @cisstech/nge monaco-editor --force
 ```
 
-(2) instead of importing `MonacoEditorModule`, import `NgeMonacoModule.forRoot({})` in the app's module or `appConfig` (`importProvidersFrom(NgeMonacoModule.forRoot({}))`). To get the module: `import { NgeMonacoModule } from '@cisstech/nge/monaco';`. Then, import `NgeMonacoModule` wherever you use it.
+(2) instead of importing `MonacoEditorModule`, import `NgeMonacoModule` in the app's module or `appConfig`. Then, also import `NgeMonacoModule` (of course, without `forRoot`) wherever you use it.
+
+```ts
+import { NgeMonacoModule } from '@cisstech/nge/monaco';
+
+// in your imports, add:
+// NgeMonacoModule.forRoot({})
+````
 
 >To quickly find all the parts using Monaco, usually you can look for `MonacoEditorModule` in code, and for `<ngx-monaco-editor` in templates.
 
 (3) add lower level code for using Monaco, as sampled below. Essentially this means creating a model and setting it in the Monaco editor creation event handler. Typically you will also want to store the reference to the received editor object for later usage. To make this light wrapper as near as possible to the underlying Monaco editor instance, there is no text binding. So, text is handled as follows:
 
-- set text like `this._model.setValue('some text')`. When you init the editor, you can also set an initial text in `createModel`.
+- set text like `this._editorModel.setValue('some text')`. When you init the editor, you can also set an initial text in `createModel`.
 - get text whenever it changes, by handling model's `onDidChangeContent` event; in the handler use model's `getValue()` to get the text. This implies implementing `ngOnDestroy` for event handler cleanup as in the sample below.
 
 >The Monaco wrapper was replaced to get closer to the underlying editor, and to avoid issues with the original library, which has been left behind. There also seems to be an issue when building Angular + the old Monaco wrapper, because of webpack not being able to load TTF files from the Monaco package. As a temporary workaround, you could just patch the Monaco library manually:
@@ -107,7 +114,7 @@ Example template:
 
 ```html
 <nge-monaco-editor
-  style="--editor-height: 200px;"
+  style="--editor-height: 400px;"
   (ready)="onCreateEditor($event)"/>
 ```
 
@@ -121,7 +128,7 @@ import { Component, OnDestroy } from '@angular/core';
 })
 export class ExampleComponent implement OnDestroy {
     private readonly _disposables: monaco.IDisposable[] = [];
-    private _model?: monaco.editor.ITextModel;
+    private _editorModel?: monaco.editor.ITextModel;
     private _editor?: monaco.editor.IStandaloneCodeEditor;
 
     public ngOnDestroy() {
@@ -136,13 +143,13 @@ export class ExampleComponent implement OnDestroy {
             wordWrap: 'on',
             automaticLayout: true            
         });
-        this._model = this._model || monaco.editor.createModel('# Hello world', 'markdown');
-        editor.setModel(this._model);
+        this._editorModel = this._editorModel || monaco.editor.createModel('# Hello world', 'markdown');
+        editor.setModel(this._editorModel);
         this._editor = editor;
 
         this._disposables.push(
-            this._model.onDidChangeContent(e => {
-                console.log(this._model!.getValue());
+            this._editorModel.onDidChangeContent(e => {
+                console.log(this._editorModel!.getValue());
                 // you can set some FormControl like e.g.:
                 // this.text.setValue(this._editorModel!.getValue());
                 // this.text.markAsDirty();
@@ -171,7 +178,14 @@ npm i nge-markdown --force
 
 (2) remove the `NgxMarkdownModule.forRoot()` import from the app module and `MarkdownModule.forChild()` from the children modules.
 
-(3) just import `NgeMarkdownModule` in the component/module requiring it (via `import { NgeMarkdownModule } from '@cisstech/nge/markdown';`).
+(3) just import `NgeMarkdownModule` in the component/module requiring it (via `import { NgeMarkdownModule } from '@cisstech/nge/markdown';`):
+
+```ts
+import { NgeMarkdownModule } from '@cisstech/nge/markdown';
+
+// in your imports, add:
+// NgeMarkdownModule
+```
 
 >The corresponding selector in templates for the old `NgxMarkdownModule` component is `markdown`.
 
