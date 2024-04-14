@@ -26,8 +26,8 @@ Use [publish.bat](publish.bat) to publish the libraries to NPM.
 
 - [@myrmidon/cadmus-cod-location](./projects/myrmidon/cadmus-cod-location/README.md): codicologic location.
 - [@myrmidon/cadmus-img-annotator](./projects/myrmidon/cadmus-img-annotator/README.md): image annotation.
-- `@myrmidon/cadmus-img-gallery`
-- `@myrmidon/cadmus-img-gallery-iiif`
+- [@myrmidon/cadmus-img-gallery](./projects/myrmidon/cadmus-img-gallery/README.md): images gallery for annotations.
+- [@myrmidon/cadmus-img-gallery-iiif](./projects/myrmidon/cadmus-img-gallery-iiif/README.md): IIIF implementation of images gallery for annotation.
 - `@myrmidon/cadmus-mat-physical-size`
 - `@myrmidon/cadms-refs-asserted-chronotope`
 - [@myrmidon/cadmus-refs-asserted-ids](./projects/myrmidon/cadmus-refs-asserted-ids/README.md)
