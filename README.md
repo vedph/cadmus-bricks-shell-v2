@@ -135,7 +135,7 @@ export class ExampleComponent implement OnDestroy {
         this._disposables.forEach(d => d.dispose());
     }
 
-    public onCreateEditor(editor: monaco.editor.IStandaloneCodeEditor) {
+    public onCreateEditor(editor: monaco.editor.IEditor) {
         editor.updateOptions({
             minimap: {
                 side: 'right'
@@ -145,7 +145,7 @@ export class ExampleComponent implement OnDestroy {
         });
         this._editorModel = this._editorModel || monaco.editor.createModel('# Hello world', 'markdown');
         editor.setModel(this._editorModel);
-        this._editor = editor;
+        this._editor = editor as monaco.editor.IStandaloneCodeEditor;
 
         this._disposables.push(
             this._editorModel.onDidChangeContent(e => {
