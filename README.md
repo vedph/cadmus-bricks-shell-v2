@@ -38,6 +38,7 @@ Use [publish.bat](publish.bat) to publish the libraries to NPM.
 - `@myrmidon/cadmus-refs-decorated-ids`
 - `@myrmidon/cadmus-refs-doc-references`
 - `@myrmidon/cadmus-refs-external-ids`
+- [@myrmidon/cadmus-refs-geonames-lookup](./projects/myrmidon/cadmus-refs-geonames-lookup/README.md)
 - `@myrmidon/cadmus-refs-historical-date`
 - [@myrmidon/cadmus-refs-lookup](./projects/myrmidon/cadmus-refs-lookup/README.md)
 - [@myrmidon/cadmus-refs-proper-name](./projects/myrmidon/cadmus-refs-proper-name/README.md)
