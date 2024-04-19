@@ -6,6 +6,7 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 import { NgeMonacoModule } from '@cisstech/nge/monaco';
 
+import { EnvServiceProvider } from '@myrmidon/ng-tools';
 import { ItemService, ThesaurusService } from '@myrmidon/cadmus-api';
 import { IndexLookupDefinitions } from '@myrmidon/cadmus-core';
 
@@ -46,6 +47,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideHttpClient(),
     importProvidersFrom(NgeMonacoModule.forRoot({})),
+    EnvServiceProvider,
     {
       provide: MAT_DIALOG_DEFAULT_OPTIONS,
       useValue: {

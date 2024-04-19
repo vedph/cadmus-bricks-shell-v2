@@ -225,7 +225,7 @@ export interface GeoNamesSearchResult {
   geonames: GeoNamesToponym[];
 }
 
-const url = 'http://api.geonames.org/';
+const url = 'https://secure.geonames.org/';
 
 /**
  * A service to search GeoNames.
