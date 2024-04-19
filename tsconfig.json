@@ -45,6 +45,9 @@
       "@myrmidon/cadmus-refs-external-ids": [
         "./dist/myrmidon/cadmus-refs-external-ids"
       ],
+      "@myrmidon/cadmus-refs-geonames-lookup": [
+        "./dist/myrmidon/cadmus-refs-geonames-lookup"
+      ],
       "@myrmidon/cadmus-refs-historical-date": [
         "./dist/myrmidon/cadmus-refs-historical-date"
       ],

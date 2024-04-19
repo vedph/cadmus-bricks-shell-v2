@@ -25,6 +25,8 @@ import {
   SimpleIiifGalleryOptions,
   SimpleIiifGalleryService,
 } from '../../projects/myrmidon/cadmus-img-gallery-iiif/src/public-api';
+import { GEONAMES_USERNAME_TOKEN } from '../../projects/myrmidon/cadmus-refs-geonames-lookup/src/public-api';
+import { environment } from '../environments/environment.prod';
 
 // for lookup in asserted IDs - note that this would require a backend
 const INDEX_LOOKUP_DEFINITIONS: IndexLookupDefinitions = {
@@ -113,6 +115,11 @@ export const appConfig: ApplicationConfig = {
         pageSize: 6,
         // skip: 6
       } as SimpleIiifGalleryOptions,
+    },
+    // GeoNames lookup (see environment.prod.ts for the username)
+    {
+      provide: GEONAMES_USERNAME_TOKEN,
+      useValue: environment.geoNamesUserName,
     },
   ],
 };

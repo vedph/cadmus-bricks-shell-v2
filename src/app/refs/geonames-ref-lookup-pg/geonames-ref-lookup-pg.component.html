@@ -1,0 +1,31 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>GeoNames Reference Lookup</h2>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      This is a
+      <a
+        href="https://www.geonames.org/export/web-services.html"
+        target="_blank"
+        rel="noopener"
+        >GeoNames search</a
+      >. Please ensure to configure your app so that it provides a GeoNames user
+      name to the service, assuming that that account has been enabled for API
+      usage.
+    </p>
+    <cadmus-ref-lookup
+      [service]="service"
+      [required]="true"
+      label="GeoNames"
+      (itemChange)="onItemChange($event)"
+    ></cadmus-ref-lookup>
+    @if (toponyms) {
+    <div>
+      <pre>{{ toponyms | json }}</pre>
+    </div>
+    }
+  </mat-card-content>
+</mat-card>

@@ -21,6 +21,7 @@ import { DecoratedCountsPgComponent } from './refs/decorated-counts-pg/decorated
 import { DecoratedIdsPgComponent } from './refs/decorated-ids-pg/decorated-ids-pg.component';
 import { DocReferencesPgComponent } from './refs/doc-references-pg/doc-references-pg.component';
 import { ExternalIdsPgComponent } from './refs/external-ids-pg/external-ids-pg.component';
+import { GeonamesRefLookupPgComponent } from './refs/geonames-ref-lookup-pg/geonames-ref-lookup-pg.component';
 import { HistoricalDatePgComponent } from './refs/historical-date-pg/historical-date-pg.component';
 import { ProperNamePgComponent } from './refs/proper-name-pg/proper-name-pg.component';
 import { RefLookupPgComponent } from './refs/ref-lookup-pg/ref-lookup-pg.component';
@@ -73,6 +74,7 @@ export const routes: Routes = [
   { path: 'refs/lookup-set', component: RefLookupSetPgComponent },
   { path: 'refs/viaf-lookup', component: ViafRefLookupPgComponent },
   { path: 'refs/dbpedia-lookup', component: DbpediaRefLookupPgComponent },
+  { path: 'refs/geonames-lookup', component: GeonamesRefLookupPgComponent },
   { path: 'ui/flags-picker', component: FlagsPickerPgComponent },
   { path: 'ui/note-set', component: NoteSetPgComponent },
   {

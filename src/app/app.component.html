@@ -23,10 +23,7 @@
         <a mat-menu-item routerLink="/refs/assertion">Assertion</a>
         <a mat-menu-item [matMenuTriggerFor]="refsAssIds">Asserted IDs</a>
         <a mat-menu-item [matMenuTriggerFor]="refsChron">Chronology</a>
-        <a mat-menu-item routerLink="/refs/lookup">Ref lookup</a>
-        <a mat-menu-item routerLink="/refs/lookup-set">Ref lookup set</a>
-        <a mat-menu-item routerLink="/refs/dbpedia-lookup">DBPedia lookup</a>
-        <a mat-menu-item routerLink="/refs/viaf-lookup">VIAF lookup</a>
+        <a mat-menu-item [matMenuTriggerFor]="refsLookup">Lookup</a>
       </mat-menu>
 
       <mat-menu #refsAssIds>
@@ -49,6 +46,14 @@
           >Asserted chronotopes</a
         >
         <a mat-menu-item routerLink="/refs/historical-date">Historical date</a>
+      </mat-menu>
+
+      <mat-menu #refsLookup>
+        <a mat-menu-item routerLink="/refs/lookup">Ref lookup</a>
+        <a mat-menu-item routerLink="/refs/lookup-set">Ref lookup set</a>
+        <a mat-menu-item routerLink="/refs/dbpedia-lookup">DBPedia lookup</a>
+        <a mat-menu-item routerLink="/refs/geonames-lookup">GeoNames lookup</a>
+        <a mat-menu-item routerLink="/refs/viaf-lookup">VIAF lookup</a>
       </mat-menu>
 
       <!-- text -->
