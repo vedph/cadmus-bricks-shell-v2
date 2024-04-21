@@ -25,6 +25,7 @@ import {
   MdBoldCtePlugin,
   MdItalicCtePlugin,
   MdEmojiCtePlugin,
+  MdLinkCtePlugin,
 } from '../../../../projects/myrmidon/cadmus-text-ed-md/src/public-api';
 import {
   CadmusTextEdResult,
@@ -119,6 +120,7 @@ export class TextEdPgComponent {
         inject(MdBoldCtePlugin),
         inject(MdItalicCtePlugin),
         inject(MdEmojiCtePlugin),
+        inject(MdLinkCtePlugin)
       ],
     });
   }
@@ -144,6 +146,9 @@ export class TextEdPgComponent {
     });
     this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyE, () => {
       this._ngZone.run(async () => await this.applyEdit('md.emoji'));
+    });
+    this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyL, () => {
+      this._ngZone.run(async () => await this.applyEdit('md.link'));
     });
 
     editor.focus();

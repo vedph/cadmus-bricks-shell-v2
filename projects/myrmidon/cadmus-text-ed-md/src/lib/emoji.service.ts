@@ -1919,7 +1919,7 @@ export class EmojiService {
   }
 
   /**
-   *
+   * Lookup the emoji with the specified name.
    * @param name Any portion of the emoji name.
    * @param limit The maximum number of results to return.
    * @returns Array of matching emojis.
