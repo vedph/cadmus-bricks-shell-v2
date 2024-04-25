@@ -61,6 +61,7 @@ import { firstValueFrom } from 'rxjs';
     MdBoldCtePlugin,
     MdItalicCtePlugin,
     MdEmojiCtePlugin,
+    MdLinkCtePlugin,
   ],
   templateUrl: './text-ed-pg.component.html',
   styleUrl: './text-ed-pg.component.css',
