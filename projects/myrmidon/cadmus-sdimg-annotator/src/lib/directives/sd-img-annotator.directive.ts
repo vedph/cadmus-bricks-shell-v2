@@ -12,7 +12,7 @@ import {
   AnnotoriousConfig,
 } from '@myrmidon/cadmus-img-annotator';
 // @ts-ignore
-import * as OSDAnnotorious from '@recogito/annotorious-openseadragon';
+import OSDAnnotorious from '@recogito/annotorious-openseadragon';
 import { Viewer } from 'openseadragon';
 // @ts-ignore
 import SelectorPack from '@recogito/annotorious-selector-pack';
