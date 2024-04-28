@@ -233,6 +233,11 @@ Then, the code for each library has been imported except for their module, and e
 
 ## History
 
+- 2024-04-28:
+  - updated Angular.
+  - fixes to OSD import.
+  - more documentation for gallery.
+
 ### 5.0.2
 
 - 2024-04-19: added [GeoNames](https://www.geonames.org/export/web-services.html) service and lookup service.
