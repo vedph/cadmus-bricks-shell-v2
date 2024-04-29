@@ -1,17 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { Component, Inject } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MAT_DIALOG_DEFAULT_OPTIONS,
   MatDialog,
   MatDialogConfig,
 } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
 
 import { MatCardModule } from '@angular/material/card';
 
