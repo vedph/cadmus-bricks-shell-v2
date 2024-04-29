@@ -148,7 +148,11 @@ export class MdLinkCtePlugin implements CadmusTextEdPlugin {
     }
     sb.push(']');
     sb.push('(');
-    sb.push(JSON.stringify(parsedLink.id));
+    sb.push(
+      JSON.stringify(id, (key, value) => {
+        return value === '' ? undefined : value;
+      })
+    );
     sb.push(')');
 
     return {
