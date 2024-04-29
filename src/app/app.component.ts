@@ -13,6 +13,7 @@ import { WebColorLookup } from './refs/ref-lookup-pg/ref-lookup-pg.component';
 import { ViafRefLookupService } from '../../projects/myrmidon/cadmus-refs-viaf-lookup/src/public-api';
 import { ASSERTED_COMPOSITE_ID_CONFIGS_KEY } from '../../projects/myrmidon/cadmus-refs-asserted-ids/src/public-api';
 import { RefLookupConfig } from '../../projects/myrmidon/cadmus-refs-lookup/src/public-api';
+import { GeoNamesRefLookupService } from '../../projects/myrmidon/cadmus-refs-geonames-lookup/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +36,8 @@ export class AppComponent {
   constructor(
     env: EnvService,
     storage: RamStorageService,
-    viaf: ViafRefLookupService
+    viaf: ViafRefLookupService,
+    geonames: GeoNamesRefLookupService
   ) {
     this.version = env.get('version') || '';
     // configure external lookup for asserted composite IDs
@@ -57,6 +59,15 @@ export class AppComponent {
         service: viaf,
         itemIdGetter: (item: any) => item?.viafid,
         itemLabelGetter: (item: any) => item?.term,
+      },
+      {
+        name: 'geonames',
+        iconUrl: '/assets/img/geonames128.png',
+        description: 'GeoNames',
+        label: 'ID',
+        service: geonames,
+        itemIdGetter: (item: any) => item?.geonameId,
+        itemLabelGetter: (item: any) => item?.name,
       },
     ] as RefLookupConfig[]);
   }
