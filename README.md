@@ -236,6 +236,7 @@ Then, the code for each library has been imported except for their module, and e
 - 2024-04-29:
   - fixes to OSD gallery. Still having issues with OSD in the demo.
   - fixes to link plugin in `@myrmidon/cadmus-text-ed-md`.
+  - added `withJsonpSupport()` to demo app config to work with VIAF JSONP.
 - 2024-04-28:
   - updated Angular.
   - fixes to OSD import.
