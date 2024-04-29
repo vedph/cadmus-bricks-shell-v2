@@ -60,7 +60,6 @@ export class SdImgAnnotatorPgComponent {
   public tool: string;
   public image: GalleryImage;
 
-  public message?: string;
   constructor(
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DEFAULT_OPTIONS) public dlgConfig: MatDialogConfig

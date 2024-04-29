@@ -17,6 +17,7 @@ import {
 } from '../../../../projects/myrmidon/cadmus-img-gallery/src/public-api';
 import { GalleryImage } from '../../../../projects/myrmidon/cadmus-img-annotator/src/public-api';
 import { GallerySdimgAnnotatorComponent } from '../../../../projects/myrmidon/cadmus-sdimg-gallery/src/public-api';
+import { MyGallerySdImageAnnotatorComponent } from '../my-gallery-sd-image-annotator/my-gallery-sd-image-annotator.component';
 
 @Component({
   standalone: true,
@@ -31,6 +32,7 @@ import { GallerySdimgAnnotatorComponent } from '../../../../projects/myrmidon/ca
     MatTabsModule,
     GalleryListComponent,
     GallerySdimgAnnotatorComponent,
+    MyGallerySdImageAnnotatorComponent,
   ],
 })
 export class SdImgGalleryPgComponent {
