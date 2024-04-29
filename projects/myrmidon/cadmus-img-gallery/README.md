@@ -11,8 +11,7 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
     - [App Configuration](#app-configuration)
     - [Top Level Page](#top-level-page)
     - [Custom Gallery Image Annotator](#custom-gallery-image-annotator)
-    - [Image Annotation List](#image-annotation-list)
-  - [Custom Actions](#custom-actions)
+    - [Custom Image Annotation List](#custom-image-annotation-list)
   - [Services](#services)
   - [Components](#components)
   - [Setup](#setup)
@@ -150,9 +149,9 @@ So this is just a wrapper to provide a page binding app-wide services to the gal
 
 ### Custom Gallery Image Annotator
 
-- 📁 `my-gallery-image-annotator.component.ts`
+- 📁 [my-gallery-image-annotator.component.ts](../../../src/app/img/my-gallery-image-annotator/my-gallery-image-annotator.component.ts)
 
-This is the annotator wrapped by the top level page component in the demo.
+This is the annotator wrapped by the top level page component in the demo. It contains a gallery, which allows to pick an image, the image where you can draw shapes for annotations, and the list of annotations.
 
 **Injections**:
 
@@ -175,11 +174,9 @@ The component orchestrates these children components:
 - an `img` element (whose source is `image.uri`) decorated with the image annotator directive, which wires all the Annotorious editing events to handlers in the container component.
 - a custom image annotations list, bound to the currently edited `image`, the `annotator` instance, and the editor component type (`editorComponent`). This emits a `listInit` event when the list is initialized.
 
-TODO
+### Custom Image Annotation List
 
-### Image Annotation List
-
-Create your own component to represent the list of images to annotate. Typically you will derive it from `ImgAnnotationListComponent<T>` where `T` is the type of the annotation payload (your own metadata model for the annotation). You should wire to the container component its input properties:
+The list of annotations is provided by a custom component. Typically you derive it from `ImgAnnotationListComponent<T>` where `T` is the type of the annotation payload (your own metadata model for the annotation). You should wire to the container component its input properties:
 
 - `annotator`: the instance of the annotator object as received from Annotorious.
 - `editorComponent`: the component used to edit a `ListAnnotation`. Pass the component class, e.g. `[editorComponent]="MyEditorComponent"`.
@@ -216,78 +213,6 @@ export class MyImgAnnotationListComponent extends ImgAnnotationListComponent<any
 ```
 
 Its HTML template should display a list bound to `list.annotations$`, typically with their related actions (select, edit, remove).
-
-TODO
-
-```html
-<app-my-img-annotation-list
-  [image]="image"
-  [annotator]="annotator"
-  [editorComponent]="editor"
-  (listInit)="onListInit($event)"
-/>
-```
-
-TODO
-
-- [annotator directive](../cadmus-img-annotator/src/lib/directives/img-annotator.directive.ts). This injects Annotorious logic into the target `img` element, wiring up it to your host component. For instance:
-
-```ts
-<img
-  alt="image"
-  cadmusImgAnnotator
-  (createAnnotation)="onCreateAnnotation($event)"
-  (updateAnnotation)="onUpdateAnnotation($event)"
-  (deleteAnnotation)="onDeleteAnnotation($event)"
-  (createSelection)="onCreateSelection($event)"
-  (selectAnnotation)="onSelectAnnotation($event)"
-  (cancelSelected)="onCancelSelected($event)"
-  (annotatorInit)="onAnnotatorInit($event)"
-  [disableEditor]="headless.value"
-  [tool]="tool"
-  [additionalTools]="['circle', 'ellipse', 'freehand']"
-  src="assets/sample.jpg"
-/>
-```
-
-- the annotation editor.
-
-TODO
-
-## Custom Actions
-
-The annotation editor can be embedded in a bigger component, like a custom part for annotating images while providing specialized models for each annotation. In this case, you can interact with the embedded component by setting custom actions for it, like in this example:
-
-```html
-<cadmus-gallery-img-annotator
-  [image]="image"
-  [annotations]="annotations.value"
-  [customActions]="actions"
-  (annotationsChange)="onAnnotationsChange($any($event))"
-  (actionRequest)="onActionRequest($event)"
-></cadmus-gallery-img-annotator>
-```
-
-with a code like:
-
-```ts
-public onAnnotationsChange(annotations: ChgcImageAnnotation[]): void {
-  // annotations has type FormControl<MyOwnImageAnnotation[]>,
-  // which extends GalleryImageAnnotation
-  this.annotations.setValue(annotations);
-  this.annotations.updateValueAndValidity();
-  this.annotations.markAsDirty();
-}
-
-public onActionRequest(action: BarCustomActionRequest): void {
-  if (action.id === 'edit-meta') {
-    const i = +action.payload;  // the action payload is the annotation index
-    this.editAnnotation(this.annotations.value[i], i);
-  }
-}
-```
-
->Note that this library depends on `@myrmidon/cadmus-img-annotator`, which in turn requires the Annotorious package.
 
 ## Services
 
