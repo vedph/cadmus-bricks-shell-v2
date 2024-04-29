@@ -47,8 +47,7 @@ import { MyImgAnnotationListComponent } from '../img-annotation-list/my-img-anno
     MyImgAnnotationListComponent,
   ],
 })
-export class ImgAnnotatorPgComponent implements OnInit, OnDestroy {
-  private _sub?: Subscription;
+export class ImgAnnotatorPgComponent {
   // the list core used by the annotations list child component
   private _list?: ImgAnnotationList<any>;
 
@@ -67,14 +66,10 @@ export class ImgAnnotatorPgComponent implements OnInit, OnDestroy {
   public tool: string;
   public image: GalleryImage;
 
-  public headless: FormControl<boolean>;
-
   constructor(
-    formBuilder: FormBuilder,
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DEFAULT_OPTIONS) public dlgConfig: MatDialogConfig
   ) {
-    this.headless = formBuilder.control(true, { nonNullable: true });
     this.editor = EditAnnotationDialogComponent;
     this.tool = 'rect';
     this.image = {
@@ -83,18 +78,6 @@ export class ImgAnnotatorPgComponent implements OnInit, OnDestroy {
       title: 'sample',
       description: 'Sample image',
     };
-  }
-
-  ngOnInit(): void {
-    this._sub = this.headless.valueChanges.subscribe((_) => {
-      this.config = {
-        disableEditor: this.headless.value,
-      };
-    });
-  }
-
-  ngOnDestroy(): void {
-    this._sub?.unsubscribe();
   }
 
   public onToolChange(tool: string): void {

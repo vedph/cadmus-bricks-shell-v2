@@ -43,7 +43,6 @@ import { EditAnnotationDialogComponent } from '../edit-annotation-dialog/edit-an
   ],
 })
 export class SdImgAnnotatorPgComponent {
-  private _sub?: Subscription;
   // the list core used by the annotations list child component
   private _list?: ImgAnnotationList<any>;
 

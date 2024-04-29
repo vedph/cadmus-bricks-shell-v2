@@ -265,17 +265,14 @@ export class SdImgAnnotatorDirective implements AfterViewInit {
     }
 
     // initial annotations
-    this._ann.setAnnotations(this._annotations || []);
-
-    // wrap events:
-
-    // initial annotations
     if (this.annotations?.length) {
       this._ann.setAnnotations(this.annotations);
     }
+
     // wrap events:
     // createSelection
     this._ann.on('createSelection', (selection: Annotation) => {
+      console.log('ann-createSelection');
       this.createSelection.emit(selection);
     });
     // selectAnnotation
@@ -291,6 +288,7 @@ export class SdImgAnnotatorDirective implements AfterViewInit {
     this._ann.on(
       'createAnnotation',
       (annotation: any, overrideId: (id: any) => void) => {
+        console.log('ann-createAnnotation');
         this.createAnnotation.emit({
           annotation,
           overrideId,

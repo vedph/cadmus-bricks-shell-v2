@@ -21,6 +21,7 @@
             (selectAnnotation)="onSelectAnnotation($event)"
             (cancelSelected)="onCancelSelected($event)"
             (annotatorInit)="onAnnotatorInit($event)"
+            [disableEditor]="true"
             [tool]="tool"
             [additionalTools]="['circle', 'ellipse', 'freehand']"
             src="assets/sample.jpg"
@@ -34,7 +35,7 @@
           [annotator]="annotator"
           [editorComponent]="editor"
           (listInit)="onListInit($event)"
-        ></app-my-img-annotation-list>
+        />
       </div>
     </div>
   </mat-card-content>
