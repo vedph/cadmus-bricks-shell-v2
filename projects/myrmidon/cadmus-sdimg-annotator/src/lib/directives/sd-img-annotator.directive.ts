@@ -5,6 +5,7 @@ import {
   EventEmitter,
   NgZone,
   ElementRef,
+  AfterViewInit,
 } from '@angular/core';
 import {
   Annotation,
@@ -12,6 +13,10 @@ import {
   AnnotoriousConfig,
 } from '@myrmidon/cadmus-img-annotator';
 // @ts-ignore
+// import { OSDAnnotorious } from '@recogito/annotorious-openseadragon';
+// import * as OSDAnnotorious from '@recogito/annotorious-openseadragon';
+// https://stackblitz.com/edit/angular-cjt1hw?file=src%2Fapp%2Fapp.component.ts
+// import OpenSeadragon from 'openseadragon';
 import OSDAnnotorious from '@recogito/annotorious-openseadragon';
 import { Viewer } from 'openseadragon';
 // @ts-ignore
@@ -21,7 +26,7 @@ import SelectorPack from '@recogito/annotorious-selector-pack';
   standalone: true,
   selector: '[cadmusSdImgAnnotator]',
 })
-export class SdImgAnnotatorDirective {
+export class SdImgAnnotatorDirective implements AfterViewInit {
   private _ann?: any;
   private _config?: AnnotoriousConfig;
   private _disableEditor?: boolean;
@@ -229,19 +234,24 @@ export class SdImgAnnotatorDirective {
   }
 
   private initAnnotator(): void {
-    const cfg = this.config || { disableEditor: true }; //@@
+    const cfg = this.config || { disableEditor: true, disableSelect: false }; //@@
     // here we use a single image source from the target img @src:
     //   http://openseadragon.github.io/examples/tilesource-image/
     // we also have better running outside Angular zone:
     //   http://openseadragon.github.io/docs/
-    const viewer = this._ngZone.runOutsideAngular(() => {
+    const viewer: OpenSeadragon.Viewer = this._ngZone.runOutsideAngular(() => {
       return new Viewer({
         element: this.el.nativeElement,
         tileSources: {
           type: 'image',
           url: this.source,
         },
-        prefixUrl: 'http://openseadragon.github.io/openseadragon/images/',
+        showZoomControl: false,
+        showHomeControl: false,
+        showFullPageControl: false,
+        showRotationControl: false,
+        showFlipControl: false,
+        // prefixUrl: 'http://openseadragon.github.io/openseadragon/images/',
       });
     });
 
@@ -317,7 +327,7 @@ export class SdImgAnnotatorDirective {
     this.annotatorInit.emit(this._ann);
   }
 
-  ngAfterViewInit() {
+  public ngAfterViewInit() {
     this.initAnnotator();
   }
 }
