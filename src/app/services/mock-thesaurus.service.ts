@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { Thesaurus } from '@myrmidon/cadmus-core';
+import { ThesauriSet, Thesaurus } from '@myrmidon/cadmus-core';
 
 @Injectable({
   providedIn: 'root',
@@ -48,5 +48,18 @@ export class MockThesaurusService {
     } else {
       return of(thesaurus);
     }
+  }
+
+  public getThesauriSet(ids: string[]): Observable<ThesauriSet> {
+    // get thesauri for each ID returning an object with the ID as key
+    // and the thesaurus as value.
+    const set: ThesauriSet = {};
+    ids.forEach((id) => {
+      const t = this._thesauri.find((t) => t.id === id);
+      if (t) {
+        set[id] = t;
+      }
+    });
+    return of(set);
   }
 }
