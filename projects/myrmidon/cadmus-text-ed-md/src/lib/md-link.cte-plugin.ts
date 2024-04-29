@@ -67,10 +67,12 @@ export class MdLinkCtePlugin implements CadmusTextEdPlugin {
     try {
       // if target is JSON, parse it
       if (m[3].startsWith('{')) {
+        // replace \) with ) before parsing
+        const json = m[3].replace('\\)', ')');
         return {
           left: m[1],
           wrapped: m[2],
-          id: JSON.parse(m[3]),
+          id: JSON.parse(json),
           right: m[4],
         };
       } else {
@@ -100,6 +102,14 @@ export class MdLinkCtePlugin implements CadmusTextEdPlugin {
       dialogRef.afterClosed()
     );
     return result;
+  }
+
+  private stringifyId(id: AssertedCompositeId): string {
+    let s = JSON.stringify(id, (key, value) => {
+      return value === '' ? undefined : value;
+    });
+    // escape ) with \) to avoid Markdown parsing issues
+    return s.replace(')', '\\)');
   }
 
   /**
@@ -148,11 +158,7 @@ export class MdLinkCtePlugin implements CadmusTextEdPlugin {
     }
     sb.push(']');
     sb.push('(');
-    sb.push(
-      JSON.stringify(id, (key, value) => {
-        return value === '' ? undefined : value;
-      })
-    );
+    sb.push(this.stringifyId(id));
     sb.push(')');
 
     return {
