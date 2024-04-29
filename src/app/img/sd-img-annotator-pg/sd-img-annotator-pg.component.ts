@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component, Inject } from '@angular/core';
-import { Subscription } from 'rxjs';
 
 import {
   MAT_DIALOG_DEFAULT_OPTIONS,
@@ -51,7 +50,7 @@ export class SdImgAnnotatorPgComponent {
 
   // the annotation editor component type, used by the annotations list child
   // component to create a new editor instance inside a popup dialog
-  public editor: any;
+  public readonly editor = EditAnnotationDialogComponent;
 
   // the configuration provided to the annotator directive
   public config?: AnnotoriousConfig = {
@@ -66,7 +65,6 @@ export class SdImgAnnotatorPgComponent {
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DEFAULT_OPTIONS) public dlgConfig: MatDialogConfig
   ) {
-    this.editor = EditAnnotationDialogComponent;
     this.tool = 'rect';
     this.image = {
       id: '1',
