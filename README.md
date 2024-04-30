@@ -233,6 +233,7 @@ Then, the code for each library has been imported except for their module, and e
 
 ## History
 
+- 2024-04-30: fixes to link CTE plugin.
 - 2024-04-29:
   - fixes to OSD gallery. Still having issues with OSD in the demo.
   - fixes to link plugin in `@myrmidon/cadmus-text-ed-md`.
