@@ -33,7 +33,10 @@ import {
 } from '@myrmidon/cadmus-refs-lookup';
 
 import { PinRefLookupService } from '../services/pin-ref-lookup.service';
-import { PinTarget, PinTargetLookupComponent } from '../pin-target-lookup/pin-target-lookup.component';
+import {
+  PinTarget,
+  PinTargetLookupComponent,
+} from '../pin-target-lookup/pin-target-lookup.component';
 
 /**
  * An asserted composite ID. This can be an external ID, having only the ID value
@@ -55,6 +58,10 @@ export interface AssertedCompositeId {
 export const ASSERTED_COMPOSITE_ID_CONFIGS_KEY =
   'cadmus-refs-asserted-composite-id.configs';
 
+/**
+ * An asserted composite ID editor. This allows the user to edit an asserted
+ * composite ID, which can be an external ID or a lookup ID.
+ */
 @Component({
   standalone: true,
   selector: 'cadmus-refs-asserted-composite-id',
@@ -72,7 +79,7 @@ export const ASSERTED_COMPOSITE_ID_CONFIGS_KEY =
     MatSelectModule,
     AssertionComponent,
     PinTargetLookupComponent,
-  ]
+  ],
 })
 export class AssertedCompositeIdComponent implements OnInit {
   private _updatingForm: boolean | undefined;
@@ -107,6 +114,9 @@ export class AssertedCompositeIdComponent implements OnInit {
   @Input()
   public refTagEntries: ThesaurusEntry[] | undefined;
 
+  /**
+   * The ID being edited.
+   */
   @Input()
   public get id(): AssertedCompositeId | undefined | null {
     return this._id;
@@ -199,7 +209,8 @@ export class AssertedCompositeIdComponent implements OnInit {
     });
     this.targetExpanded = false;
     this.extLookupConfigs =
-      settings.retrieve<RefLookupConfig[]>(ASSERTED_COMPOSITE_ID_CONFIGS_KEY) || [];
+      settings.retrieve<RefLookupConfig[]>(ASSERTED_COMPOSITE_ID_CONFIGS_KEY) ||
+      [];
     // events
     this.idChange = new EventEmitter<AssertedCompositeId>();
     this.editorClose = new EventEmitter<any>();

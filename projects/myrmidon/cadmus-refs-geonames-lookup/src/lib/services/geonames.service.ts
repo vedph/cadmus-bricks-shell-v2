@@ -270,10 +270,19 @@ export class GeoNamesService {
         break;
     }
 
-    console.info(`${url}search: `, r);
+    // remove undefined values
+    const filteredParams = Object.fromEntries(
+      Object.entries(r)
+      .filter(([key, value]) => value !== undefined)
+      .map(([key, value]) => [key, String(value)])
+    );
+
+    console.info(`${url}search: `, filteredParams);
 
     return this._http
-      .get<GeoNamesSearchResult>(url + 'search', { params: { ...r } })
+      .get<GeoNamesSearchResult>(url + 'search', {
+        params: { ...filteredParams },
+      })
       .pipe(retry(3), catchError(this._error.handleError));
   }
 }

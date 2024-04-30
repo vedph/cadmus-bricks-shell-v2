@@ -122,8 +122,8 @@ export interface PinTarget {
     NgToolsModule,
     // Cadmus
     RefLookupComponent,
-    RefLookupSetComponent
-  ]
+    RefLookupSetComponent,
+  ],
 })
 export class PinTargetLookupComponent implements OnInit, OnDestroy {
   private _subs: Subscription[];

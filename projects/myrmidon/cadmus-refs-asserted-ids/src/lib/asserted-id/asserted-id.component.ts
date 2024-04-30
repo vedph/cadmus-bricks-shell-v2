@@ -170,7 +170,6 @@ export class AssertedIdComponent implements OnInit {
       this.form.markAsPristine();
     }
     this._updatingForm = false;
-    // this.emitIdChange();
   }
 
   private getId(): AssertedId {
