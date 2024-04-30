@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgZone, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -83,7 +83,6 @@ export class TextEdPgComponent {
     private _emojiService: EmojiService,
     private _snackbar: MatSnackBar,
     private _dialog: MatDialog,
-    private _ngZone: NgZone
   ) {
     this.selector = formBuilder.control('md.bold', {
       nonNullable: true,
@@ -132,16 +131,17 @@ export class TextEdPgComponent {
     this._editor = editor as monaco.editor.IStandaloneCodeEditor;
 
     this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyB, () => {
-      this._ngZone.run(async () => await this.applyEdit('md.bold'));
+      // this._ngZone.run(async () => await this.applyEdit('md.bold'));
+      this.applyEdit('md.bold');
     });
     this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyI, () => {
-      this._ngZone.run(async () => await this.applyEdit('md.italic'));
+      this.applyEdit('md.italic');
     });
     this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyE, () => {
-      this._ngZone.run(async () => await this.applyEdit('md.emoji'));
+      this.applyEdit('md.emoji');
     });
     this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyL, () => {
-      this._ngZone.run(async () => await this.applyEdit('md.link'));
+      this.applyEdit('md.link');
     });
 
     editor.focus();

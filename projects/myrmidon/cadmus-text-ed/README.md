@@ -139,16 +139,16 @@ public onEditorInit(editor: monaco.editor.IEditor) {
 
   // TODO: configure the desired plugins...
   this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyB, () => {
-    this._ngZone.run(async () => await this.applyEdit('md.bold'));
+    this.applyEdit('md.bold');
   });
   this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyI, () => {
-    this._ngZone.run(async () => await this.applyEdit('md.italic'));
+    this.applyEdit('md.italic');
   });
   this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyE, () => {
-    this._ngZone.run(async () => await this.applyEdit('md.emoji'));
+    this.applyEdit('md.emoji');
   });
   this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyL, () => {
-    this._ngZone.run(async () => await this.applyEdit('md.link'));
+    this.applyEdit('md.link');
   });
 
   editor.focus();
