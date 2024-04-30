@@ -13,8 +13,14 @@ import {
   GeoNamesToponym,
 } from './geonames.service';
 
+/**
+ * The token to provide the GeoNames user name.
+ */
 export const GEONAMES_USERNAME_TOKEN = 'GEONAMES_USERNAME';
 
+/**
+ * Base options for a GeoNames search request.
+ */
 const BASE_OPTIONS: GeoNamesSearchRequest = {
   searchType: 0,
   text: '',
@@ -22,6 +28,11 @@ const BASE_OPTIONS: GeoNamesSearchRequest = {
   type: 'json'
 };
 
+/**
+ * GeoNames reference lookup service.
+ * You should provide the GEONAMES_USERNAME_TOKEN token with your
+ * GeoNames user name.
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -31,6 +42,12 @@ export class GeoNamesRefLookupService implements RefLookupService {
     private _geonames: GeoNamesService
   ) {}
 
+  /**
+   * Lookup toponyms.
+   * @param filter The filter.
+   * @param options The search options.
+   * @returns Observable of toponyms.
+   */
   public lookup(
     filter: RefLookupFilter,
     options?: GeoNamesSearchRequest
@@ -55,6 +72,7 @@ export class GeoNamesRefLookupService implements RefLookupService {
     }
     options.text = filter.text;
 
+    console.info('GeoNames lookup: ', JSON.stringify(options));
     return this._geonames.search(options).pipe(
       map((r) => {
         return r.geonames;
@@ -62,6 +80,11 @@ export class GeoNamesRefLookupService implements RefLookupService {
     );
   }
 
+  /**
+   * Get the name to display for the specified toponym.
+   * @param item The toponym.
+   * @returns The name to display for the specified toponym.
+   */
   public getName(item: GeoNamesToponym): string {
     if (!item) {
       return '';
