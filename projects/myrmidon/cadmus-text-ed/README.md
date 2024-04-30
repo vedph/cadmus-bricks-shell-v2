@@ -6,6 +6,8 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
   - [Text Editing Service](#text-editing-service)
   - [Text Editing Plugin](#text-editing-plugin)
   - [Configuring the Service](#configuring-the-service)
+    - [Global Configuration](#global-configuration)
+    - [Local Configuration](#local-configuration)
   - [Linking to Monaco](#linking-to-monaco)
   - [Example](#example)
 
@@ -45,28 +47,74 @@ The plugin functions are `matches`, which returns true if the plugin matches, an
 
 To use the text editing service in your app, you just have to configure its options (`CadmusTextEdServiceOptions`). Currently, the only property in these options is the list of plugins.
 
-The text editing service is not a singleton, so you can configure each instance of it as you prefer.
+The text editing service is not a singleton, so you can configure each instance of it as you prefer. This typically is done in the constructor of your consumer component. Alternatively, you can configure plugins globally.
 
-To configure plugins **globally** for all the instances you inject, in your app configuration add the desired plugins to `providers` via the specified injection token:
+### Global Configuration
+
+If instead you want to configure plugins globally for all the instances you inject, in your app configuration add the desired plugins to `providers` via the specified injection token, like in this example:
 
 ```ts
-{
-  provide: CADMUS_TEXT_ED_SERVICE_OPTIONS_TOKEN,
-  useValue: {
-    plugins: [
-      // your plugins here...
-    ]
+// global configuration (app-config.ts or app.module.ts)
+
+providers: [
+  // provide each single plugin
+  MdBoldCtePlugin,
+  MdItalicCtePlugin,
+  MdEmojiCtePlugin,
+  MdLinkCtePlugin,
+  // provide a factory so that plugins can be instantiated via DI
+  {
+    provide: CADMUS_TEXT_ED_SERVICE_OPTIONS_TOKEN,
+    useFactory: (
+      mdBoldCtePlugin: MdBoldCtePlugin,
+      mdItalicCtePlugin: MdItalicCtePlugin,
+      mdEmojiCtePlugin: MdEmojiCtePlugin,
+      mdLinkCtePlugin: MdLinkCtePlugin
+    ) => {
+      return {
+        plugins: [
+          mdBoldCtePlugin,
+          mdItalicCtePlugin,
+          mdEmojiCtePlugin,
+          mdLinkCtePlugin,
+        ],
+      };
+    },
+    deps: [
+      MdBoldCtePlugin,
+      MdItalicCtePlugin,
+      MdEmojiCtePlugin,
+      MdLinkCtePlugin,
+    ],
   },
-}
+  // monaco bindings for plugins
+  // 2080 = monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyB;
+  // 2087 = monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyI;
+  // 2083 = monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyE;
+  // 2090 = monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyL;
+  {
+    provide: CADMUS_TEXT_ED_BINDINGS_TOKEN,
+    useValue: {
+      2080: 'md.bold', // Ctrl+B
+      2087: 'md.italic', // Ctrl+I
+      2083: 'md.emoji', // Ctrl+E
+      2090: 'md.link', // Ctrl+L
+    },
+  },
+]
 ```
 
 This injection token is optionally injected into the service, so you just have to provide it to configure all the instances of the service in the same way. This way, whenever the service is injected, you will get a separate instance, but configured in the same way.
 
-Alternatively, you can configure plugins **per consumer**. In this case, just inject into your consumer an unconfigured service, without setting the default configuration as explained above. This means that an instance of the service will be injected with no plugins; in this case, you have to add the desired plugins via its `configure` method.
+### Local Configuration
+
+Alternatively, you can configure plugins per consumer. In this case, just inject into your consumer an unconfigured service, without setting the default configuration as explained above. This means that an instance of the service will be injected with no plugins; in this case, you have to add the desired plugins via its `configure` method.
 
 ⚠️ As plugins might require dependencies, to allow them be provided by DI you should create them via the [inject function](https://angular.io/api/core/inject) rather than just using `new`. Example:
 
 ```ts
+// local configuration
+
 import { inject } from '@angular/core';
 
 // ... your consumer component class
@@ -171,6 +219,33 @@ with these styles:
 ```css
 #editor {
   height: 600px;
+}
+```
+
+Alternatively, you can setup the plugins according to your app's global configuration via token `CADMUS_TEXT_ED_BINDINGS_TOKEN`:
+
+(1) inject `CadmusTextEdBindings` into your consumer component constructor via token:
+
+```ts
+constructor(
+  @Inject(CADMUS_TEXT_ED_BINDINGS_TOKEN)
+  @Optional()
+  private _editorBindings?: CadmusTextEdBindings
+) {}
+```
+
+(2) in `onCreateEditor`, bind keys to plugins:
+
+```ts
+// plugins
+if (this._editorBindings) {
+  Object.keys(this._editorBindings).forEach((key) => {
+    const n = parseInt(key, 10);
+    console.log('Binding ' + n + ' to ' + this._editorBindings![key as any]);
+    this._editor!.addCommand(n, () => {
+      this.applyEdit(this._editorBindings![key as any]);
+    });
+  });
 }
 ```
 
