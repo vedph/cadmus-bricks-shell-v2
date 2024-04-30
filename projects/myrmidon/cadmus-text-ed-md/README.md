@@ -29,6 +29,48 @@ This plugin provides a user-friendly way for inserting Unicode Emoji characters 
 
 You can pass it the name of an emoji, or just an empty text. When the name corresponds to the full name of an existing Emoji, the corresponding text is returned. If instead the text is empty, or it does not match a full name, a dialog pops up and lets you pick the desired emoji, which is then returned as text.
 
+### Insert Link
+
+- 🔑 `md.link` (`MdLinkCtePlugin`)
+
+This plugin assists in inserting or editing Markdown links via lookup. These links have a JSON string as their target, where `)` is rendered as `\)` to avoid issues with Markdown parsers.
+
+The JSON target is built from an asserted composite ID UI, so it can represent an internal or an external link. For external links, you can configure the lookup providers via a storage service (`RamStorageService`) with key `ASSERTED_COMPOSITE_ID_CONFIGS_KEY` , e.g.:
+
+```ts
+// assuming we got RamStorageService via injection
+
+storage.store(ASSERTED_COMPOSITE_ID_CONFIGS_KEY, [
+  {
+    name: 'colors',
+    iconUrl: '/assets/img/colors128.png',
+    description: 'Colors',
+    label: 'color',
+    service: new WebColorLookup(),
+    itemIdGetter: (item: any) => item?.value,
+    itemLabelGetter: (item: any) => item?.name,
+  },
+  {
+    name: 'VIAF',
+    iconUrl: '/assets/img/viaf128.png',
+    description: 'Virtual International Authority File',
+    label: 'ID',
+    service: viaf,
+    itemIdGetter: (item: any) => item?.viafid,
+    itemLabelGetter: (item: any) => item?.term,
+  },
+  {
+    name: 'geonames',
+    iconUrl: '/assets/img/geonames128.png',
+    description: 'GeoNames',
+    label: 'ID',
+    service: geonames,
+    itemIdGetter: (item: any) => item?.geonameId,
+    itemLabelGetter: (item: any) => item?.name,
+  },
+] as RefLookupConfig[]);
+```
+
 ## Example
 
 For an example usage with a Monaco editor instance see the [text editor service demo page](../../../src/app/text/text-ed-pg/text-ed-pg.component.ts).
