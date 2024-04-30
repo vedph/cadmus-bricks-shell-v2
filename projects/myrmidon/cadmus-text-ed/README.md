@@ -86,36 +86,28 @@ constructor(private _editService: CadmusTextEdService) {
 
 Even though the service is totally UI-agnostic, typically you use this service in connection with a Monaco editor instance. To this end, you just use Monaco in your component as usual, and get its instance so you can manipulate its text.
 
-(1) add imports:
+(1) inject the edit service in your component's constructor (`private _editService: CadmusTextEdService`).
+
+(2) add imports:
 
 ```ts
-import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
-import * as monaco from 'monaco-editor';
+import { NgeMonacoModule } from '@cisstech/nge/monaco';
 ```
 
-(2) add editor options in your component, e.g. for Markdown:
+(3) add to your component the fields required for the Monaco editor model and editor instance, and the initialization function to be bound to the editor `ready` event (`(ready)="onEditorInit($event)"`). This will call the utility function `applyEdit` to apply the plugin result:
 
 ```ts
-  public editorOptions = {
-    theme: 'vs-light',
-    language: 'markdown',
-    wordWrap: 'on',
-    // https://github.com/atularen/ngx-monaco-editor/issues/19
-    automaticLayout: true,
-  };
-```
+private _model?: monaco.editor.ITextModel;
+private _editor?: monaco.editor.IStandaloneCodeEditor;
 
-(3) inject the edit service in your component's constructor (`private _editService: CadmusTextEdService`). Also, because of a [bug](https://stackoverflow.com/questions/78308770/angular-material-dialog-slow-with-broken-rendition-and-binding) currently `ngx-monaco-editor-v2` requires the usage of `NgZone`, which must be injected, too (`private _ngZone: NgZone`).
-
-(4) add an `editorInit` function to get the editor instance and optionally configure it, e.g. for key bindings:
-
-```ts
 private async applyEdit(selector: string) {
   if (!this._editor) {
     return;
   }
   const selection = this._editor.getSelection();
-  const text = this._editor.getModel().getValueInRange(selection);
+  const text = selection
+    ? this._editor.getModel()!.getValueInRange(selection)
+    : '';
 
   const result = await this._editService.edit({
     selector,
@@ -123,38 +115,40 @@ private async applyEdit(selector: string) {
     context: this.parseContext(),
   });
 
-  // if there is a payload with action 'pick-emoji', we need to
-  // open the emoji picker and replace the text with the selected emoji
-  if (
-    result.payloads?.length &&
-    result.payloads[0]?.action === 'pick-emoji'
-  ) {
-    const emoji = await this.getEmojiFromPicker(text);
-    if (emoji) {
-      result.text = this._emojiService.getEmojiText(emoji);
-    }
-  }
-
   this._editor.executeEdits('my-source', [
     {
-      identifier: { major: 1, minor: 1 },
-      range: selection,
+      range: selection!,
       text: result.text,
       forceMoveMarkers: true,
     },
   ]);
 }
 
-public onEditorInit(editor: monaco.editor.IStandaloneCodeEditor) {
-  this._editor = editor;
+public onEditorInit(editor: monaco.editor.IEditor) {
+  editor.updateOptions({
+    minimap: {
+      side: 'left',
+    },
+    wordWrap: 'on',
+    automaticLayout: true
+  });
+  this._model =
+    this._model || monaco.editor.createModel('# Hello world', 'markdown');
+  editor.setModel(this._model);
+  this._editor = editor as monaco.editor.IStandaloneCodeEditor;
+
+  // TODO: configure the desired plugins...
   this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyB, () => {
-    this._ngZone.run(async() => await this.applyEdit('md.bold'));
+    this._ngZone.run(async () => await this.applyEdit('md.bold'));
   });
   this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyI, () => {
-    this._ngZone.run(async() => await this.applyEdit('md.italic'));
+    this._ngZone.run(async () => await this.applyEdit('md.italic'));
   });
   this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyE, () => {
-    this._ngZone.run(async() => await this.applyEdit('md.emoji'));
+    this._ngZone.run(async () => await this.applyEdit('md.emoji'));
+  });
+  this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyL, () => {
+    this._ngZone.run(async () => await this.applyEdit('md.link'));
   });
 
   editor.focus();
@@ -165,13 +159,19 @@ The corresponding template is like:
 
 ```html
 <div id="editor">
-  <ngx-monaco-editor
-    [options]="editorOptions"
-    (onInit)="onEditorInit($event)"
-    [formControl]="editorText"
-    style="height: 100%"
+  <nge-monaco-editor
+    style="--editor-height: 100%"
+    (ready)="onEditorInit($event)"
   />
 </div>
+```
+
+with these styles:
+
+```css
+#editor {
+  height: 600px;
+}
 ```
 
 ## Example
@@ -183,3 +183,4 @@ This page has a UI where you can just set the parameters for a text edit operati
 - Ctrl+B: [toggle bold](../cadmus-text-ed-md/README.md#toggle-bold).
 - Ctrl+I: [toggle italic](../cadmus-text-ed-md/README.md#toggle-italic).
 - Ctrl+E: [insert emoji](../cadmus-text-ed-md/README.md#insert-unicode-emoji).
+- Ctrl+L: [insert link](../cadmus-text-ed-md/README.md#insert-link).

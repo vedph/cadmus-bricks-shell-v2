@@ -77,14 +77,6 @@ export class TextEdPgComponent {
   public form: FormGroup;
   public result?: CadmusTextEdResult;
 
-  public editorOptions = {
-    theme: 'vs-light',
-    language: 'markdown',
-    wordWrap: 'on',
-    // https://github.com/atularen/ngx-monaco-editor/issues/19
-    automaticLayout: true,
-  };
-
   constructor(
     formBuilder: FormBuilder,
     private _editService: CadmusTextEdService,
