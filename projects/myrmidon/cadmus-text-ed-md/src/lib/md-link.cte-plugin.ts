@@ -26,7 +26,7 @@ interface ParsedLink {
 @Injectable()
 export class MdLinkCtePlugin implements CadmusTextEdPlugin {
   // ([1]=left) [2]=text [3]=target ([4]=right)
-  private readonly _linkRegex = /^([^[]]+)?\[([^]]+)\]\(([^)]+)\)(.+)?$/;
+  private readonly _linkRegex = /^([^[]+)?\[([^\]]+)\]\((.+(?<!\\))\)(.+)?$/;
 
   public readonly id = 'md.link';
   public readonly name = 'Link';

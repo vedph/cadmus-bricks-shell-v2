@@ -10,6 +10,32 @@ export const CADMUS_TEXT_ED_QUERY_MATCH_FIRST = '$match-first';
 export const CADMUS_TEXT_ED_QUERY_MATCH_ALL = '$match-all';
 
 /**
+ * Injection token for the Cadmus text editor bindings.
+ * Your consumer code can use this to configure the key bindings for the
+ * Cadmus text editor service. The bindings are a map of key codes to plugin
+ * IDs. For instance, you can provide a map like this:
+ * ```ts
+ * {
+ *  provide: CADMUS_TEXT_ED_BINDINGS_TOKEN,
+ *  useValue: {
+ *    monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyB: 'md.bold', // Ctrl+B
+ *    monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyI: 'md.italic', // Ctrl+I
+ *    monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyE: 'md.emoji', // Ctrl+E
+ *    monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyL: 'md.link', // Ctrl+L
+ *  }
+ * ```
+ */
+export const CADMUS_TEXT_ED_BINDINGS_TOKEN = 'CadmusTextEdBindings';
+
+/**
+ * The key bindings for the Cadmus text editor service.
+ * This is a map of key codes to plugin IDs.
+ */
+export interface CadmusTextEdBindings {
+  [key: number]: string;
+}
+
+/**
  * A query to edit text using the Cadmus text editor service.
  */
 export interface CadmusTextEdQuery {
