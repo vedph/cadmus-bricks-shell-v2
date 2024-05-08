@@ -1,5 +1,7 @@
 # CadmusRefsDbpediaLookup
 
+📦 `npm i @myrmidon/cadmus-refs-dbpedia-lookup`
+
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
 
 DBPedia lookup is currently limited to the DBPedia API _keyword_ lookup. You can configure this service via `DbediaOptions`, which provides the following properties:
