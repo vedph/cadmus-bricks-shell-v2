@@ -8,6 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { firstValueFrom } from 'rxjs';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -24,19 +25,18 @@ import { NgeMonacoModule } from '@cisstech/nge/monaco';
 import {
   MdBoldCtePlugin,
   MdItalicCtePlugin,
-  MdEmojiCtePlugin,
   MdLinkCtePlugin,
 } from '../../../../projects/myrmidon/cadmus-text-ed-md/src/public-api';
+import { TxtEmojiCtePlugin } from '../../../../projects/myrmidon/cadmus-text-ed-txt/src/public-api';
 import {
   CadmusTextEdResult,
   CadmusTextEdService,
 } from '../../../../projects/myrmidon/cadmus-text-ed/src/public-api';
-import { EmojiImeComponent } from '../../../../projects/myrmidon/cadmus-text-ed-md/src/lib/emoji-ime/emoji-ime.component';
+import { EmojiImeComponent } from '../../../../projects/myrmidon/cadmus-text-ed-txt/src/lib/emoji-ime/emoji-ime.component';
 import {
   EmojiService,
   UnicodeEmoji,
-} from '../../../../projects/myrmidon/cadmus-text-ed-md/src/lib/emoji.service';
-import { firstValueFrom } from 'rxjs';
+} from '../../../../projects/myrmidon/cadmus-text-ed-txt/src/lib/emoji.service';
 
 @Component({
   selector: 'app-text-ed-pg',
@@ -60,7 +60,7 @@ import { firstValueFrom } from 'rxjs';
     CadmusTextEdService,
     MdBoldCtePlugin,
     MdItalicCtePlugin,
-    MdEmojiCtePlugin,
+    TxtEmojiCtePlugin,
     MdLinkCtePlugin,
   ],
   templateUrl: './text-ed-pg.component.html',
@@ -82,7 +82,7 @@ export class TextEdPgComponent {
     private _editService: CadmusTextEdService,
     private _emojiService: EmojiService,
     private _snackbar: MatSnackBar,
-    private _dialog: MatDialog,
+    private _dialog: MatDialog
   ) {
     this.selector = formBuilder.control('md.bold', {
       nonNullable: true,
@@ -111,8 +111,8 @@ export class TextEdPgComponent {
       plugins: [
         inject(MdBoldCtePlugin),
         inject(MdItalicCtePlugin),
-        inject(MdEmojiCtePlugin),
-        inject(MdLinkCtePlugin)
+        inject(TxtEmojiCtePlugin),
+        inject(MdLinkCtePlugin),
       ],
     });
   }
@@ -123,7 +123,7 @@ export class TextEdPgComponent {
         side: 'left',
       },
       wordWrap: 'on',
-      automaticLayout: true
+      automaticLayout: true,
     });
     this._model =
       this._model || monaco.editor.createModel('# Hello world', 'markdown');
@@ -138,7 +138,7 @@ export class TextEdPgComponent {
       this.applyEdit('md.italic');
     });
     this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyE, () => {
-      this.applyEdit('md.emoji');
+      this.applyEdit('txt.emoji');
     });
     this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyL, () => {
       this.applyEdit('md.link');

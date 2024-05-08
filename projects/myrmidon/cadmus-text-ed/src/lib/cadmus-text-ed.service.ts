@@ -20,7 +20,7 @@ export const CADMUS_TEXT_ED_QUERY_MATCH_ALL = '$match-all';
  *  useValue: {
  *    monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyB: 'md.bold', // Ctrl+B
  *    monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyI: 'md.italic', // Ctrl+I
- *    monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyE: 'md.emoji', // Ctrl+E
+ *    monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyE: 'txt.emoji', // Ctrl+E
  *    monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyL: 'md.link', // Ctrl+L
  *  }
  * ```

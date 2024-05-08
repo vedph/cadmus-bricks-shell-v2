@@ -115,6 +115,11 @@ call npm publish --access=public
 cd ..\..\..
 pause
 
+cd .\dist\myrmidon\cadmus-text-ed-txt
+call npm publish --access=public
+cd ..\..\..
+pause
+
 cd .\dist\myrmidon\cadmus-ui-custom-action-bar
 call npm publish --access=public
 cd ..\..\..

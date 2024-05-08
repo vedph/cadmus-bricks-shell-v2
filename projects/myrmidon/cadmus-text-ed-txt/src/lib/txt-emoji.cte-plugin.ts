@@ -13,15 +13,15 @@ import { EmojiService, UnicodeEmoji } from './emoji.service';
 import { EmojiImeComponent } from './emoji-ime/emoji-ime.component';
 
 /**
- * Markdown emoji inserter plugin.
+ * Emoji inserter plugin.
  * See https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md.
  * List from https://api.github.com/emojis.
  */
 @Injectable()
-export class MdEmojiCtePlugin implements CadmusTextEdPlugin {
-  public readonly id = 'md.emoji';
-  public readonly name = 'Markdown Emoji IME';
-  public readonly description = 'Insert Emoji Markdown code from its name.';
+export class TxtEmojiCtePlugin implements CadmusTextEdPlugin {
+  public readonly id = 'txt.emoji';
+  public readonly name = 'Plain text Emoji IME';
+  public readonly description = 'Insert Emoji Unicode character from its name.';
   public readonly version = '1.0.0';
   public enabled = true;
 

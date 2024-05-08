@@ -97,7 +97,7 @@ providers: [
     useValue: {
       2080: 'md.bold', // Ctrl+B
       2087: 'md.italic', // Ctrl+I
-      2083: 'md.emoji', // Ctrl+E
+      2083: 'txt.emoji', // Ctrl+E
       2090: 'md.link', // Ctrl+L
     },
   },
@@ -193,7 +193,7 @@ public onEditorInit(editor: monaco.editor.IEditor) {
     this.applyEdit('md.italic');
   });
   this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyE, () => {
-    this.applyEdit('md.emoji');
+    this.applyEdit('txt.emoji');
   });
   this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyL, () => {
     this.applyEdit('md.link');

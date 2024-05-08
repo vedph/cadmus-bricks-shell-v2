@@ -48,6 +48,7 @@ Use [publish.bat](publish.bat) to publish the libraries to NPM.
 - [@myrmidon/cadmus-text-block-view](./projects/myrmidon/cadmus-text-block-view/README.md)
 - [@myrmidon/cadmus-text-ed](./projects/myrmidon/cadmus-text-ed/README.md)
 - [@myrmidon/cadmus-text-ed-md](./projects/myrmidon/cadmus-text-ed-md/README.md)
+- [@myrmidon/cadmus-text-ed-txt](./projects/myrmidon/cadmus-text-ed-txt/README.md)
 - `@myrmidon/cadmus-ui-custom-action-bar`
 - [@myrmidon/cadmus-ui-flags-picker](./projects/myrmidon/cadmus-ui-flags-picker/README.md)
 - [@myrmidon/cadmus-ui-note-set](./projects/myrmidon/cadmus-ui-note-set/README.md)
@@ -233,7 +234,9 @@ Then, the code for each library has been imported except for their module, and e
 
 ## History
 
-- 2024-05-08: fixed missing export in DBPedia lookup.
+- 2024-05-08:
+  - fixed missing export in DBPedia lookup.
+  - ⚠️ moved Emoji plugin from MD to plain text plugins (`@myrmidon/cadmus-text-ed-txt`).
 - 2024-04-30: fixes to link CTE plugin.
 - 2024-04-29:
   - fixes to OSD gallery. Still having issues with OSD in the demo.

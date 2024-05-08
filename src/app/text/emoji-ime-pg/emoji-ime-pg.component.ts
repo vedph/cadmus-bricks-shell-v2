@@ -13,11 +13,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-import { EmojiImeComponent } from '../../../../projects/myrmidon/cadmus-text-ed-md/src/lib/emoji-ime/emoji-ime.component';
+import { EmojiImeComponent } from '../../../../projects/myrmidon/cadmus-text-ed-txt/src/lib/emoji-ime/emoji-ime.component';
 import {
   EmojiService,
   UnicodeEmoji,
-} from '../../../../projects/myrmidon/cadmus-text-ed-md/src/lib/emoji.service';
+} from '../../../../projects/myrmidon/cadmus-text-ed-txt/src/lib/emoji.service';
 
 @Component({
   selector: 'app-emoji-ime-pg',

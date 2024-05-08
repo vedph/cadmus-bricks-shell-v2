@@ -4,5 +4,4 @@
 
 export * from './lib/md-bold.cte-plugin';
 export * from './lib/md-italic.cte-plugin';
-export * from './lib/md-emoji.cte-plugin';
 export * from './lib/md-link.cte-plugin';
