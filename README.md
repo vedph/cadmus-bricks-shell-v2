@@ -33,7 +33,7 @@ Use [publish.bat](publish.bat) to publish the libraries to NPM.
 - [@myrmidon/cadmus-refs-asserted-ids](./projects/myrmidon/cadmus-refs-asserted-ids/README.md)
 - `@myrmidon/cadmus-refs-assertion`
 - `@myrmidon/cadmus-refs-chronotope`
-- `@myrmidon/cadmus-refs-dbpedia-lookup`
+- [@myrmidon/cadmus-refs-dbpedia-lookup](./projects/myrmidon/cadmus-refs-dbpedia-lookup/README.md)
 - `@myrmidon/cadmus-refs-decorated-counts`
 - `@myrmidon/cadmus-refs-decorated-ids`
 - `@myrmidon/cadmus-refs-doc-references`
@@ -42,7 +42,7 @@ Use [publish.bat](publish.bat) to publish the libraries to NPM.
 - `@myrmidon/cadmus-refs-historical-date`
 - [@myrmidon/cadmus-refs-lookup](./projects/myrmidon/cadmus-refs-lookup/README.md)
 - [@myrmidon/cadmus-refs-proper-name](./projects/myrmidon/cadmus-refs-proper-name/README.md)
-- `@myrmidon/cadmus-refs-viaf-lookup`
+- [@myrmidon/cadmus-refs-viaf-lookup](./projects/myrmidon/cadmus-refs-viaf-lookup/README.md)
 - `@myrmidon/cadmus-sdimg-annotator`
 - `@myrmidon/cadmus-sdimg-gallery`
 - [@myrmidon/cadmus-text-block-view](./projects/myrmidon/cadmus-text-block-view/README.md)
