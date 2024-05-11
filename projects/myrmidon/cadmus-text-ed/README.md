@@ -60,7 +60,7 @@ providers: [
   // provide each single plugin
   MdBoldCtePlugin,
   MdItalicCtePlugin,
-  MdEmojiCtePlugin,
+  TxtEmojiCtePlugin,
   MdLinkCtePlugin,
   // provide a factory so that plugins can be instantiated via DI
   {
@@ -68,14 +68,14 @@ providers: [
     useFactory: (
       mdBoldCtePlugin: MdBoldCtePlugin,
       mdItalicCtePlugin: MdItalicCtePlugin,
-      mdEmojiCtePlugin: MdEmojiCtePlugin,
+      txtEmojiCtePlugin: TxtEmojiCtePlugin,
       mdLinkCtePlugin: MdLinkCtePlugin
     ) => {
       return {
         plugins: [
           mdBoldCtePlugin,
           mdItalicCtePlugin,
-          mdEmojiCtePlugin,
+          txtEmojiCtePlugin,
           mdLinkCtePlugin,
         ],
       };
@@ -83,7 +83,7 @@ providers: [
     deps: [
       MdBoldCtePlugin,
       MdItalicCtePlugin,
-      MdEmojiCtePlugin,
+      TxtEmojiCtePlugin,
       MdLinkCtePlugin,
     ],
   },

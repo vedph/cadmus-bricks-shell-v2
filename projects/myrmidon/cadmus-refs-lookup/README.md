@@ -104,3 +104,86 @@ Both these events provide the picked item, wrapped into a set of metadata:
 - `item`: the picked item.
 - `itemId`: the ID of the picked item.
 - `itemLabel`: the label of the picked item.
+
+### Configuring Set
+
+Typically you configure the lookup set at the application level:
+
+(1) install all the lookup services you want to use, e.g.:
+
+```bash
+npm i @myrmidon/cadmus-refs-dbpedia-lookup @myrmidon/cadmus-refs-geonames-lookup @myrmidon/cadmus-refs-viaf-lookup
+```
+
+(2) for each of these services, provide an image in your app's assets. Typically you can use a 128x128 PNG image (see the examples in [this repository](https://github.com/vedph/cadmus_pura_app/tree/master/src/assets/img)).
+
+(3) provide configuration for all the desired services which require it. In the case of this example, VIAF requires JSONP, geonames an API-enabled username, and DBPedia a proxy as it does not support neither CORS nor JSONP. So, in the `providers` array add:
+
+```ts
+// GeoNames lookup (see environment.prod.ts for the username)
+{
+  provide: GEONAMES_USERNAME_TOKEN,
+  useValue: 'YOUR-GEONAMES-USERNAME',
+},
+// proxy
+{
+  provide: PROXY_INTERCEPTOR_OPTIONS,
+  useValue: {
+    proxyUrl: (window as any).__env?.apiUrl + 'proxy',
+    urls: [
+      'http://lookup.dbpedia.org/api/search',
+      'http://lookup.dbpedia.org/api/prefix',
+    ],
+  },
+},
+```
+
+To support JSONP you must either use `provideHttpClient(withJsonpSupport())` in `app.config.ts` (for module-less apps), or import `HttpClientJsonpModule` (because of a long-standing bug in Angular, remember to place this import BEFORE the `HttpClientModule` import!).
+
+(4) configure the services in your consumer component or in the app's root component:
+
+```ts
+// app.component.ts
+// ...
+
+constructor(
+  // ...
+  storage: RamStorageService,
+  viaf: ViafRefLookupService,
+  dbpedia: DbpediaRefLookupService,
+  geonames: GeoNamesRefLookupService
+) {
+  // ...
+
+  // configure external lookup for asserted composite IDs
+  storage.store(ASSERTED_COMPOSITE_ID_CONFIGS_KEY, [
+    {
+      name: 'VIAF',
+      iconUrl: '/assets/img/viaf128.png',
+      description: 'Virtual International Authority File',
+      label: 'ID',
+      service: viaf,
+      itemIdGetter: (item: any) => item?.viafid,
+      itemLabelGetter: (item: any) => item?.displayForm,
+    },
+    {
+      name: 'DBpedia',
+      iconUrl: '/assets/img/dbpedia128.png',
+      description: 'DBpedia',
+      label: 'ID',
+      service: dbpedia,
+      itemIdGetter: (item: any) => item?.uri,
+      itemLabelGetter: (item: any) => item?.label,
+    },
+    {
+      name: 'geonames',
+      iconUrl: '/assets/img/geonames128.png',
+      description: 'GeoNames',
+      label: 'ID',
+      service: geonames,
+      itemIdGetter: (item: any) => item?.geonameId,
+      itemLabelGetter: (item: any) => item?.toponymName,
+    },
+  ] as RefLookupConfig[]);
+}
+```
