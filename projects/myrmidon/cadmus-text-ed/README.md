@@ -55,6 +55,18 @@ If instead you want to configure plugins globally for all the instances you inje
 
 ```ts
 // global configuration (app-config.ts or app.module.ts)
+import {
+  CADMUS_TEXT_ED_BINDINGS_TOKEN,
+  CADMUS_TEXT_ED_SERVICE_OPTIONS_TOKEN,
+} from '@myrmidon/cadmus-text-ed';
+import {
+  MdBoldCtePlugin,
+  MdItalicCtePlugin,
+  MdLinkCtePlugin,
+} from '@myrmidon/cadmus-text-ed-md';
+import { TxtEmojiCtePlugin } from '@myrmidon/cadmus-text-ed-txt';
+
+// ...
 
 providers: [
   // provide each single plugin
