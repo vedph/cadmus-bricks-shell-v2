@@ -144,6 +144,12 @@ To support JSONP you must either use `provideHttpClient(withJsonpSupport())` in 
 
 ```ts
 // app.component.ts
+import { ASSERTED_COMPOSITE_ID_CONFIGS_KEY } from '@myrmidon/cadmus-refs-asserted-ids';
+import { ViafRefLookupService } from '@myrmidon/cadmus-refs-viaf-lookup';
+import { DbpediaRefLookupService } from '@myrmidon/cadmus-refs-dbpedia-lookup';
+import { GeoNamesRefLookupService } from '@myrmidon/cadmus-refs-geonames-lookup';
+import { RefLookupConfig } from '@myrmidon/cadmus-refs-lookup';
+
 // ...
 
 constructor(
