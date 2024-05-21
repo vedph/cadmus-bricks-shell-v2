@@ -148,16 +148,16 @@ Even though the service is totally UI-agnostic, typically you use this service i
 
 (1) inject the edit service in your component's constructor (`private _editService: CadmusTextEdService`).
 
-(2) add imports:
+(2) add imports (ensure to install with `npm i @cisstech/nge monaco-editor`):
 
 ```ts
 import { NgeMonacoModule } from '@cisstech/nge/monaco';
 ```
 
-(3) add to your component the fields required for the Monaco editor model and editor instance, and the initialization function to be bound to the editor `ready` event (`(ready)="onEditorInit($event)"`). This will call the utility function `applyEdit` to apply the plugin result:
+(3) add to your component the fields required for the Monaco editor model and editor instance, and the initialization function to be bound to the editor `ready` event (`(ready)="onEditorInit($event)"`). This will call the utility function `applyEdit` to apply the plugin result. Typical **code**:
 
 ```ts
-private _model?: monaco.editor.ITextModel;
+private _editorModel?: monaco.editor.ITextModel;
 private _editor?: monaco.editor.IStandaloneCodeEditor;
 
 private async applyEdit(selector: string) {
@@ -172,7 +172,6 @@ private async applyEdit(selector: string) {
   const result = await this._editService.edit({
     selector,
     text: text,
-    context: this.parseContext(),
   });
 
   this._editor.executeEdits('my-source', [
@@ -192,12 +191,28 @@ public onEditorInit(editor: monaco.editor.IEditor) {
     wordWrap: 'on',
     automaticLayout: true
   });
-  this._model =
-    this._model || monaco.editor.createModel('# Hello world', 'markdown');
-  editor.setModel(this._model);
+  // TODO set your format and optional initial text
+  this._editorModel =
+    this._editorModel || monaco.editor.createModel('', 'markdown');
+  editor.setModel(this._editorModel);
   this._editor = editor as monaco.editor.IStandaloneCodeEditor;
 
-  // TODO: configure the desired plugins...
+  // TODO: optionally push to disposables (see below) if synching a bound control
+
+  // TODO: configure the desired plugins in one of these ways:
+  // a) globally, if you inject into your component constructor:
+  // @Inject(CADMUS_TEXT_ED_BINDINGS_TOKEN) @Optional() private _editorBindings?: CadmusTextEdBindings
+   if (this._editorBindings) {
+    Object.keys(this._editorBindings).forEach((key) => {
+      const n = parseInt(key, 10);
+      console.log('Binding ' + n + ' to ' + this._editorBindings![key as any]);
+      this._editor!.addCommand(n, () => {
+        this.applyEdit(this._editorBindings![key as any]);
+      });
+    });
+  }
+
+  // b) manually, like here:
   this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyB, () => {
     this.applyEdit('md.bold');
   });
@@ -211,11 +226,22 @@ public onEditorInit(editor: monaco.editor.IEditor) {
     this.applyEdit('md.link');
   });
 
+  // focus to editor
   editor.focus();
 }
 ```
 
-The corresponding template is like:
+>If you pick the **global** configuration (which usually is the preferred choice), you must inject `CadmusTextEdBindings` into your consumer component constructor via token:
+
+```ts
+constructor(
+   @Inject(CADMUS_TEXT_ED_BINDINGS_TOKEN)
+   @Optional()
+   private _editorBindings?: CadmusTextEdBindings
+) {}
+```
+
+The **template** corresponding to the above code is like:
 
 ```html
 <div id="editor">
@@ -226,7 +252,7 @@ The corresponding template is like:
 </div>
 ```
 
-with these styles:
+with these **styles**:
 
 ```css
 #editor {
@@ -234,32 +260,41 @@ with these styles:
 }
 ```
 
-Alternatively, you can setup the plugins according to your app's global configuration via token `CADMUS_TEXT_ED_BINDINGS_TOKEN`:
+If you are **binding Monaco's text to a control**, you can follow these steps:
 
-(1) inject `CadmusTextEdBindings` into your consumer component constructor via token:
+1. add Monaco **disposables** to the component variables:
 
-```ts
-constructor(
-  @Inject(CADMUS_TEXT_ED_BINDINGS_TOKEN)
-  @Optional()
-  private _editorBindings?: CadmusTextEdBindings
-) {}
-```
+    ```ts
+    private readonly _disposables: monaco.IDisposable[] = [];
+    ```
 
-(2) in `onCreateEditor`, bind keys to plugins:
+2. override on destroy to **properly destroy** Monaco disposables:
 
-```ts
-// plugins
-if (this._editorBindings) {
-  Object.keys(this._editorBindings).forEach((key) => {
-    const n = parseInt(key, 10);
-    console.log('Binding ' + n + ' to ' + this._editorBindings![key as any]);
-    this._editor!.addCommand(n, () => {
-      this.applyEdit(this._editorBindings![key as any]);
-    });
-  });
-}
-```
+    ```ts
+    public ngOnDestroy() {
+      super.ngOnDestroy();
+      this._disposables.forEach((d) => d.dispose());
+    }
+    ```
+
+3. in the editor's init function, after setting `this._editor`, add this code to handle change **updating the control** accordingly:
+
+    ```ts
+    this._disposables.push(
+      this._editorModel.onDidChangeContent((e) => {
+        this.text.setValue(this._editorModel!.getValue());
+        this.text.markAsDirty();
+        this.text.updateValueAndValidity();
+      })
+    );
+    ```
+
+4. when **setting your control's data**, set both the control's value and the model's value like:
+
+    ```ts
+    this.text.setValue(part.text);
+    this._editorModel?.setValue(part.text || '');
+    ```
 
 ## Example
 
@@ -269,5 +304,5 @@ This page has a UI where you can just set the parameters for a text edit operati
 
 - Ctrl+B: [toggle bold](../cadmus-text-ed-md/README.md#toggle-bold).
 - Ctrl+I: [toggle italic](../cadmus-text-ed-md/README.md#toggle-italic).
-- Ctrl+E: [insert emoji](../cadmus-text-ed-md/README.md#insert-unicode-emoji).
+- Ctrl+E: [insert emoji](../cadmus-text-ed-txt/README.md#insert-unicode-emoji).
 - Ctrl+L: [insert link](../cadmus-text-ed-md/README.md#insert-link).
