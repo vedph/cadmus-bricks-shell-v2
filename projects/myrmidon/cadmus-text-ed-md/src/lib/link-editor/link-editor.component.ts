@@ -44,6 +44,7 @@ export interface LinkEditorComponentData {
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatButtonModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
@@ -147,7 +148,11 @@ export class LinkEditorComponent implements OnInit {
   }
 
   public onIdChange(id: AssertedCompositeId): void {
-    this.idChange.emit(id);
-    this.dialogRef?.close(id);
+    this._id = id;
+    this.idChange.emit(this._id);
+  }
+
+  public save(): void {
+    this.dialogRef?.close(this._id);
   }
 }

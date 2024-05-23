@@ -115,10 +115,7 @@ export class MdLinkCtePlugin implements CadmusTextEdPlugin {
   /**
    * Edit the specified text, returning the result.
    *
-   * @param query The query object. Set context.noPicker to true to disable
-   * the automatic usage of the picker to select an emoji. When this is true
-   * and a picker is required, the plugin will return a payload with action
-   * set to 'pick-emoji'.
+   * @param query The query object.
    * @returns result promise.
    */
   public async edit(

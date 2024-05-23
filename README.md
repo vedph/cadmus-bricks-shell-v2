@@ -234,6 +234,9 @@ Then, the code for each library has been imported except for their module, and e
 
 ## History
 
+- 2024-05-23:
+  - updated to Angular 18.
+  - fixed dismiss dialog for link text plugin (`@myrmidon/cadmus-text-ed-md`).
 - 2024-05-08:
   - fixed missing export in DBPedia lookup.
   - ⚠️ moved Emoji plugin from MD to plain text plugins (`@myrmidon/cadmus-text-ed-txt`).
