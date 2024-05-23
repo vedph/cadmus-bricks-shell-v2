@@ -1,15 +1,16 @@
 <div id="bar">
-  <button
-    *ngFor="let action of actions"
-    type="button"
-    mat-icon-button
-    [ngStyle]="action.style || null"
-    [matTooltip]="action?.tip || ''"
+  @for (action of actions; track action) {
+    <button
+      type="button"
+      mat-icon-button
+      [ngStyle]="action.style || null"
+      [matTooltip]="action?.tip || ''"
     [disabled]="
       disabled || (action.disabled ? action.disabled(payload) : false)
     "
-    (click)="onCustomAction(action, payload)"
-  >
-    <mat-icon>{{ action.iconId }}</mat-icon>
-  </button>
+      (click)="onCustomAction(action, payload)"
+      >
+      <mat-icon>{{ action.iconId }}</mat-icon>
+    </button>
+  }
 </div>

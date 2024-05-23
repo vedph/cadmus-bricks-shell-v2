@@ -43,9 +43,11 @@
       [location]="initialRanges"
       (locationChange)="onRangesChange($event)"
     ></cadmus-cod-location>
-    <div *ngIf="ranges">
-      <pre>{{ ranges | json }}</pre>
-    </div>
+    @if (ranges) {
+      <div>
+        <pre>{{ ranges | json }}</pre>
+      </div>
+    }
     <div class="infobox">{{ ranges | codLocationRange }}</div>
   </mat-card-content>
 </mat-card>

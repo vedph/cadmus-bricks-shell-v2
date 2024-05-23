@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   EventEmitter,
@@ -32,14 +32,13 @@ export interface ImgAnnotatorToolbarTool {
   templateUrl: './img-annotator-toolbar.component.html',
   styleUrls: ['./img-annotator-toolbar.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatIconModule,
-    MatTooltipModule,
-  ],
+    MatTooltipModule
+],
 })
 export class ImgAnnotatorToolbarComponent implements OnInit, OnDestroy {
   private _tools: ImgAnnotatorToolbarTool[];

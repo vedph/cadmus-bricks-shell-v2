@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -36,20 +36,17 @@ export interface Assertion {
   templateUrl: './assertion.component.html',
   styleUrls: ['./assertion.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    // material
     MatButtonModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    // Cadmus
     CadmusCoreModule,
-    DocReferencesComponent,
-  ],
+    DocReferencesComponent
+],
 })
 export class AssertionComponent implements OnInit {
   private _updatingForm: boolean | undefined;

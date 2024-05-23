@@ -18,9 +18,11 @@
       (itemChange)="onItemChange($event)"
       (moreRequest)="onMoreRequest()"
     ></cadmus-ref-lookup>
-    <div *ngIf="item">
-      <pre>{{ item | json }}</pre>
-    </div>
+    @if (item) {
+      <div>
+        <pre>{{ item | json }}</pre>
+      </div>
+    }
     <div style="margin-top: 8px;">
       <button type="button" mat-flat-button (click)="onSetValue()">set random value</button>
     </div>

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -33,7 +33,6 @@ import {
   templateUrl: './asserted-composite-ids.component.html',
   styleUrls: ['./asserted-composite-ids.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -42,8 +41,8 @@ import {
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    AssertedCompositeIdComponent,
-  ],
+    AssertedCompositeIdComponent
+],
 })
 export class AssertedCompositeIdsComponent {
   private _ids: AssertedCompositeId[];

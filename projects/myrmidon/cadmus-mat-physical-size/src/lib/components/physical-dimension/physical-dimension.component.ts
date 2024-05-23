@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -34,18 +34,16 @@ export interface PhysicalDimension {
   templateUrl: './physical-dimension.component.html',
   styleUrls: ['./physical-dimension.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    // material
     MatButtonModule,
     MatCheckboxModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule,
-  ]
+    MatTooltipModule
+]
 })
 export class PhysicalDimensionComponent implements OnInit {
   private _disabled?: boolean;

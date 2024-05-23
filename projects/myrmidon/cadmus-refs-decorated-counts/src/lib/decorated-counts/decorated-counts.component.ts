@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   EventEmitter,
@@ -44,17 +44,15 @@ export interface DecoratedCount {
   templateUrl: './decorated-counts.component.html',
   styleUrls: ['./decorated-counts.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    // material
     MatButtonModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatSelectModule,
-  ],
+    MatSelectModule
+],
 })
 export class DecoratedCountsComponent implements OnInit, OnDestroy {
   private _counts: DecoratedCount[] | undefined;

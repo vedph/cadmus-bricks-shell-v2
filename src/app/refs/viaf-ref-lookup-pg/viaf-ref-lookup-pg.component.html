@@ -15,9 +15,11 @@
       (itemChange)="onItemChange($event)"
       (moreRequest)="onMoreRequest()"
     ></cadmus-ref-lookup>
-    <div *ngIf="item">
-      <pre>{{ item | json }}</pre>
-    </div>
+    @if (item) {
+      <div>
+        <pre>{{ item | json }}</pre>
+      </div>
+    }
     <hr />
     <h3>Direct VIAF Access</h3>
     <p>
@@ -30,11 +32,15 @@
         <input matInput [formControl]="term" />
       </mat-form-field>
     </form>
-    <div *ngIf="suggesting">
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    </div>
-    <div *ngIf="suggestResult">
-      <pre>{{ suggestResult | json }}</pre>
-    </div>
+    @if (suggesting) {
+      <div>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    }
+    @if (suggestResult) {
+      <div>
+        <pre>{{ suggestResult | json }}</pre>
+      </div>
+    }
   </mat-card-content>
 </mat-card>

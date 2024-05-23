@@ -7,7 +7,7 @@ import {
   Optional,
   Output,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -41,7 +41,6 @@ export interface LinkEditorComponentData {
   selector: 'cadmus-link-editor',
   standalone: true,
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -51,8 +50,8 @@ export interface LinkEditorComponentData {
     MatButtonModule,
     MatDialogModule,
     MatSelectModule,
-    AssertedCompositeIdComponent,
-  ],
+    AssertedCompositeIdComponent
+],
   templateUrl: './link-editor.component.html',
   styleUrl: './link-editor.component.css',
 })

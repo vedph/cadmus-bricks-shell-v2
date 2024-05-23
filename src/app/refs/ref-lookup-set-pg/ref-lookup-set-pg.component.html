@@ -10,8 +10,10 @@
       (itemChange)="onItemChange($event)"
       (moreRequest)="onMoreRequest($event)"
     ></cadmus-ref-lookup-set>
-    <div *ngIf="item">
-      <pre>{{ item | json }}</pre>
-    </div>
+    @if (item) {
+      <div>
+        <pre>{{ item | json }}</pre>
+      </div>
+    }
   </mat-card-content>
 </mat-card>

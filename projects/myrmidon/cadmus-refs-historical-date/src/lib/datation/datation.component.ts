@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   EventEmitter,
@@ -33,13 +33,12 @@ import { Datation, DatationModel } from './datation';
   templateUrl: './datation.component.html',
   styleUrls: ['./datation.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule
-  ]
+]
 })
 export class DatationComponent implements OnInit, OnDestroy {
   private _sub?: Subscription;

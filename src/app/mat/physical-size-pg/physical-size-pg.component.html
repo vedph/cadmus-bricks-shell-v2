@@ -13,11 +13,13 @@
       [defaultHUnit]="defaultUnit"
       [defaultDUnit]="defaultUnit"
       (sizeChange)="onSizeChange($event)"
-    >
+      >
     </cadmus-mat-physical-size>
-    <div *ngIf="size">
-      <pre>{{ size | json }}</pre>
-    </div>
+    @if (size) {
+      <div>
+        <pre>{{ size | json }}</pre>
+      </div>
+    }
     <div>
       {{ size | physicalSize : hBeforeW.value }}
     </div>

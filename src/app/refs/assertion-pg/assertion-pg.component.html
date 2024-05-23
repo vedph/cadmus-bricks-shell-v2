@@ -10,8 +10,10 @@
       [refTypeEntries]="refTypeEntries"
       (assertionChange)="onAssertionChange($event)"
     ></cadmus-refs-assertion>
-    <div *ngIf="assertion">
-      <pre>{{ assertion | json }}</pre>
-    </div>
+    @if (assertion) {
+      <div>
+        <pre>{{ assertion | json }}</pre>
+      </div>
+    }
   </mat-card-content>
 </mat-card>

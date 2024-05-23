@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   EventEmitter,
@@ -43,7 +43,6 @@ export interface AssertedId {
   templateUrl: './asserted-id.component.html',
   styleUrls: ['./asserted-id.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -53,8 +52,8 @@ export interface AssertedId {
     MatInputModule,
     MatSelectModule,
     AssertionComponent,
-    ScopedPinLookupComponent,
-  ],
+    ScopedPinLookupComponent
+],
 })
 export class AssertedIdComponent implements OnInit {
   private _updatingForm: boolean | undefined;

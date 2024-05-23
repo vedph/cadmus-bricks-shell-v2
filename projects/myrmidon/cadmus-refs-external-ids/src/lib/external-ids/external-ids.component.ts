@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   EventEmitter,
@@ -53,10 +53,8 @@ export interface RankedExternalId extends ExternalId {
   templateUrl: './external-ids.component.html',
   styleUrls: ['./external-ids.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    // material
     MatButtonModule,
     MatExpansionModule,
     MatFormFieldModule,
@@ -64,9 +62,8 @@ export interface RankedExternalId extends ExternalId {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    // Cadmus
     AssertionComponent
-  ],
+],
 })
 export class ExternalIdsComponent implements OnDestroy {
   private _ids: ExternalId[];

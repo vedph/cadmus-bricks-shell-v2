@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   AfterViewInit,
   Component,
@@ -57,18 +57,15 @@ export interface DocReference {
   templateUrl: './doc-references.component.html',
   styleUrls: ['./doc-references.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    // material
     MatButtonModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    // Cadmus
-    CadmusCoreModule,
-  ],
+    CadmusCoreModule
+],
 })
 export class DocReferencesComponent implements AfterViewInit, OnDestroy {
   private _references: DocReference[];

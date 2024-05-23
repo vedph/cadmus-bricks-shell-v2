@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -49,10 +49,8 @@ export interface AssertedChronotope {
   templateUrl: './asserted-chronotope.component.html',
   styleUrls: ['./asserted-chronotope.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    // material
     MatButtonModule,
     MatCheckboxModule,
     MatExpansionModule,
@@ -60,13 +58,11 @@ export interface AssertedChronotope {
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    // tools
     NgToolsModule,
     NgMatToolsModule,
-    // Cadmus
     AssertionComponent,
-    HistoricalDateComponent,
-  ],
+    HistoricalDateComponent
+],
 })
 export class AssertedChronotopeComponent implements OnInit {
   private _updatingForm: boolean | undefined;

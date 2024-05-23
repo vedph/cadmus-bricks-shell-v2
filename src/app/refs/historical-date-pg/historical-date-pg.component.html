@@ -9,9 +9,11 @@
       [date]="date"
       (dateChange)="onDateChange($event)"
     ></cadmus-refs-historical-date>
-    <div *ngIf="date">
-      <pre>{{ date | json }}</pre>
-    </div>
+    @if (date) {
+      <div>
+        <pre>{{ date | json }}</pre>
+      </div>
+    }
     <h3>Pipes</h3>
     <ul>
       <li>{{ date | historicalDate }}</li>

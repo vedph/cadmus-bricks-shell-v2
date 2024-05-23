@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -56,21 +56,18 @@ export interface AssertedProperName extends ProperName {
   templateUrl: './proper-name.component.html',
   styleUrls: ['./proper-name.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    // material
     MatButtonModule,
     MatExpansionModule,
     MatIconModule,
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    // Cadmus
     NgToolsModule,
     AssertionComponent,
-    ProperNamePieceComponent,
-  ]
+    ProperNamePieceComponent
+]
 })
 export class ProperNameComponent implements OnInit {
   private _name: AssertedProperName | undefined;

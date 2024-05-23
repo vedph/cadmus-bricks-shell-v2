@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -30,7 +30,6 @@ import {
   // let styles flow down this component
   encapsulation: ViewEncapsulation.None,
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -39,8 +38,8 @@ import {
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    TextBlockViewComponent,
-  ],
+    TextBlockViewComponent
+],
 })
 export class TextBlockViewPgComponent implements OnInit {
   public text: FormControl<string | null>;

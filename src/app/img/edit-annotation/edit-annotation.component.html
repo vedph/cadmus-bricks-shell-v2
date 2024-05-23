@@ -12,27 +12,29 @@
         (keyup.control.enter)="save()"
       ></textarea>
       <mat-hint>ctrl+Enter = save</mat-hint>
-      <mat-error
-        *ngIf="$any(text).errors?.required && (text.dirty || text.touched)"
-        >text required</mat-error
-      >
-      <mat-error
-        *ngIf="$any(text).errors?.maxLength && (text.dirty || text.touched)"
-        >text too long</mat-error
-      >
-    </mat-form-field>
-    <div class="center-content">
-      <button type="button" mat-icon-button (click)="close()" color="warn">
-        <mat-icon>cancel</mat-icon>
-      </button>
-      <button
-        type="submit"
-        mat-icon-button
-        color="primary"
-        [disabled]="form.pristine || form.invalid"
-      >
-        <mat-icon>check_circle</mat-icon>
-      </button>
-    </div>
-  </form>
-</fieldset>
+      @if ($any(text).errors?.required && (text.dirty || text.touched)) {
+        <mat-error
+          >text required</mat-error
+          >
+        }
+        @if ($any(text).errors?.maxLength && (text.dirty || text.touched)) {
+          <mat-error
+            >text too long</mat-error
+            >
+          }
+        </mat-form-field>
+        <div class="center-content">
+          <button type="button" mat-icon-button (click)="close()" color="warn">
+            <mat-icon>cancel</mat-icon>
+          </button>
+          <button
+            type="submit"
+            mat-icon-button
+            color="primary"
+            [disabled]="form.pristine || form.invalid"
+            >
+            <mat-icon>check_circle</mat-icon>
+          </button>
+        </div>
+      </form>
+    </fieldset>

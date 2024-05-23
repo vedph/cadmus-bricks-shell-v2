@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -32,14 +32,13 @@ import { MyImgAnnotationListComponent } from '../img-annotation-list/my-img-anno
   templateUrl: './img-annotator-pg.component.html',
   styleUrls: ['./img-annotator-pg.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
     ImgAnnotatorDirective,
     ImgAnnotatorToolbarComponent,
-    MyImgAnnotationListComponent,
-  ],
+    MyImgAnnotationListComponent
+],
 })
 export class ImgAnnotatorPgComponent {
   // the list core used by the annotations list child component

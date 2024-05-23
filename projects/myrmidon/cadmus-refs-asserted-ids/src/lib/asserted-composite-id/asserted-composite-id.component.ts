@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   EventEmitter,
@@ -68,7 +68,6 @@ export const ASSERTED_COMPOSITE_ID_CONFIGS_KEY =
   templateUrl: './asserted-composite-id.component.html',
   styleUrls: ['./asserted-composite-id.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -78,8 +77,8 @@ export const ASSERTED_COMPOSITE_ID_CONFIGS_KEY =
     MatInputModule,
     MatSelectModule,
     AssertionComponent,
-    PinTargetLookupComponent,
-  ],
+    PinTargetLookupComponent
+],
 })
 export class AssertedCompositeIdComponent implements OnInit {
   private _updatingForm: boolean | undefined;

@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   EventEmitter,
@@ -67,7 +67,6 @@ export interface MyAnnotationPayload {
   templateUrl: './my-gallery-image-annotator.component.html',
   styleUrls: ['./my-gallery-image-annotator.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -79,8 +78,8 @@ export interface MyAnnotationPayload {
     ImgAnnotatorDirective,
     ImgAnnotatorToolbarComponent,
     GalleryListComponent,
-    MyImgAnnotationListComponent,
-  ],
+    MyImgAnnotationListComponent
+],
 })
 export class MyGalleryImageAnnotatorComponent implements OnInit, OnDestroy {
   private _sub?: Subscription;

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Input } from '@angular/core';
 import {
   FormBuilder,
@@ -33,7 +33,6 @@ interface FilterMetadatum {
   templateUrl: './gallery-filter.component.html',
   styleUrls: ['./gallery-filter.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -42,7 +41,7 @@ interface FilterMetadatum {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule
-  ]
+]
 })
 export class GalleryFilterComponent {
   private _filter?: GalleryFilter;

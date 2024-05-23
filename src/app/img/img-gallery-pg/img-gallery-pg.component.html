@@ -8,6 +8,8 @@
     <app-my-gallery-image-annotator/>
   </mat-card-content>
   <mat-card-footer>
-    <pre *ngIf="annotations">{{ annotations | json }}</pre>
+    @if (annotations) {
+      <pre>{{ annotations | json }}</pre>
+    }
   </mat-card-footer>
 </mat-card>

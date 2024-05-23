@@ -1,83 +1,96 @@
 <form [formGroup]="form">
   <mat-autocomplete #lookupAuto="matAutocomplete" [displayWith]="getLookupName">
-    <mat-option
-      *ngFor="let i of items$ | async"
-      [value]="i"
-      (onSelectionChange)="pickItem(i)"
-      >{{ getLookupName(i) }}
-    </mat-option>
+    @for (i of items$ | async; track i) {
+      <mat-option
+        [value]="i"
+        (onSelectionChange)="pickItem(i)"
+        >{{ getLookupName(i) }}
+      </mat-option>
+    }
   </mat-autocomplete>
 
   <!-- active -->
-  <mat-form-field *ngIf="lookupActive">
-    <input
-      matInput
-      type="text"
-      [placeholder]="label || 'lookup'"
-      [formControl]="lookup"
-      [matAutocomplete]="lookupAuto"
-      cadmusAutoFocus
-    />
-    <button
-      type="button"
-      mat-icon-button
-      matSuffix
-      color="warn"
-      (click)="clear()"
-      [disabled]="!item"
-      matTooltip="Clear"
-    >
-      <mat-icon>clear</mat-icon>
-    </button>
-  </mat-form-field>
+  @if (lookupActive) {
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        [placeholder]="label || 'lookup'"
+        [formControl]="lookup"
+        [matAutocomplete]="lookupAuto"
+        cadmusAutoFocus
+        />
+        <button
+          type="button"
+          mat-icon-button
+          matSuffix
+          color="warn"
+          (click)="clear()"
+          [disabled]="!item"
+          matTooltip="Clear"
+          >
+          <mat-icon>clear</mat-icon>
+        </button>
+      </mat-form-field>
+    }
 
-  <!-- inactive -->
-  <div *ngIf="!lookupActive" class="flex-row">
-    <div class="labeled">
-      <div class="label" *ngIf="label">
-        {{ label }}
-        <span style="color: red" *ngIf="required && (invalid$ | async)"
-          >&nbsp;required</span
-        >
+    <!-- inactive -->
+    @if (!lookupActive) {
+      <div class="flex-row">
+        <div class="labeled">
+          @if (label) {
+            <div class="label">
+              {{ label }}
+              @if (required && (invalid$ | async)) {
+                <span style="color: red"
+                  >&nbsp;required</span
+                  >
+              }
+            </div>
+          }
+          @if (!lookupActive) {
+            <button
+              type="button"
+              mat-flat-button
+              (click)="lookupActive = true"
+              >
+              {{ getLookupName(item) || label }}
+            </button>
+          }
+        </div>
+        <!-- buttons -->
+        @if (linkTemplate) {
+          <button
+            type="button"
+            mat-icon-button
+            (click)="openLink()"
+            [disabled]="!item"
+            matTooltip="Open the web resource"
+            >
+            <mat-icon>link</mat-icon>
+          </button>
+        }
+        @if (optDialog) {
+          <button
+            type="button"
+            mat-icon-button
+            (click)="showOptions()"
+            matTooltip="Change quick options"
+            >
+            <mat-icon>settings</mat-icon>
+          </button>
+        }
+        @if (hasMore) {
+          <button
+            type="button"
+            mat-icon-button
+            color="primary"
+            (click)="requestMore()"
+            matTooltip="Search with more details"
+            >
+            <mat-icon>more</mat-icon>
+          </button>
+        }
       </div>
-      <button
-        type="button"
-        mat-flat-button
-        *ngIf="!lookupActive"
-        (click)="lookupActive = true"
-      >
-        {{ getLookupName(item) || label }}
-      </button>
-    </div>
-    <!-- buttons -->
-    <button
-      *ngIf="linkTemplate"
-      type="button"
-      mat-icon-button
-      (click)="openLink()"
-      [disabled]="!item"
-      matTooltip="Open the web resource"
-    >
-      <mat-icon>link</mat-icon>
-    </button>
-    <button
-      *ngIf="optDialog"
-      type="button"
-      mat-icon-button
-      (click)="showOptions()"
-      matTooltip="Change quick options"
-    >
-      <mat-icon>settings</mat-icon>
-    </button>
-    <button
-      *ngIf="hasMore"
-      type="button"
-      mat-icon-button
-      color="primary"
-      (click)="requestMore()"
-      matTooltip="Search with more details"
-    >
-      <mat-icon>more</mat-icon>
-    </button>
-  </div>
-</form>
+    }
+  </form>

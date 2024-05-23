@@ -22,7 +22,7 @@ import {
   Subscription,
 } from 'rxjs';
 
-import { CommonModule } from '@angular/common';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
@@ -46,19 +46,16 @@ import { ProperNamePiece, TypeThesaurusEntry } from '../models';
   templateUrl: './proper-name-piece.component.html',
   styleUrls: ['./proper-name-piece.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    // material
     MatButtonModule,
     MatExpansionModule,
     MatIconModule,
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    // Cadmus
-    NgToolsModule,
-  ]
+    NgToolsModule
+]
 })
 export class ProperNamePieceComponent implements OnInit, OnDestroy {
   // input sources to be combined

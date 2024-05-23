@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { CommonModule } from '@angular/common';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
@@ -130,13 +130,12 @@ export interface RefLookupSetEvent {
   templateUrl: './ref-lookup-set.component.html',
   styleUrls: ['./ref-lookup-set.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
     RefLookupComponent
-  ]
+]
 })
 export class RefLookupSetComponent implements OnInit {
   public config: FormControl<RefLookupConfig | null>;

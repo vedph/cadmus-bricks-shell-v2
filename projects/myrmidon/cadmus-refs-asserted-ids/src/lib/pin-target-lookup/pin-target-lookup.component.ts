@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   EventEmitter,
@@ -107,7 +107,6 @@ export interface PinTarget {
   templateUrl: './pin-target-lookup.component.html',
   styleUrls: ['./pin-target-lookup.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     ClipboardModule,
@@ -118,12 +117,10 @@ export interface PinTarget {
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    // myrmidon
     NgToolsModule,
-    // Cadmus
     RefLookupComponent,
-    RefLookupSetComponent,
-  ],
+    RefLookupSetComponent
+],
 })
 export class PinTargetLookupComponent implements OnInit, OnDestroy {
   private _subs: Subscription[];

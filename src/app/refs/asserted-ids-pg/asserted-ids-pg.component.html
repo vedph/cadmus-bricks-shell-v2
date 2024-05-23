@@ -14,8 +14,10 @@
       [refTagEntries]="refTagEntries"
       (idsChange)="onIdsChange($event)"
     ></cadmus-refs-asserted-ids>
-    <div *ngIf="ids">
-      <pre>{{ ids | json }}</pre>
-    </div>
+    @if (ids) {
+      <div>
+        <pre>{{ ids | json }}</pre>
+      </div>
+    }
   </mat-card-content>
 </mat-card>

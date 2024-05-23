@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -29,15 +29,13 @@ import {
   templateUrl: './cod-location.component.html',
   styleUrls: ['./cod-location.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    // material
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    NgToolsModule,
-  ]
+    NgToolsModule
+]
 })
 export class CodLocationComponent implements OnInit {
   private _initPending: boolean | undefined;

@@ -9,9 +9,11 @@
       [chronotopes]="chronotopes"
       (chronotopesChange)="onChronotopesChange($event)"
     ></cadmus-asserted-chronotope-set>
-    <div *ngIf="chronotopes">
-      <pre>{{ chronotopes | json }}</pre>
-      <p>{{ chronotopes | assertedChronotopes }}</p>
-    </div>
+    @if (chronotopes) {
+      <div>
+        <pre>{{ chronotopes | json }}</pre>
+        <p>{{ chronotopes | assertedChronotopes }}</p>
+      </div>
+    }
   </mat-card-content>
 </mat-card>

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -37,10 +37,8 @@ export interface Chronotope {
   templateUrl: './chronotope.component.html',
   styleUrls: ['./chronotope.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    // material
     MatButtonModule,
     MatCheckboxModule,
     MatExpansionModule,
@@ -49,9 +47,8 @@ export interface Chronotope {
     MatInputModule,
     MatSelectModule,
     MatSlideToggleModule,
-    // Cadmus
     HistoricalDateComponent
-  ]
+]
 })
 export class ChronotopeComponent implements OnInit {
   private _updatingForm: boolean | undefined;

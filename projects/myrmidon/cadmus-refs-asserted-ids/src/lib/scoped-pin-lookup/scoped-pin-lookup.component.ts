@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -57,7 +57,6 @@ interface LookupInfo {
   templateUrl: './scoped-pin-lookup.component.html',
   styleUrls: ['./scoped-pin-lookup.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -66,9 +65,8 @@ interface LookupInfo {
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    // Cadmus
-    RefLookupComponent,
-  ],
+    RefLookupComponent
+],
 })
 export class ScopedPinLookupComponent {
   // lookup

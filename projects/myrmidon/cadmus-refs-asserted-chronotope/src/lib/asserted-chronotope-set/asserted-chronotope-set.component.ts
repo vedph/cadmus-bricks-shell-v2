@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -32,20 +32,17 @@ import {
   templateUrl: './asserted-chronotope-set.component.html',
   styleUrls: ['./asserted-chronotope-set.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    // material
     MatButtonModule,
     MatCheckboxModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    // Cadmus
     AssertedChronotopeComponent,
-    HistoricalDatePipe,
-  ],
+    HistoricalDatePipe
+],
 })
 export class AssertedChronotopeSetComponent implements OnInit {
   private _chronotopes: AssertedChronotope[] | undefined;

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -43,19 +43,16 @@ export interface DecoratedId {
   templateUrl: './decorated-ids.component.html',
   styleUrls: ['./decorated-ids.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    // material
     MatButtonModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    // Cadmus
-    DocReferencesComponent,
-  ],
+    DocReferencesComponent
+],
 })
 export class DecoratedIdsComponent implements OnInit {
   private _ids: DecoratedId[];

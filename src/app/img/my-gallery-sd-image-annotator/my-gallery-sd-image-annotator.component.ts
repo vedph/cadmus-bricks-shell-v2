@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   EventEmitter,
@@ -57,7 +57,6 @@ import { SdImgAnnotatorDirective } from '../../../../projects/myrmidon/cadmus-sd
   selector: 'app-my-gallery-sd-image-annotator',
   standalone: true,
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -69,8 +68,8 @@ import { SdImgAnnotatorDirective } from '../../../../projects/myrmidon/cadmus-sd
     SdImgAnnotatorDirective,
     ImgAnnotatorToolbarComponent,
     GalleryListComponent,
-    MyImgAnnotationListComponent,
-  ],
+    MyImgAnnotationListComponent
+],
   templateUrl: './my-gallery-sd-image-annotator.component.html',
   styleUrl: './my-gallery-sd-image-annotator.component.scss',
 })

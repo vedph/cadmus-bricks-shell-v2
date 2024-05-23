@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -21,13 +21,12 @@ import { RefLookupOptionsComponent } from '../../../../projects/myrmidon/cadmus-
   templateUrl: './ref-lookup-dummy-opt.component.html',
   styleUrls: ['./ref-lookup-dummy-opt.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatIconModule,
-    MatSelectModule,
-  ],
+    MatSelectModule
+],
 })
 export class RefLookupDummyOptComponent implements OnInit {
   public letter: FormControl<string>;

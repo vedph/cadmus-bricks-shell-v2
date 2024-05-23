@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 
@@ -19,14 +19,13 @@ import { GeoNamesRefLookupService } from '../../projects/myrmidon/cadmus-refs-ge
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule,
     RouterOutlet,
     RouterModule,
     MatButtonModule,
     MatDividerModule,
     MatMenuModule,
-    MatToolbarModule,
-  ],
+    MatToolbarModule
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

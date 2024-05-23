@@ -9,8 +9,10 @@
       [chronotope]="chronotope"
       (chronotopeChange)="onChronotopeChange($event)"
     ></cadmus-refs-chronotope>
-    <div *ngIf="chronotope">
-      <pre>{{ chronotope | json }}</pre>
-    </div>
+    @if (chronotope) {
+      <div>
+        <pre>{{ chronotope | json }}</pre>
+      </div>
+    }
   </mat-card-content>
 </mat-card>

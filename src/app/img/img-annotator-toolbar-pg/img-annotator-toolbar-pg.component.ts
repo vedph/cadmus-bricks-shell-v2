@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -12,12 +12,11 @@ import { ImgAnnotatorToolbarComponent } from '../../../../projects/myrmidon/cadm
   templateUrl: './img-annotator-toolbar-pg.component.html',
   styleUrls: ['./img-annotator-toolbar-pg.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
-    ImgAnnotatorToolbarComponent,
-  ],
+    ImgAnnotatorToolbarComponent
+],
 })
 export class ImgAnnotatorToolbarPgComponent {
   public tool?: string;

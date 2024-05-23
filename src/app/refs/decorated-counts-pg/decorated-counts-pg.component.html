@@ -10,8 +10,10 @@
       [counts]="counts"
       (countsChange)="onCountsChange($event)"
     ></cadmus-refs-decorated-counts>
-    <div *ngIf="counts">
-      <pre>{{ counts | json }}</pre>
-    </div>
+    @if (counts) {
+      <div>
+        <pre>{{ counts | json }}</pre>
+      </div>
+    }
   </mat-card-content>
 </mat-card>

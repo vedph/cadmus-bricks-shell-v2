@@ -10,8 +10,10 @@
       [references]="references"
       (referencesChange)="onReferencesChange($event)"
     ></cadmus-refs-doc-references>
-    <div *ngIf="references">
-      <pre>{{ references | json }}</pre>
-    </div>
+    @if (references) {
+      <div>
+        <pre>{{ references | json }}</pre>
+      </div>
+    }
   </mat-card-content>
 </mat-card>

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component, Inject } from '@angular/core';
 
@@ -30,7 +30,6 @@ import { EditAnnotationDialogComponent } from '../edit-annotation-dialog/edit-an
   templateUrl: './sd-img-annotator-pg.component.html',
   styleUrls: ['./sd-img-annotator-pg.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
@@ -38,8 +37,8 @@ import { EditAnnotationDialogComponent } from '../edit-annotation-dialog/edit-an
     MatIconModule,
     SdImgAnnotatorDirective,
     ImgAnnotatorToolbarComponent,
-    MyImgAnnotationListComponent,
-  ],
+    MyImgAnnotationListComponent
+],
 })
 export class SdImgAnnotatorPgComponent {
   // the list core used by the annotations list child component

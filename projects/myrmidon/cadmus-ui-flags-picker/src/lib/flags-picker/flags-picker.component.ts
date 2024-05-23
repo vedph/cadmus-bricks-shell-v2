@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   EventEmitter,
@@ -52,17 +52,15 @@ export interface Flag {
   templateUrl: './flags-picker.component.html',
   styleUrls: ['./flags-picker.component.css'],
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    // material
     MatButtonModule,
     MatCheckboxModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatTooltipModule,
-  ],
+    MatTooltipModule
+],
 })
 export class FlagsPickerComponent implements OnInit, OnDestroy {
   private _flags: Flag[];

@@ -11,9 +11,11 @@
     ></cadmus-ui-note-set>
     <hr />
     <h3>Set</h3>
-    <div *ngIf="set">
-      <pre>{{ set | json }}</pre>
-    </div>
+    @if (set) {
+      <div>
+        <pre>{{ set | json }}</pre>
+      </div>
+    }
     <div>
       {{ lastNoteSet }}
     </div>

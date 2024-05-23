@@ -14,8 +14,10 @@
       [id]="id"
       (idChange)="onIdChange($event)"
     ></cadmus-refs-asserted-id>
-    <div *ngIf="id">
-      <pre>{{ id | json }}</pre>
-    </div>
+    @if (id) {
+      <div>
+        <pre>{{ id | json }}</pre>
+      </div>
+    }
   </mat-card-content>
 </mat-card>
