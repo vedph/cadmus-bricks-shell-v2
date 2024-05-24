@@ -93,13 +93,16 @@
             type="submit"
             color="primary"
             mat-flat-button
-            [disabled]="form.invalid"
+            [disabled]="form.invalid || busy"
           >
             search
           </button>
         </div>
-        <div></div>
+        <div>
+          <mat-progress-bar *ngIf="busy" mode="indeterminate" />
+        </div>
       </form>
+
       @if (results.length) {
       <div>
         <h3>Results</h3>
@@ -108,9 +111,6 @@
         </code>
       </div>
       }
-      <div>
-        <mat-progress-bar *ngIf="busy" mode="indeterminate" />
-      </div>
     </article>
   </mat-card-content>
 </mat-card>
