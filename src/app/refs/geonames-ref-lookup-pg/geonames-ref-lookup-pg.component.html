@@ -46,7 +46,7 @@
         <div>
           <mat-form-field>
             <mat-label>text</mat-label>
-            <input matInput [formControl]="text" placeholder="text to search" />
+            <input matInput [formControl]="text" />
             <mat-error
               *ngIf="
                 $any(text).errors?.required && (text.dirty || text.touched)
@@ -66,12 +66,7 @@
           <!-- maxRows -->
           <mat-form-field>
             <mat-label>max rows</mat-label>
-            <input
-              matInput
-              type="number"
-              [formControl]="maxRows"
-              placeholder="max rows"
-            />
+            <input matInput type="number" [formControl]="maxRows" />
             <mat-error
               *ngIf="
                 $any(maxRows).errors?.required &&
@@ -96,12 +91,7 @@
           <!-- startRow -->
           <mat-form-field>
             <mat-label>start row</mat-label>
-            <input
-              matInput
-              type="number"
-              [formControl]="startRow"
-              placeholder="start row"
-            />
+            <input matInput type="number" [formControl]="startRow" />
             <mat-error
               *ngIf="
                 $any(startRow).errors?.required &&
@@ -137,12 +127,7 @@
           <!-- countryBias -->
           <mat-form-field>
             <mat-label>country bias</mat-label>
-            <input
-              matInput
-              [formControl]="countryBias"
-              placeholder="country bias"
-              max-length="2"
-            />
+            <input matInput [formControl]="countryBias" max-length="2" />
             <mat-hint>ISO-3166 alpha-2</mat-hint>
           </mat-form-field>
         </div>
@@ -156,7 +141,6 @@
               (keydown.enter)="$event.preventDefault()"
               matInput
               [formControl]="countries"
-              placeholder="countries"
             ></textarea>
             <mat-hint>ISO-3166 alpha-2 codes separated by space</mat-hint>
           </mat-form-field>
@@ -168,51 +152,31 @@
           <!-- adminCode1 -->
           <mat-form-field>
             <mat-label>code1</mat-label>
-            <input
-              matInput
-              [formControl]="adminCode1"
-              placeholder="admin code1"
-            />
+            <input matInput [formControl]="adminCode1" />
           </mat-form-field>
 
           <!-- adminCode2 -->
           <mat-form-field>
             <mat-label>code2</mat-label>
-            <input
-              matInput
-              [formControl]="adminCode2"
-              placeholder="admin code2"
-            />
+            <input matInput [formControl]="adminCode2" />
           </mat-form-field>
 
           <!-- adminCode3 -->
           <mat-form-field>
             <mat-label>code3</mat-label>
-            <input
-              matInput
-              [formControl]="adminCode3"
-              placeholder="admin code3"
-            />
+            <input matInput [formControl]="adminCode3" />
           </mat-form-field>
 
           <!-- adminCode4 -->
           <mat-form-field>
             <mat-label>code4</mat-label>
-            <input
-              matInput
-              [formControl]="adminCode4"
-              placeholder="admin code4"
-            />
+            <input matInput [formControl]="adminCode4" />
           </mat-form-field>
 
           <!-- adminCode5 -->
           <mat-form-field>
             <mat-label>code5</mat-label>
-            <input
-              matInput
-              [formControl]="adminCode5"
-              placeholder="admin code5"
-            />
+            <input matInput [formControl]="adminCode5" />
           </mat-form-field>
         </fieldset>
 
@@ -232,11 +196,8 @@
           </mat-form-field>
 
           <mat-form-field>
-            <input
-              matInput
-              [formControl]="featureClasses"
-              placeholder="feature classes"
-            />
+            <mat-label>feature classes</mat-label>
+            <input matInput [formControl]="featureClasses" />
           </mat-form-field>
         </fieldset>
 
@@ -271,24 +232,14 @@
           <!-- lang -->
           <mat-form-field>
             <mat-label>language</mat-label>
-            <input
-              matInput
-              [formControl]="lang"
-              placeholder="language"
-              max-length="2"
-            />
+            <input matInput [formControl]="lang" max-length="2" />
             <mat-hint>ISO-639-2</mat-hint>
           </mat-form-field>
 
           <!-- searchLang -->
           <mat-form-field>
             <mat-label>search language</mat-label>
-            <input
-              matInput
-              [formControl]="searchLang"
-              placeholder="search language"
-              max-length="2"
-            />
+            <input matInput [formControl]="searchLang" max-length="2" />
             <mat-hint>ISO-639-2</mat-hint>
           </mat-form-field>
         </div>
@@ -309,12 +260,7 @@
           <!-- fuzzy -->
           <mat-form-field>
             <mat-label>fuzzy</mat-label>
-            <input
-              matInput
-              type="number"
-              [formControl]="fuzzy"
-              placeholder="fuzzy"
-            />
+            <input matInput type="number" [formControl]="fuzzy" />
             <mat-hint>0-1</mat-hint>
           </mat-form-field>
 
@@ -337,7 +283,7 @@
         <div>
           <mat-form-field>
             <mat-label>bounding box</mat-label>
-            <input matInput [formControl]="bbox" placeholder="bbox" />
+            <input matInput [formControl]="bbox" />
             <mat-hint>N S E W separated by space</mat-hint>
           </mat-form-field>
         </div>

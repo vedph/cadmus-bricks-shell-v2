@@ -20,3 +20,7 @@
   font-size: 0.9em;
   max-width: 800px;
 }
+article {
+  border-bottom: 1px solid silver;
+  margin-bottom: 16px;
+}
