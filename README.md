@@ -234,6 +234,15 @@ Then, the code for each library has been imported except for their module, and e
 
 ## History
 
+### 5.1.1
+
+- 2024-05-24:
+  - updated packages.
+  - minor fixes in templates.
+  - added automatic scope selection in external lookup when dealing with a multiple lookups set.
+  - fixes to DBPedia service and improved test page.
+  - added `url` parameter to GeoNames service.
+
 ### 5.1.0
 
 - 2024-05-23:

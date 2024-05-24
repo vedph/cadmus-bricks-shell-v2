@@ -8,6 +8,7 @@ import { ErrorService } from '@myrmidon/ng-tools';
  * A GeoNames request.
  */
 export interface GeoNamesRequest {
+  url?: string;
   userName: string;
 }
 
@@ -225,7 +226,7 @@ export interface GeoNamesSearchResult {
   geonames: GeoNamesToponym[];
 }
 
-const url = 'https://secure.geonames.org/';
+const GEONAMES_URL = 'https://secure.geonames.org/';
 
 /**
  * A service to search GeoNames.
@@ -246,8 +247,9 @@ export class GeoNamesService {
   ): Observable<GeoNamesSearchResult> {
     // adapt request to query parameters
     const r: any = Object.assign({}, request);
-    r.searchType = undefined;
-    r.text = undefined;
+    delete r.searchType;
+    delete r.text;
+    delete r.url;
     if (request.bbox) {
       r.north = request.bbox.north;
       r.south = request.bbox.south;
@@ -273,14 +275,14 @@ export class GeoNamesService {
     // remove undefined values
     const filteredParams = Object.fromEntries(
       Object.entries(r)
-      .filter(([key, value]) => value !== undefined)
-      .map(([key, value]) => [key, String(value)])
+        .filter(([key, value]) => value !== undefined)
+        .map(([key, value]) => [key, String(value)])
     );
 
-    console.info(`${url}search: `, filteredParams);
+    console.log(`${request.url || GEONAMES_URL}search: `, filteredParams);
 
     return this._http
-      .get<GeoNamesSearchResult>(url + 'search', {
+      .get<GeoNamesSearchResult>((request.url || GEONAMES_URL) + 'search', {
         params: { ...filteredParams },
       })
       .pipe(retry(3), catchError(this._error.handleError));

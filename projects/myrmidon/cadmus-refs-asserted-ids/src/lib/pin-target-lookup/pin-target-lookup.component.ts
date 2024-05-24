@@ -1,4 +1,3 @@
-
 import {
   Component,
   EventEmitter,
@@ -119,8 +118,8 @@ export interface PinTarget {
     MatSelectModule,
     NgToolsModule,
     RefLookupComponent,
-    RefLookupSetComponent
-],
+    RefLookupSetComponent,
+  ],
 })
 export class PinTargetLookupComponent implements OnInit, OnDestroy {
   private _subs: Subscription[];
@@ -204,16 +203,19 @@ export class PinTargetLookupComponent implements OnInit, OnDestroy {
    * Emitted when user closes the editor.
    */
   @Output()
-  public editorClose: EventEmitter<any>;
+  public readonly editorClose: EventEmitter<any>;
   /**
    * Emitted whenever the target changes.
    * The event's value is the new target.
    */
   @Output()
-  public targetChange: EventEmitter<PinTarget>;
+  public readonly targetChange: EventEmitter<PinTarget>;
 
   @Output()
-  public extMoreRequest: EventEmitter<RefLookupSetEvent>;
+  public readonly extMoreRequest: EventEmitter<RefLookupSetEvent>;
+
+  @Output()
+  public readonly extLookupConfigChange: EventEmitter<RefLookupConfig>;
 
   // by type
   public modelEntries: ThesaurusEntry[];
@@ -284,6 +286,7 @@ export class PinTargetLookupComponent implements OnInit, OnDestroy {
     this.targetChange = new EventEmitter<PinTarget>();
     this.editorClose = new EventEmitter<any>();
     this.extMoreRequest = new EventEmitter<RefLookupSetEvent>();
+    this.extLookupConfigChange = new EventEmitter<RefLookupConfig>();
   }
 
   private forceByItem(): void {
@@ -624,6 +627,10 @@ export class PinTargetLookupComponent implements OnInit, OnDestroy {
     this._snackbar.open('Copied to clipboard', 'OK', {
       duration: 1500,
     });
+  }
+
+  public onExtConfigChange(config: RefLookupConfig): void {
+    this.extLookupConfigChange.emit(config);
   }
 
   public close(): void {

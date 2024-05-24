@@ -1,11 +1,26 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
-import { RefLookupComponent, RefLookupService } from '../ref-lookup/ref-lookup.component';
+import {
+  RefLookupComponent,
+  RefLookupService,
+} from '../ref-lookup/ref-lookup.component';
+import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
 
 /**
  * The configuration for each lookup in a lookup set.
@@ -134,10 +149,12 @@ export interface RefLookupSetEvent {
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    RefLookupComponent
-]
+    RefLookupComponent,
+  ],
 })
-export class RefLookupSetComponent implements OnInit {
+export class RefLookupSetComponent implements OnInit, OnDestroy {
+  private _sub?: Subscription;
+
   public config: FormControl<RefLookupConfig | null>;
 
   /**
@@ -153,10 +170,13 @@ export class RefLookupSetComponent implements OnInit {
   public iconSize: IconSize;
 
   @Output()
-  public itemChange: EventEmitter<RefLookupSetEvent>;
+  public readonly configChange: EventEmitter<RefLookupConfig>;
 
   @Output()
-  public moreRequest: EventEmitter<RefLookupSetEvent>;
+  public readonly itemChange: EventEmitter<RefLookupSetEvent>;
+
+  @Output()
+  public readonly moreRequest: EventEmitter<RefLookupSetEvent>;
 
   constructor(formBuilder: FormBuilder) {
     this.configs = [];
@@ -164,14 +184,26 @@ export class RefLookupSetComponent implements OnInit {
     // form
     this.config = formBuilder.control(null);
     // events
+    this.configChange = new EventEmitter<RefLookupConfig>();
     this.itemChange = new EventEmitter<RefLookupSetEvent>();
     this.moreRequest = new EventEmitter<RefLookupSetEvent>();
   }
 
   public ngOnInit(): void {
+    this._sub = this.config.valueChanges
+      .pipe(distinctUntilChanged(), debounceTime(200))
+      .subscribe((config) => {
+        if (config) {
+          this.configChange.emit(config);
+        }
+      });
     if (this.configs?.length) {
       this.config.setValue(this.configs[0]);
     }
+  }
+
+  public ngOnDestroy(): void {
+    this._sub?.unsubscribe();
   }
 
   private eventToItem(item: any): RefLookupSetEvent {

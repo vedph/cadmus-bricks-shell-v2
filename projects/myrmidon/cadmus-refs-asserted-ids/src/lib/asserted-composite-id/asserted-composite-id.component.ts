@@ -1,4 +1,3 @@
-
 import {
   Component,
   EventEmitter,
@@ -77,8 +76,8 @@ export const ASSERTED_COMPOSITE_ID_CONFIGS_KEY =
     MatInputModule,
     MatSelectModule,
     AssertionComponent,
-    PinTargetLookupComponent
-],
+    PinTargetLookupComponent,
+  ],
 })
 export class AssertedCompositeIdComponent implements OnInit {
   private _updatingForm: boolean | undefined;
@@ -278,6 +277,17 @@ export class AssertedCompositeIdComponent implements OnInit {
 
   public onExtMoreRequest(event: RefLookupSetEvent): void {
     this.extMoreRequest.emit(event);
+  }
+
+  public onExtLookupConfigChange(config: RefLookupConfig): void {
+    if (
+      !this.scope.value ||
+      this.extLookupConfigs.some((c) => c.name === this.scope.value)
+    ) {
+      this.scope.setValue(config.name || null);
+      this.scope.markAsDirty();
+      this.scope.updateValueAndValidity();
+    }
   }
 
   public cancel(): void {

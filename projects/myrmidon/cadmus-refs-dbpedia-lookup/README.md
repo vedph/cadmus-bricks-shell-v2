@@ -6,6 +6,8 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 
 DBPedia lookup is currently limited to the DBPedia API _keyword_ lookup. You can configure this service via `DbediaOptions`, which provides the following properties:
 
+- `searchUri`: the search function URI. Default is <https://lookup.dbpedia.org/api/search>.
+- `prefixUri`: the prefix lookup function URI. Default is <https://lookup.dbpedia.org/api/prefix>.
 - `limit` (default=10): the maximum number of documents in result. AFAIK the DBPedia service does not provide paging via an offset, so this is the only available option here.
 - `prefix` (default=true): true for a prefix lookup (=match the beginning of the input string, rather than the whole input string).
 - `types`: the types filters. These are one or more DBpedia classes from the DBpedia ontology that the results should have. Using this parameter will only retrieve resources of the passed type(s). For instance, you might want to use <http://dbpedia.org/ontology/Person> for persons, <http://dbpedia.org/ontology/Place> for places, etc.
@@ -29,7 +31,7 @@ Note that all the values may include `<B></B>` for bold, and presumably also `<I
 
 ## Usage
 
-To use this service, you must configure your app and use a proxy because AFAIK DBPedia does not support CORS nor JSONP.
+Should your DBPedia endpoint not support CORS nor JSONP, you can use a proxy as follows:
 
 (1) in your backend API, add a **proxy API controller** like this (`ProxyController.cs`):
 

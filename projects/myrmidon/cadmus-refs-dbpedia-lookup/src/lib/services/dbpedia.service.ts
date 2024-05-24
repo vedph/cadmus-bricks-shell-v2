@@ -10,6 +10,14 @@ import { ErrorService } from '@myrmidon/ng-tools';
  */
 export interface DbpediaOptions {
   /**
+   * The URI for search.
+   */
+  searchUri?: string;
+  /**
+   * The URI for prefix search.
+   */
+  prefixUri?: string;
+  /**
    * The maximum number of documents in result.
    */
   limit?: number;
@@ -29,12 +37,17 @@ export interface DbpediaOptions {
   types?: string[];
 }
 
+const SEARCH_URI = 'https://lookup.dbpedia.org/api/search';
+const PREFIX_URI = 'https://lookup.dbpedia.org/api/prefix';
+
 /**
  * Default options for DBPedia keyword lookup.
  */
 export const DBPEDIA_DEFAULT_OPTIONS: DbpediaOptions = {
+  searchUri: SEARCH_URI,
+  prefixUri: PREFIX_URI,
   limit: 10,
-  prefix: true
+  prefix: true,
 };
 
 /**
@@ -59,9 +72,9 @@ export interface DbpediaResult {
   docs: DbpediaDoc[];
 }
 
-const SEARCH_URI = 'http://lookup.dbpedia.org/api/search';
-const PREFIX_URI = 'http://lookup.dbpedia.org/api/prefix';
-
+/**
+ * DBPedia lookup service.
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -79,7 +92,7 @@ export class DbpediaService {
     keyword: string,
     options?: DbpediaOptions
   ): Observable<DbpediaResult> {
-    const o = Object.assign(options || {}, DBPEDIA_DEFAULT_OPTIONS, options);
+    const o = Object.assign(DBPEDIA_DEFAULT_OPTIONS, options);
 
     // query=keyword
     let params = new HttpParams().set('query', keyword);
@@ -99,7 +112,9 @@ export class DbpediaService {
       });
     }
 
-    const url = o.prefix ? PREFIX_URI : SEARCH_URI;
+    const url = o.prefix
+      ? o.prefixUri || PREFIX_URI
+      : o.searchUri || SEARCH_URI;
     return this._http
       .get<DbpediaResult>(url, { params })
       .pipe(retry(3), catchError(this._error.handleError));
