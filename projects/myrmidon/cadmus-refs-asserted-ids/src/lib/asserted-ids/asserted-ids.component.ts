@@ -7,10 +7,13 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { take } from 'rxjs';
 
+import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { ThesaurusEntry } from '@myrmidon/cadmus-core';
 import { DialogService } from '@myrmidon/ng-mat-tools';
@@ -29,10 +32,13 @@ import {
   templateUrl: './asserted-ids.component.html',
   styleUrls: ['./asserted-ids.component.css'],
   imports: [
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatButtonModule,
     MatExpansionModule,
     MatIconModule,
+    MatTooltipModule,
     AssertedIdComponent
 ],
 })
