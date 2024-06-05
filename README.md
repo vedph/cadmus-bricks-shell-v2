@@ -234,6 +234,8 @@ Then, the code for each library has been imported except for their module, and e
 
 ## History
 
+- 2024-06-05: added label to `AssertedId`.
+
 ### 5.1.2
 
 - 2024-05-24:

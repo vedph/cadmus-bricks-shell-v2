@@ -33,6 +33,7 @@ import { ScopedPinLookupComponent } from '../scoped-pin-lookup/scoped-pin-lookup
 export interface AssertedId {
   tag?: string;
   value: string;
+  label?: string;
   scope: string;
   assertion?: Assertion;
 }
@@ -61,6 +62,7 @@ export class AssertedIdComponent implements OnInit {
 
   public tag: FormControl<string | null>;
   public value: FormControl<string | null>;
+  public label: FormControl<string | null>;
   public scope: FormControl<string | null>;
   public assertion: FormControl<Assertion | null>;
   public form: FormGroup;
@@ -124,11 +126,13 @@ export class AssertedIdComponent implements OnInit {
       Validators.required,
       Validators.maxLength(500),
     ]);
+    this.label = formBuilder.control(null, Validators.maxLength(500));
     this.scope = formBuilder.control(null, Validators.maxLength(500));
     this.assertion = formBuilder.control(null);
     this.form = formBuilder.group({
       tag: this.tag,
       value: this.value,
+      label: this.label,
       scope: this.scope,
       assertion: this.assertion,
     });
@@ -164,6 +168,7 @@ export class AssertedIdComponent implements OnInit {
     } else {
       this.tag.setValue(value.tag || null);
       this.value.setValue(value.value);
+      this.label.setValue(value.label || null);
       this.scope.setValue(value.scope);
       this.assertion.setValue(value.assertion || null);
       this.form.markAsPristine();
@@ -175,6 +180,7 @@ export class AssertedIdComponent implements OnInit {
     return {
       tag: this.tag.value?.trim(),
       value: this.value.value?.trim() || '',
+      label: this.label.value?.trim() || undefined,
       scope: this.scope.value?.trim() || '',
       assertion: this.assertion.value || undefined,
     };
