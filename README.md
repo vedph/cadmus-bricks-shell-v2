@@ -234,7 +234,9 @@ Then, the code for each library has been imported except for their module, and e
 
 ## History
 
-- 2024-06-05: added label to `AssertedId`.
+- 2024-06-05:
+  - added label to `AssertedId` (`@myrmidon/cadmus-refs-asserted-ids` 5.1.3).
+  - updated packages.
 
 ### 5.1.2
 
