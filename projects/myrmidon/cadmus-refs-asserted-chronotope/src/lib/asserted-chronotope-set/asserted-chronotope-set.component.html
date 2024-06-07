@@ -30,7 +30,7 @@
             matTooltip="Edit this chronotope"
             (click)="editChronotope(entry, i)"
           >
-            <mat-icon>edit</mat-icon>
+            <mat-icon class="mat-primary">edit</mat-icon>
           </button>
           <button
             type="button"
@@ -57,7 +57,7 @@
             matTooltip="Delete this chronotope"
             (click)="deleteChronotope(i)"
           >
-            <mat-icon>remove_circle</mat-icon>
+            <mat-icon class="mat-warn">remove_circle</mat-icon>
           </button>
         </td>
         <td>{{ entry.place?.value }}</td>
@@ -90,15 +90,16 @@
         mat-icon-button
         color="warn"
       >
-        <mat-icon>cancel</mat-icon>
+        <mat-icon class="mat-warn">cancel</mat-icon>
       </button>
       <button
         type="button"
         (click)="onChronotopeSave()"
         mat-flat-button
         color="primary"
+        class="mat-primary"
       >
-        <mat-icon>check_circle</mat-icon>
+        <mat-icon class="mat-primary">check_circle</mat-icon>
         chronotope
       </button>
     </div>

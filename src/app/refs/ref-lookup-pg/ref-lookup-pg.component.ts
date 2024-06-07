@@ -7,6 +7,7 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
 import { RefLookupDummyOptComponent } from '../ref-lookup-dummy-opt/ref-lookup-dummy-opt.component';
@@ -199,6 +200,7 @@ export class WebColorLookup implements RefLookupService {
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatButtonModule,
     MatCardModule,
     RefLookupComponent,
   ],

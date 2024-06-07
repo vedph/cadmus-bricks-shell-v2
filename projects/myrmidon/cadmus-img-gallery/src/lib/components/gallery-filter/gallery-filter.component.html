@@ -49,7 +49,7 @@
         mat-icon-button
         color="primary"
       >
-        <mat-icon>add_circle</mat-icon>
+        <mat-icon class="mat-primary">add_circle</mat-icon>
       </button>
     </fieldset>
   </form>
@@ -73,7 +73,7 @@
             color="warn"
             (click)="deleteMetadatum(i)"
           >
-            <mat-icon>clear</mat-icon>
+            <mat-icon class="mat-warn">clear</mat-icon>
           </button>
         </td>
         <td [matTooltip]="m.id">{{ m.label }}</td>
@@ -91,7 +91,7 @@
       color="warn"
       matTooltip="Reset filters"
     >
-      <mat-icon>clear</mat-icon>
+      <mat-icon class="mat-warn">clear</mat-icon>
     </button>
     <button
       type="submit"
@@ -99,7 +99,7 @@
       color="primary"
       matTooltip="Apply filters"
     >
-      <mat-icon>check_circle</mat-icon>
+      <mat-icon class="mat-primary">check_circle</mat-icon>
     </button>
   </div>
 </form>

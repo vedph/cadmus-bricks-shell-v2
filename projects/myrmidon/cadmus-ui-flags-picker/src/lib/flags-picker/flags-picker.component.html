@@ -1,84 +1,82 @@
 @if (flags?.length || allowUserFlags) {
-  <form [formGroup]="form">
-    <!-- toolbar -->
-    @if (toolbar) {
-      <div>
-        <button
-          type="button"
-          mat-icon-button
-          matTooltip="Toggle all"
-          (click)="toggleAll()"
-          >
-          <mat-icon>published_with_changes</mat-icon>
-        </button>
-        <button
-          type="button"
-          color="primary"
-          mat-icon-button
-          matTooltip="Select all"
-          (click)="selectAll()"
-          >
-          <mat-icon>done_all</mat-icon>
-        </button>
-        <button
-          type="button"
-          mat-icon-button
-          matTooltip="Deselect all"
-          color="warn"
-          (click)="deselectAll()"
-          >
-          <mat-icon>remove_done</mat-icon>
-        </button>
-        <!-- user -->
-        @if (allowUserFlags) {
-          <form
-            style="display: inline-block"
-            [formGroup]="userForm"
-            (submit)="addUserFlag()"
-            >
-            <mat-form-field>
-              <mat-label>custom</mat-label>
-              <input matInput [formControl]="userFlag" />
-            </mat-form-field>
-            <button
-              [disabled]="userForm.invalid"
-              type="submit"
-              mat-icon-button
-              color="primary"
-              matTooltip="Add a new entry"
-              >
-              <mat-icon>add_circle</mat-icon>
-            </button>
-          </form>
-        }
-      </div>
-    }
-    <!-- flags -->
-    <div formArrayName="flagsArr" class="cols">
-      @for (item of flagsArr.controls; track item; let i = $index) {
-        <div>
-          <!-- child form -->
-          <div
-            [formGroupName]="i"
-            style="display: flex; align-items: center; gap: 6px"
-            >
-            @if (numbering) {
-              <span class="numbering" style="flex: 0 0 auto"
-                >{{ i + 1 }}.</span
-                >
-              }
-              <mat-checkbox
-                formControlName="flag"
-                [matTooltip]="flags![i].id"
-                [matTooltipDisabled]="!flagTips"
-                >{{ flags![i].label || flags![i].id }}
-                @if (flags![i].user) {
-                  <span>&nbsp;&#x270e;</span>
-                }
-              </mat-checkbox>
-            </div>
-          </div>
-        }
-      </div>
+<form [formGroup]="form">
+  <!-- toolbar -->
+  @if (toolbar) {
+  <div>
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="Toggle all"
+      (click)="toggleAll()"
+    >
+      <mat-icon>published_with_changes</mat-icon>
+    </button>
+    <button
+      type="button"
+      color="primary"
+      mat-icon-button
+      matTooltip="Select all"
+      (click)="selectAll()"
+    >
+      <mat-icon class="mat-primary">done_all</mat-icon>
+    </button>
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="Deselect all"
+      color="warn"
+      (click)="deselectAll()"
+    >
+      <mat-icon class="mat-warn">remove_done</mat-icon>
+    </button>
+    <!-- user -->
+    @if (allowUserFlags) {
+    <form
+      style="display: inline-block"
+      [formGroup]="userForm"
+      (submit)="addUserFlag()"
+    >
+      <mat-form-field>
+        <mat-label>custom</mat-label>
+        <input matInput [formControl]="userFlag" />
+      </mat-form-field>
+      <button
+        [disabled]="userForm.invalid"
+        type="submit"
+        mat-icon-button
+        color="primary"
+        matTooltip="Add a new entry"
+      >
+        <mat-icon class="mat-primary">add_circle</mat-icon>
+      </button>
     </form>
+    }
+  </div>
   }
+  <!-- flags -->
+  <div formArrayName="flagsArr" class="cols">
+    @for (item of flagsArr.controls; track item; let i = $index) {
+    <div>
+      <!-- child form -->
+      <div
+        [formGroupName]="i"
+        style="display: flex; align-items: center; gap: 6px"
+      >
+        @if (numbering) {
+        <span class="numbering" style="flex: 0 0 auto">{{ i + 1 }}.</span>
+        }
+        <mat-checkbox
+          formControlName="flag"
+          [matTooltip]="flags![i].id"
+          [matTooltipDisabled]="!flagTips"
+          >{{ flags![i].label || flags![i].id }}
+          @if (flags![i].user) {
+          <span>&nbsp;&#x270e;</span>
+          }
+        </mat-checkbox>
+      </div>
+    </div>
+    }
+  </div>
+</form>
+}

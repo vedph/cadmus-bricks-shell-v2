@@ -50,8 +50,8 @@
     "@angular/router": "^18.0.1",
     "@annotorious/annotorious": "3.0.0-rc.25",
     "@cisstech/nge": "^17.7.1",
-    "@myrmidon/auth-jwt-admin": "^4.2.0",
-    "@myrmidon/auth-jwt-login": "^4.2.3",
+    "@myrmidon/auth-jwt-admin": "^5.0.1",
+    "@myrmidon/auth-jwt-login": "^5.0.0",
     "@myrmidon/cadmus-api": "^8.1.0",
     "@myrmidon/cadmus-core": "^8.1.0",
     "@myrmidon/ng-mat-tools": "^3.1.0",
@@ -66,7 +66,7 @@
     "openseadragon": "^4.1.1",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.3",
-    "zone.js": "~0.14.6"
+    "zone.js": "~0.14.7"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.0.2",

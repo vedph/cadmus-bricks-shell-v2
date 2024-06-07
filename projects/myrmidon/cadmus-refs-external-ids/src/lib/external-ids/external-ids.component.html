@@ -19,7 +19,7 @@
           color="warn"
           (click)="removeId(i)"
         >
-          <mat-icon>remove_circle</mat-icon>
+          <mat-icon class="mat-warn">remove_circle</mat-icon>
         </button>
         <button
           [disabled]="first"
@@ -114,7 +114,7 @@
           matTooltip="Edit assertion"
           (click)="editAssertion(i)"
         >
-          <mat-icon>feedback</mat-icon>
+          <mat-icon class="mat-primary">feedback</mat-icon>
         </button>
       </div>
     </div>
@@ -134,12 +134,13 @@
       ></cadmus-refs-assertion>
       <button
         color="primary"
+        class="mat-primary"
         type="button"
         mat-flat-button
         style="margin-top: 6px"
         (click)="saveAssertion()"
       >
-        <mat-icon>check_circle</mat-icon> assertion
+        <mat-icon class="mat-primary">check_circle</mat-icon> assertion
       </button>
     </mat-expansion-panel>
     }

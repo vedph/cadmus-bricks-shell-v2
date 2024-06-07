@@ -143,7 +143,7 @@
                 [cdkCopyToClipboard]="lookupData!.pin!.value"
                 (cdkCopyToClipboardCopied)="onCopied()"
               >
-                <mat-icon>content_copy</mat-icon>
+                <mat-icon class="mat-primary">content_copy</mat-icon>
               </button>
             </td>
             <td>pin</td>
@@ -161,7 +161,7 @@
                 [cdkCopyToClipboard]="lookupData!.pin!.itemId"
                 (cdkCopyToClipboardCopied)="onCopied()"
               >
-                <mat-icon>content_copy</mat-icon>
+                <mat-icon class="mat-primary">content_copy</mat-icon>
               </button>
             </td>
             <td>item ID</td>
@@ -179,7 +179,7 @@
                 [cdkCopyToClipboard]="lookupData!.item!.title"
                 (cdkCopyToClipboardCopied)="onCopied()"
               >
-                <mat-icon>content_copy</mat-icon>
+                <mat-icon class="mat-primary">content_copy</mat-icon>
               </button>
             </td>
             <td>item title</td>
@@ -197,7 +197,7 @@
                 [cdkCopyToClipboard]="lookupData!.pin!.partId"
                 (cdkCopyToClipboardCopied)="onCopied()"
               >
-                <mat-icon>content_copy</mat-icon>
+                <mat-icon class="mat-primary">content_copy</mat-icon>
               </button>
             </td>
             <td>part ID</td>
@@ -215,7 +215,7 @@
                 [cdkCopyToClipboard]="lookupData!.pin!.partTypeId"
                 (cdkCopyToClipboardCopied)="onCopied()"
               >
-                <mat-icon>content_copy</mat-icon>
+                <mat-icon class="mat-primary">content_copy</mat-icon>
               </button>
             </td>
             <td>part type ID</td>
@@ -233,7 +233,7 @@
                 [cdkCopyToClipboard]="lookupData!.pin!.roleId!"
                 (cdkCopyToClipboardCopied)="onCopied()"
               >
-                <mat-icon>content_copy</mat-icon>
+                <mat-icon class="mat-primary">content_copy</mat-icon>
               </button>
             </td>
             <td>part role ID</td>
@@ -252,7 +252,7 @@
                 [cdkCopyToClipboard]="m.value"
                 (cdkCopyToClipboardCopied)="onCopied()"
               >
-                <mat-icon>content_copy</mat-icon>
+                <mat-icon class="mat-primary">content_copy</mat-icon>
               </button>
             </td>
             <td class="metadata">{{ m.name }}</td>
@@ -269,10 +269,11 @@
   <!-- buttons -->
   <div>
     <button mat-flat-button type="button" (click)="close()">
-      <mat-icon color="warn">close</mat-icon>
+      <mat-icon color="warn" class="mat-warn">close</mat-icon>
     </button>
     <button mat-flat-button type="submit" [disabled]="form.invalid">
-      <mat-icon color="primary">check_circle</mat-icon> target
+      <mat-icon color="primary" class="mat-primary">check_circle</mat-icon>
+      target
     </button>
   </div>
 </form>

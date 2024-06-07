@@ -11,27 +11,27 @@
       [toolbar]="true"
       [allowUserFlags]="true"
       (flagsChange)="onFlagsChange($event)"
-      >
+    >
     </cadmus-ui-flags-picker>
 
     <hr />
     @if (result) {
-      <div>
-        <h3>result</h3>
-        <pre>{{ result | json }}</pre>
-      </div>
+    <div>
+      <h3>result</h3>
+      <pre>{{ result | json }}</pre>
+    </div>
     }
     <div>
       <h3>state</h3>
       @if (flags$ | async; as flags) {
-        <ol>
-          @for (f of flags; track f) {
-            <li>
-              {{ f.checked ? "☑" : "☐" }} {{ f.id }}={{ f.label }}
-              {{ f.user ? " USR" : "" }}
-            </li>
-          }
-        </ol>
+      <ol>
+        @for (f of flags; track f) {
+        <li>
+          {{ f.checked ? "☑" : "☐" }} {{ f.id }}={{ f.label }}
+          {{ f.user ? " USR" : "" }}
+        </li>
+        }
+      </ol>
       }
     </div>
 
@@ -47,10 +47,11 @@
         <div>
           <button
             color="primary"
+            class="mat-primary"
             type="button"
             mat-flat-button
             (click)="setFlags()"
-            >
+          >
             set flags
           </button>
           <mat-checkbox [formControl]="applyChecks">apply checks</mat-checkbox>
@@ -65,10 +66,11 @@
         <div>
           <button
             color="primary"
+            class="mat-primary"
             type="button"
             mat-flat-button
             (click)="setChecks()"
-            >
+          >
             set IDs
           </button>
           <mat-checkbox [formControl]="supplyFlags">supply flags</mat-checkbox>

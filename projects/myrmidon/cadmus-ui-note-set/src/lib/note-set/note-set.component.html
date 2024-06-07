@@ -25,7 +25,7 @@
       [disabled]="!currentDef"
       (click)="revertNote()"
     >
-      <mat-icon>refresh</mat-icon>
+      <mat-icon class="mat-warn">refresh</mat-icon>
     </button>
     <!-- flags -->
     @if (currentDef?.required) {
@@ -54,7 +54,7 @@
     </span>
     } @if (missing?.length) {
     <span class="bar" [matTooltip]="'Missing: ' + missing!.join(', ')">
-      <mat-icon color="warn">error</mat-icon>
+      <mat-icon color="warn" class="mat-warn">error</mat-icon>
     </span>
     } @if (existing?.length) {
     <span class="bar-existing">
@@ -83,7 +83,7 @@
         mat-icon-button
         matTooltip="Clear this note"
       >
-        <mat-icon>delete</mat-icon>
+        <mat-icon class="mat-warn">delete</mat-icon>
       </button>
       <button
         type="submit"
@@ -92,7 +92,7 @@
         mat-icon-button
         matTooltip="Save this note"
       >
-        <mat-icon>check_circle</mat-icon>
+        <mat-icon class="mat-primary">check_circle</mat-icon>
       </button>
     </div>
     <!-- preview -->

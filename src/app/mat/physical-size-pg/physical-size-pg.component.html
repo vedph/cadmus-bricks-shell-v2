@@ -13,12 +13,12 @@
       [defaultHUnit]="defaultUnit"
       [defaultDUnit]="defaultUnit"
       (sizeChange)="onSizeChange($event)"
-      >
+    >
     </cadmus-mat-physical-size>
     @if (size) {
-      <div>
-        <pre>{{ size | json }}</pre>
-      </div>
+    <div>
+      <pre>{{ size | json }}</pre>
+    </div>
     }
     <div>
       {{ size | physicalSize : hBeforeW.value }}
@@ -26,10 +26,16 @@
     <hr />
     <div class="form-row">
       <mat-checkbox [formControl]="hBeforeW">H before W</mat-checkbox>
-      <button type="button" color="warn" mat-flat-button (click)="reset()">
+      <button
+        type="button"
+        color="warn"
+        class="mat-warn"
+        mat-flat-button
+        (click)="reset()"
+      >
         reset (toggle default unit)
       </button>
-      <span>{{defaultUnit}}</span>
+      <span>{{ defaultUnit }}</span>
     </div>
   </mat-card-content>
 </mat-card>

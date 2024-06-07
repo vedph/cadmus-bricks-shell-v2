@@ -10,13 +10,21 @@
       (chronotopeChange)="onChronotopeChange($event)"
     ></cadmus-refs-asserted-chronotope>
     @if (chronotope) {
-      <div>
-        <pre>{{ chronotope | json }}</pre>
-        <p>{{ chronotope | assertedChronotopes }}</p>
-      </div>
+    <div>
+      <pre>{{ chronotope | json }}</pre>
+      <p>{{ chronotope | assertedChronotopes }}</p>
+    </div>
     }
   </mat-card-content>
   <mat-card-actions>
-    <button mat-flat-button color="warn" (click)="reset()">reset</button>
+    <button
+      type="button"
+      mat-flat-button
+      color="warn"
+      class="mat-warn"
+      (click)="reset()"
+    >
+      reset
+    </button>
   </mat-card-actions>
 </mat-card>

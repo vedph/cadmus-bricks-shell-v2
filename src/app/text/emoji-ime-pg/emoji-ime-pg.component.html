@@ -9,7 +9,13 @@
       <mat-form-field>
         <input matInput placeholder="name" [formControl]="name" />
       </mat-form-field>
-      <button type="button" mat-flat-button color="primary" (click)="openIme()">
+      <button
+        type="button"
+        mat-flat-button
+        color="primary"
+        class="mat-primary"
+        (click)="openIme()"
+      >
         open IME
       </button>
     </div>

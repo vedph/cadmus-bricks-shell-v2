@@ -28,7 +28,7 @@
                     color="primary"
                     (click)="pickImage(img)"
                     >
-                    <mat-icon>check_circle</mat-icon>
+                    <mat-icon class="mat-primary">check_circle</mat-icon>
                   </button>
                 </div>
                 @if (img.description) {
@@ -56,7 +56,7 @@
             matTooltip="Clear items cache"
             (click)="reset()"
             >
-            <mat-icon>autorenew</mat-icon>
+            <mat-icon class="mat-warn">autorenew</mat-icon>
           </button>
           <mat-paginator
             [length]="page.total"

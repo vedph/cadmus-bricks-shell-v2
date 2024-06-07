@@ -27,7 +27,7 @@
             matTooltip="Edit this ID"
             (click)="editId(i)"
           >
-            <mat-icon>edit</mat-icon>
+            <mat-icon class="mat-primary">edit</mat-icon>
           </button>
           <button
             type="button"
@@ -36,7 +36,7 @@
             matTooltip="Delete this ID"
             (click)="deleteId(i)"
           >
-            <mat-icon>remove_circle</mat-icon>
+            <mat-icon class="mat-warn">remove_circle</mat-icon>
           </button>
         </td>
         <td>{{ id.id }}</td>
@@ -120,7 +120,7 @@
           matTooltip="Discard ID changes"
           color="warn"
         >
-          <mat-icon>clear</mat-icon>
+          <mat-icon class="mat-warn">clear</mat-icon>
         </button>
         <button
           type="submit"
@@ -129,7 +129,7 @@
           matTooltip="Save ID changes"
           color="primary"
         >
-          <mat-icon>check_circle</mat-icon>
+          <mat-icon class="mat-primary">check_circle</mat-icon>
         </button>
       </div>
     </form>
