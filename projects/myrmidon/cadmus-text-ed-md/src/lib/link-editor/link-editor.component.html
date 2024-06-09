@@ -14,11 +14,23 @@
     (idChange)="onIdChange($event)"
   />
   <div class="button-row">
-    <button type="button" color="warn" mat-flat-button (click)="close()">
-      <mat-icon class="mat-warn">cancel</mat-icon> Cancel
+    <button
+      type="button"
+      color="warn"
+      class="mat-warn"
+      mat-flat-button
+      (click)="close()"
+    >
+      <mat-icon>cancel</mat-icon> Cancel
     </button>
-    <button type="button" color="primary" mat-flat-button (click)="save()">
-      <mat-icon class="mat-primary">check_circle</mat-icon> OK
+    <button
+      type="button"
+      color="primary"
+      class="mat-primary"
+      mat-flat-button
+      (click)="save()"
+    >
+      <mat-icon>check_circle</mat-icon> OK
     </button>
   </div>
 </div>
