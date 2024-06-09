@@ -40,6 +40,11 @@ th {
 .form-row * {
   flex: 0 0 auto;
 }
+.button-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
 .label {
   border: 1px solid silver;
   border-radius: 6px;

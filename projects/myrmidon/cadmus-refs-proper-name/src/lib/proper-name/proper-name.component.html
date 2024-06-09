@@ -129,11 +129,7 @@
   </table>
 
   <!-- piece -->
-  <mat-expansion-panel
-    [disabled]="!editedPiece"
-    [expanded]="editedPiece"
-    style="margin-top: 8px"
-  >
+  <mat-expansion-panel [disabled]="!editedPiece" [expanded]="editedPiece">
     <mat-expansion-panel-header>
       {{
         editedPieceIndex === -1
@@ -161,15 +157,17 @@
         [refTypeEntries]="refTypeEntries"
         (assertionChange)="onAssertionChange($event)"
       ></cadmus-refs-assertion>
-      <button
-        color="primary"
-        class="mat-primary"
-        type="button"
-        mat-flat-button
-        (click)="saveAssertion()"
-      >
-        <mat-icon class="mat-primary">check_circle</mat-icon> assertion
-      </button>
+      <div style="margin: 8px 0">
+        <button
+          color="primary"
+          class="mat-primary"
+          type="button"
+          mat-flat-button
+          (click)="saveAssertion()"
+        >
+          <mat-icon>check_circle</mat-icon> assertion
+        </button>
+      </div>
     </mat-expansion-panel>
   </div>
   }

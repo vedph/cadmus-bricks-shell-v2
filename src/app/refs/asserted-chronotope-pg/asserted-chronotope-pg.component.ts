@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 
 import {
   AssertedChronotope,
@@ -18,6 +19,7 @@ import { AssertedChronotopesPipe } from '../../../../projects/myrmidon/cadmus-re
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatButtonModule,
     MatCardModule,
     AssertedChronotopeComponent,
     AssertedChronotopesPipe,

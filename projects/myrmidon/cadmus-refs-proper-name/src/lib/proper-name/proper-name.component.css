@@ -35,3 +35,6 @@ td.value {
   border: 1px solid silver;
   padding: 4px;
 }
+mat-expansion-panel {
+  margin: 8px 0;
+}

@@ -11,3 +11,7 @@ th {
 .form-row * {
   flex: 0 0 auto;
 }
+td.fit-width {
+  width: 1px;
+  white-space: nowrap;
+}

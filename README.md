@@ -18,7 +18,7 @@ As Cadmus projects increase, the prototype code reveals more and more portions w
 
 1. `npm run build-lib`.
 2. ensure to update the version in `env.js` (and `docker-compose.yml`), and `ng build --configuration production`.
-3. `docker build . -t vedph2020/cadmus-bricks-app:5.1.2 -t vedph2020/cadmus-bricks-app:latest` (replace with the current version).
+3. `docker build . -t vedph2020/cadmus-bricks-app:5.1.3 -t vedph2020/cadmus-bricks-app:latest` (replace with the current version).
 
 Use [publish.bat](publish.bat) to publish the libraries to NPM.
 
@@ -234,7 +234,12 @@ Then, the code for each library has been imported except for their module, and e
 
 ## History
 
-- 2024-06-09: fixed colors in link editor (`@myrmidon/cadmus-text-ed-md`).
+### 5.1.3
+
+- 2024-06-09:
+  - fixed colors in link editor (`@myrmidon/cadmus-text-ed-md`).
+  - fixed layout in a few libraries.
+  - applied [M3 theming](https://material.angular.io/guide/theming) to the shell app.
 - 2024-06-07: added `class="mat-X"` for each `color="X"` (e.g. `class="mat-primary"` wherever there is a `color="primary"`) to allow transitioning to Angular Material M3 from M2. This also implies adding it directly to the target element, so in the case of `mat-icon` inside a `button` with `color` the class is added to `mat-icon` directly (unless the button too has the same color). This allows to keep the old M2 clients while using the new M3, because it seems that the compatibility mixin is not effective in some cases like inheritance of `color`, and in the future `color` will be replaced by `class` altogether.
 - 2024-06-05:
   - added optional label to `AssertedId` (`@myrmidon/cadmus-refs-asserted-ids` 5.1.3). This corresponds to the addition of the same property to the backend `ExternalId` model, which there is the parent class of `AssertedId`.
