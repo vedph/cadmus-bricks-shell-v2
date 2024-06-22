@@ -36,7 +36,7 @@
       <!-- value -->
       <mat-form-field class="value">
         <mat-label>width</mat-label>
-        <input matInput type="number" min="0" [formControl]="wValue" />
+        <input matInput type="number" step="any" min="0" [formControl]="wValue" />
       </mat-form-field>
 
       <!-- unit -->
@@ -83,7 +83,7 @@
       <!-- value -->
       <mat-form-field class="value">
         <mat-label>height</mat-label>
-        <input matInput type="number" min="0" [formControl]="hValue" />
+        <input matInput type="number" step="any" min="0" [formControl]="hValue" />
       </mat-form-field>
 
       <!-- unit -->
@@ -146,7 +146,7 @@
     <!-- value -->
     <mat-form-field class="value">
       <mat-label>depth</mat-label>
-      <input matInput type="number" min="0" [formControl]="dValue" />
+      <input matInput type="number" step="any" min="0" [formControl]="dValue" />
     </mat-form-field>
 
     <!-- unit -->
