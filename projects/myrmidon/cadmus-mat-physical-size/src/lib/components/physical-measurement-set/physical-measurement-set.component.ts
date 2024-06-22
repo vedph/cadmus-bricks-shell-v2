@@ -176,7 +176,10 @@ export class PhysicalMeasurementSetComponent implements OnInit, OnDestroy {
       event.preventDefault();
       event.stopPropagation();
     }
-    if ((this.hasCustom.value && !this.custom.value) || !this.name.value) {
+    if (
+      (this.hasCustom.value && !this.custom.value) ||
+      (!this.hasCustom.value && !this.name.value)
+    ) {
       return;
     }
 

@@ -74,6 +74,7 @@
         matSuffix
         (click)="addBatchMeasurements()"
         [attr.aria-label]="'Add batch measurements'"
+        [disabled]="!batch.value"
       >
         <mat-icon color="primary">add_circle</mat-icon>
       </button>
