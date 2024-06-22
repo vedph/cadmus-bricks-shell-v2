@@ -73,7 +73,7 @@
         mat-icon-button
         matSuffix
         (click)="addBatchMeasurements()"
-        [attr.aria-label]="'Add batch measurements'"
+        matTooltip="Add batch measurements"
         [disabled]="!batch.value"
       >
         <mat-icon color="primary">add_circle</mat-icon>
@@ -153,13 +153,13 @@
       <mat-expansion-panel-header>
         <mat-panel-title>{{ edited.name }}</mat-panel-title>
       </mat-expansion-panel-header>
-      <cadmus-physical-dimension
-        [tagEntries]="dimTagEntries"
-        [unitEntries]="unitEntries"
-        [dimension]="edited"
-        (dimensionChange)="onDimensionChange($event)"
-      />
-      <div>
+      <div class="form-row">
+        <cadmus-physical-dimension
+          [tagEntries]="dimTagEntries"
+          [unitEntries]="unitEntries"
+          [dimension]="edited"
+          (dimensionChange)="onDimensionChange($event)"
+        />
         <button
           type="submit"
           color="primary"
