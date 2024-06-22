@@ -18,9 +18,8 @@
     <div class="form-row">
       <mat-checkbox [formControl]="hasCustom">custom</mat-checkbox>
 
-      @if (hasCustom.value) {
       <!-- custom measure -->
-      <mat-form-field>
+      <mat-form-field [style.display]="hasCustom.value ? 'block' : 'none'">
         <mat-label>custom</mat-label>
         <input
           matInput
@@ -36,7 +35,6 @@
         <mat-error>measure too long</mat-error>
         }
       </mat-form-field>
-      }
     </div>
     } } @else {
     <!-- measure (free) -->
