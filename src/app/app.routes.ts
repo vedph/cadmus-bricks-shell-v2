@@ -23,6 +23,7 @@ import { DocReferencesPgComponent } from './refs/doc-references-pg/doc-reference
 import { ExternalIdsPgComponent } from './refs/external-ids-pg/external-ids-pg.component';
 import { GeonamesRefLookupPgComponent } from './refs/geonames-ref-lookup-pg/geonames-ref-lookup-pg.component';
 import { HistoricalDatePgComponent } from './refs/historical-date-pg/historical-date-pg.component';
+import { PhysicalMeasurementSetPgComponent } from './mat/physical-measurement-set-pg/physical-measurement-set-pg.component';
 import { ProperNamePgComponent } from './refs/proper-name-pg/proper-name-pg.component';
 import { RefLookupPgComponent } from './refs/ref-lookup-pg/ref-lookup-pg.component';
 import { RefLookupSetPgComponent } from './refs/ref-lookup-set-pg/ref-lookup-set-pg.component';
@@ -85,6 +86,10 @@ export const routes: Routes = [
   { path: 'text/emoji-ime', component: EmojiImePgComponent },
   { path: 'text/edit', component: TextEdPgComponent },
   { path: 'mat/physical-size', component: PhysicalSizePgComponent },
+  {
+    path: 'mat/physical-measurement-set',
+    component: PhysicalMeasurementSetPgComponent,
+  },
   { path: 'cod/location', component: CodLocationPgComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: HomeComponent },

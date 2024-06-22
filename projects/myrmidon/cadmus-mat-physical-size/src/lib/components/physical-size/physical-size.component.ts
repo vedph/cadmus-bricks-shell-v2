@@ -126,6 +126,9 @@ export class PhysicalSizeComponent implements OnInit {
   @Input()
   public hBeforeW?: boolean;
 
+  @Input()
+  public noTag?: boolean;
+
   @Output()
   public sizeChange: EventEmitter<PhysicalSize>;
 

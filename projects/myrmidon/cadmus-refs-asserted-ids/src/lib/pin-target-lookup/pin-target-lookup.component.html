@@ -58,7 +58,7 @@
       [configs]="extLookupConfigs"
       (itemChange)="onExtItemChange($event)"
       (moreRequest)="onExtMoreRequest($event)"
-      (configChange)="onExtConfigChange($event)"
+      (configChange)="onExtConfigChange($any($event))"
     ></cadmus-ref-lookup-set>
   </div>
   }

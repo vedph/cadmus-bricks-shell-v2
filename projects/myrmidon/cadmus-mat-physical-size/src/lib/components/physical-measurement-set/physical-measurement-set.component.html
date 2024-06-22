@@ -1,0 +1,160 @@
+<form [formGroup]="form">
+  <div class="form-row">
+    <!-- measure -->
+    <!-- measure (bound) -->
+    @if (nameEntries?.length) {
+    <mat-form-field>
+      <mat-label>measure</mat-label>
+      <mat-select [formControl]="name" [disabled]="hasCustom.value">
+        <mat-option *ngFor="let e of nameEntries" [value]="e.id">{{
+          e.value
+        }}</mat-option>
+      </mat-select>
+      @if ($any(name).errors?.required && (name.dirty || name.touched)) {
+      <mat-error>measure required</mat-error>
+      }
+    </mat-form-field>
+
+    @if (allowCustomName) {
+    <div class="form-row">
+      <mat-checkbox [formControl]="hasCustom">custom</mat-checkbox>
+
+      @if (hasCustom.value) {
+      <!-- custom measure -->
+      <mat-form-field>
+        <mat-label>custom</mat-label>
+        <input
+          matInput
+          [formControl]="custom"
+          (keydown.enter)="addMeasurement()"
+          #cstn
+        />
+        @if ($any(custom).errors?.required && (custom.dirty || custom.touched))
+        {
+        <mat-error>custom required</mat-error>
+        } @if ($any(custom).errors?.maxLength && (custom.dirty ||
+        custom.touched)) {
+        <mat-error>measure too long</mat-error>
+        }
+      </mat-form-field>
+      }
+    </div>
+    } } @else {
+    <!-- measure (free) -->
+    <mat-form-field>
+      <mat-label>measure</mat-label>
+      <input matInput [formControl]="custom" />
+      @if ($any(custom).errors?.required && (custom.dirty || custom.touched)) {
+      <mat-error>name required</mat-error>
+      } @if ($any(custom).errors?.maxLength && (custom.dirty || custom.touched))
+      {
+      <mat-error>measure too long</mat-error>
+      }
+    </mat-form-field>
+    }
+    <button
+      type="button"
+      mat-icon-button
+      [disabled]="
+        (!hasCustom.value && !name.value) || (hasCustom.value && !custom.value)
+      "
+      matTooltip="Add measure"
+      (click)="addMeasurement()"
+    >
+      <mat-icon class="mat-primary">add_circle</mat-icon>
+    </button>
+  </div>
+
+  <!-- measurements -->
+  <div>
+    @if (measures.value.length) {
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>name</th>
+          <th>value</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (m of measures.value; track m; let index = $index) {
+        <tr>
+          <td class="fit-width">
+            <!-- edit -->
+            <button
+              type="button"
+              mat-icon-button
+              matTooltip="Edit measure"
+              (click)="editMeasurement(index)"
+            >
+              <mat-icon class="mat-primary">edit</mat-icon>
+            </button>
+            <!-- move up -->
+            <button
+              type="button"
+              mat-icon-button
+              matTooltip="Move measure up"
+              [disabled]="index === 0"
+              (click)="moveMeasurementUp(index)"
+            >
+              <mat-icon>arrow_upward</mat-icon>
+            </button>
+            <!-- move down -->
+            <button
+              type="button"
+              mat-icon-button
+              matTooltip="Move measure down"
+              [disabled]="index === measures.value.length - 1"
+              (click)="moveMeasurementDown(index)"
+            >
+              <mat-icon>arrow_downward</mat-icon>
+            </button>
+
+            <!-- delete -->
+            <button
+              type="button"
+              mat-icon-button
+              matTooltip="Remove measure"
+              (click)="deleteMeasurement(index)"
+            >
+              <mat-icon class="mat-warn">remove_circle</mat-icon>
+            </button>
+          </td>
+          <td>
+            {{ m.name | flatLookup : nameEntries : "id" : "value" }}
+          </td>
+          <td>{{ m.value }} {{ m.unit }} @if(m.tag) { ({{ m.tag }}) }</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }
+  </div>
+  <!-- editor -->
+  @if (edited) {
+  <div>
+    <mat-expansion-panel [expanded]="edited" [disabled]="!edited">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ edited.name }}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <cadmus-physical-dimension
+        [tagEntries]="dimTagEntries"
+        [unitEntries]="unitEntries"
+        [dimension]="edited"
+        (dimensionChange)="onDimensionChange($event)"
+      />
+      <div>
+        <button
+          type="submit"
+          color="primary"
+          mat-icon-button
+          matTooltip="Save measurement"
+          (click)="saveMeasurement()"
+        >
+          <mat-icon>check_circle</mat-icon>
+        </button>
+      </div>
+    </mat-expansion-panel>
+  </div>
+  }
+</form>

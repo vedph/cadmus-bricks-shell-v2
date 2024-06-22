@@ -1,234 +1,202 @@
 <form [formGroup]="form">
   <div class="form-row">
+    @if (!noTag) {
     <!-- tag (bound) -->
     @if (tagEntries?.length) {
-      <mat-form-field class="tag">
-        <mat-label>tag</mat-label>
-        <mat-select [formControl]="tag">
-          @for (e of tagEntries; track e) {
-            <mat-option [value]="e.id">{{
-              e.value
-            }}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
+    <mat-form-field class="tag">
+      <mat-label>tag</mat-label>
+      <mat-select [formControl]="tag">
+        @for (e of tagEntries; track e) {
+        <mat-option [value]="e.id">{{ e.value }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
     }
 
     <!-- tag (free) -->
     @if (!tagEntries?.length) {
+    <mat-form-field class="tag">
+      <mat-label>tag</mat-label>
+      <input matInput [formControl]="tag" />
+      @if ($any(tag).errors?.maxLength && (tag.dirty || tag.touched)) {
+      <mat-error>tag too long</mat-error>
+      }
+    </mat-form-field>
+    } }
+
+    <!-- label -->
+    @if (label) {
+    <span class="label">{{ label }}</span>
+    }
+  </div>
+
+  <!-- w -->
+  <ng-template #w>
+    <div class="form-row">
+      <!-- value -->
+      <mat-form-field class="value">
+        <mat-label>width</mat-label>
+        <input matInput type="number" min="0" [formControl]="wValue" />
+      </mat-form-field>
+
+      <!-- unit -->
+      <mat-form-field class="unit">
+        <mat-label>unit</mat-label>
+        <mat-select [formControl]="wUnit">
+          @for (e of unitEntries; track e) {
+          <mat-option [value]="e.id">{{ e.value }}</mat-option>
+          }
+        </mat-select>
+        @if ($any(wUnit).errors?.required && (wUnit.dirty || wUnit.touched)) {
+        <mat-error>unit required</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- tag (bound) -->
+      @if (dimTagEntries?.length) {
       <mat-form-field class="tag">
         <mat-label>tag</mat-label>
-        <input matInput [formControl]="tag" />
-        @if ($any(tag).errors?.maxLength && (tag.dirty || tag.touched)) {
-          <mat-error
-            >tag too long</mat-error
-            >
+        <mat-select [formControl]="wTag">
+          @for (e of dimTagEntries; track e) {
+          <mat-option [value]="e.id">{{ e.value }}</mat-option>
           }
-        </mat-form-field>
+        </mat-select>
+      </mat-form-field>
       }
 
-      <!-- label -->
-      @if (label) {
-        <span class="label">{{ label }}</span>
+      <!-- tag (free) -->
+      @if (!dimTagEntries?.length) {
+      <mat-form-field class="tag">
+        <mat-label>tag</mat-label>
+        <input matInput [formControl]="wTag" />
+        @if ($any(wTag).errors?.maxLength && (wTag.dirty || wTag.touched)) {
+        <mat-error>tag too long</mat-error>
+        }
+      </mat-form-field>
       }
     </div>
+  </ng-template>
 
-    <!-- w -->
-    <ng-template #w>
-      <div class="form-row">
-        <!-- value -->
-        <mat-form-field class="value">
-          <mat-label>width</mat-label>
-          <input matInput type="number" min="0" [formControl]="wValue" />
-        </mat-form-field>
+  <!-- h -->
+  <ng-template #h>
+    <div class="form-row">
+      <!-- value -->
+      <mat-form-field class="value">
+        <mat-label>height</mat-label>
+        <input matInput type="number" min="0" [formControl]="hValue" />
+      </mat-form-field>
 
-        <!-- unit -->
-        <mat-form-field class="unit">
+      <!-- unit -->
+      <mat-form-field class="unit">
+        <mat-label>unit</mat-label>
+        <mat-select [formControl]="hUnit">
           <mat-label>unit</mat-label>
-          <mat-select [formControl]="wUnit">
-            @for (e of unitEntries; track e) {
-              <mat-option [value]="e.id">{{
-                e.value
-              }}</mat-option>
-            }
-          </mat-select>
-          @if ($any(wUnit).errors?.required && (wUnit.dirty || wUnit.touched)) {
-            <mat-error
-              >unit required</mat-error
-              >
-            }
-          </mat-form-field>
-
-          <!-- tag (bound) -->
-          @if (dimTagEntries?.length) {
-            <mat-form-field class="tag">
-              <mat-label>tag</mat-label>
-              <mat-select [formControl]="wTag">
-                @for (e of dimTagEntries; track e) {
-                  <mat-option [value]="e.id">{{
-                    e.value
-                  }}</mat-option>
-                }
-              </mat-select>
-            </mat-form-field>
+          @for (e of unitEntries; track e) {
+          <mat-option [value]="e.id">{{ e.value }}</mat-option>
           }
+        </mat-select>
+        @if ($any(hUnit).errors?.required && (hUnit.dirty || hUnit.touched)) {
+        <mat-error>unit required</mat-error>
+        }
+      </mat-form-field>
 
-          <!-- tag (free) -->
-          @if (!dimTagEntries?.length) {
-            <mat-form-field class="tag">
-              <mat-label>tag</mat-label>
-              <input matInput [formControl]="wTag" />
-              @if ($any(wTag).errors?.maxLength && (wTag.dirty || wTag.touched)) {
-                <mat-error
-                  >tag too long</mat-error
-                  >
-                }
-              </mat-form-field>
-            }
-          </div>
-        </ng-template>
+      <!-- tag (bound) -->
+      @if (dimTagEntries?.length) {
+      <mat-form-field class="tag">
+        <mat-label>tag</mat-label>
+        <mat-select [formControl]="hTag">
+          @for (e of dimTagEntries; track e) {
+          <mat-option [value]="e.id">{{ e.value }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      }
 
-        <!-- h -->
-        <ng-template #h>
-          <div class="form-row">
-            <!-- value -->
-            <mat-form-field class="value">
-              <mat-label>height</mat-label>
-              <input matInput type="number" min="0" [formControl]="hValue" />
-            </mat-form-field>
+      <!-- tag (free) -->
+      @if (!dimTagEntries?.length) {
+      <mat-form-field class="tag">
+        <mat-label>tag</mat-label>
+        <input matInput [formControl]="hTag" />
+        @if ($any(hTag).errors?.maxLength && (hTag.dirty || hTag.touched)) {
+        <mat-error>tag too long</mat-error>
+        }
+      </mat-form-field>
+      }
+    </div>
+  </ng-template>
 
-            <!-- unit -->
-            <mat-form-field class="unit">
-              <mat-label>unit</mat-label>
-              <mat-select [formControl]="hUnit">
-                <mat-label>unit</mat-label>
-                @for (e of unitEntries; track e) {
-                  <mat-option [value]="e.id">{{
-                    e.value
-                  }}</mat-option>
-                }
-              </mat-select>
-              @if ($any(hUnit).errors?.required && (hUnit.dirty || hUnit.touched)) {
-                <mat-error
-                  >unit required</mat-error
-                  >
-                }
-              </mat-form-field>
+  @if (hBeforeW) {
+  <div>
+    <ng-container *ngTemplateOutlet="h"></ng-container>
+  </div>
+  <div>
+    <ng-container *ngTemplateOutlet="w"></ng-container>
+  </div>
+  } @if (!hBeforeW) {
+  <div>
+    <ng-container *ngTemplateOutlet="w"></ng-container>
+  </div>
+  <div>
+    <ng-container *ngTemplateOutlet="h"></ng-container>
+  </div>
+  }
 
-              <!-- tag (bound) -->
-              @if (dimTagEntries?.length) {
-                <mat-form-field class="tag">
-                  <mat-label>tag</mat-label>
-                  <mat-select [formControl]="hTag">
-                    @for (e of dimTagEntries; track e) {
-                      <mat-option [value]="e.id">{{
-                        e.value
-                      }}</mat-option>
-                    }
-                  </mat-select>
-                </mat-form-field>
-              }
+  <!-- d -->
+  <div class="form-row">
+    <!-- value -->
+    <mat-form-field class="value">
+      <mat-label>depth</mat-label>
+      <input matInput type="number" min="0" [formControl]="dValue" />
+    </mat-form-field>
 
-              <!-- tag (free) -->
-              @if (!dimTagEntries?.length) {
-                <mat-form-field class="tag">
-                  <mat-label>tag</mat-label>
-                  <input matInput [formControl]="hTag" />
-                  @if ($any(hTag).errors?.maxLength && (hTag.dirty || hTag.touched)) {
-                    <mat-error
-                      >tag too long</mat-error
-                      >
-                    }
-                  </mat-form-field>
-                }
-              </div>
-            </ng-template>
+    <!-- unit -->
+    <mat-form-field class="unit">
+      <mat-label>unit</mat-label>
+      <mat-select [formControl]="dUnit">
+        @for (e of unitEntries; track e) {
+        <mat-option [value]="e.id">{{ e.value }}</mat-option>
+        }
+      </mat-select>
+      @if ($any(dUnit).errors?.required && (dUnit.dirty || dUnit.touched)) {
+      <mat-error>unit required</mat-error>
+      }
+    </mat-form-field>
 
-            @if (hBeforeW) {
-              <div>
-                <ng-container *ngTemplateOutlet="h"></ng-container>
-              </div>
-              <div>
-                <ng-container *ngTemplateOutlet="w"></ng-container>
-              </div>
-            }
-            @if (!hBeforeW) {
-              <div>
-                <ng-container *ngTemplateOutlet="w"></ng-container>
-              </div>
-              <div>
-                <ng-container *ngTemplateOutlet="h"></ng-container>
-              </div>
-            }
+    <!-- tag (bound) -->
+    @if (dimTagEntries?.length) {
+    <mat-form-field class="tag">
+      <mat-label>tag</mat-label>
+      <mat-select [formControl]="dTag">
+        @for (e of dimTagEntries; track e) {
+        <mat-option [value]="e.id">{{ e.value }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    }
 
-            <!-- d -->
-            <div class="form-row">
-              <!-- value -->
-              <mat-form-field class="value">
-                <mat-label>depth</mat-label>
-                <input matInput type="number" min="0" [formControl]="dValue" />
-              </mat-form-field>
+    <!-- tag (free) -->
+    @if (!dimTagEntries?.length) {
+    <mat-form-field class="tag">
+      <mat-label>tag</mat-label>
+      <input matInput [formControl]="dTag" />
+      @if ($any(dTag).errors?.maxLength && (dTag.dirty || dTag.touched)) {
+      <mat-error>tag too long</mat-error>
+      }
+    </mat-form-field>
+    }
+  </div>
 
-              <!-- unit -->
-              <mat-form-field class="unit">
-                <mat-label>unit</mat-label>
-                <mat-select [formControl]="dUnit">
-                  @for (e of unitEntries; track e) {
-                    <mat-option [value]="e.id">{{
-                      e.value
-                    }}</mat-option>
-                  }
-                </mat-select>
-                @if ($any(dUnit).errors?.required && (dUnit.dirty || dUnit.touched)) {
-                  <mat-error
-                    >unit required</mat-error
-                    >
-                  }
-                </mat-form-field>
-
-                <!-- tag (bound) -->
-                @if (dimTagEntries?.length) {
-                  <mat-form-field class="tag">
-                    <mat-label>tag</mat-label>
-                    <mat-select [formControl]="dTag">
-                      @for (e of dimTagEntries; track e) {
-                        <mat-option [value]="e.id">{{
-                          e.value
-                        }}</mat-option>
-                      }
-                    </mat-select>
-                  </mat-form-field>
-                }
-
-                <!-- tag (free) -->
-                @if (!dimTagEntries?.length) {
-                  <mat-form-field class="tag">
-                    <mat-label>tag</mat-label>
-                    <input matInput [formControl]="dTag" />
-                    @if ($any(dTag).errors?.maxLength && (dTag.dirty || dTag.touched)) {
-                      <mat-error
-                        >tag too long</mat-error
-                        >
-                      }
-                    </mat-form-field>
-                  }
-                </div>
-
-                <!-- note -->
-                <div>
-                  <mat-form-field>
-                    <mat-label>note</mat-label>
-                    <input matInput [formControl]="note" />
-                    @if ($any(note).errors?.maxLength && (note.dirty || note.touched)) {
-                      <mat-error
-                        >note too long</mat-error
-                        >
-                      }
-                    </mat-form-field>
-                  </div>
-                  @if ($any(form).errors?.unit && (form.dirty || form.touched)) {
-                    <mat-error
-                      >unit not set</mat-error
-                      >
-                    }
-                  </form>
+  <!-- note -->
+  <div>
+    <mat-form-field>
+      <mat-label>note</mat-label>
+      <input matInput [formControl]="note" />
+      @if ($any(note).errors?.maxLength && (note.dirty || note.touched)) {
+      <mat-error>note too long</mat-error>
+      }
+    </mat-form-field>
+  </div>
+  @if ($any(form).errors?.unit && (form.dirty || form.touched)) {
+  <mat-error>unit not set</mat-error>
+  }
+</form>

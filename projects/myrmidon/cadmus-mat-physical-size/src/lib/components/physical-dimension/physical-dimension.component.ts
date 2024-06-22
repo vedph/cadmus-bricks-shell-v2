@@ -88,8 +88,11 @@ export class PhysicalDimensionComponent implements OnInit {
     }
   }
 
+  @Input()
+  public noTag?: boolean;
+
   @Output()
-  public dimensionChange: EventEmitter<PhysicalDimension>;
+  public readonly dimensionChange: EventEmitter<PhysicalDimension>;
 
   public value: FormControl<number>;
   public unit: FormControl<string | null>;
@@ -108,7 +111,6 @@ export class PhysicalDimensionComponent implements OnInit {
       unit: this.unit,
       tag: this.tag,
     });
-    this.label = 'dimension';
 
     // default entries
     this.unitEntries = [
