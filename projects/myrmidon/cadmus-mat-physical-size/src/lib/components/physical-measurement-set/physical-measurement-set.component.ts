@@ -113,7 +113,7 @@ export class PhysicalMeasurementSetComponent implements OnInit, OnDestroy {
   public readonly measurementsChange: EventEmitter<PhysicalMeasurement[]> =
     new EventEmitter<PhysicalMeasurement[]>();
 
-  @ViewChild('#cstn', { static: false })
+  @ViewChild('cstn', { static: false })
   public customCtl?: ElementRef;
 
   public name: FormControl<string | null>;
