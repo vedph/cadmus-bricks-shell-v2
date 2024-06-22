@@ -120,6 +120,7 @@ export class PhysicalMeasurementSetComponent implements OnInit, OnDestroy {
   public hasCustom: FormControl<boolean>;
   public custom: FormControl<string | null>;
   public measures: FormControl<PhysicalMeasurement[]>;
+  public batch: FormControl<string | null>;
   public form: FormGroup;
 
   public editedIndex: number = -1;
@@ -133,11 +134,13 @@ export class PhysicalMeasurementSetComponent implements OnInit, OnDestroy {
       nonNullable: true,
       validators: NgToolsValidators.strictMinLengthValidator(1),
     });
+    this.batch = formBuilder.control(null);
     this.form = formBuilder.group({
       name: this.name,
       hasCustom: this.hasCustom,
       custom: this.custom,
       measures: this.measures,
+      batch: this.batch,
     });
   }
 
@@ -168,7 +171,11 @@ export class PhysicalMeasurementSetComponent implements OnInit, OnDestroy {
     this.edited = this.measures.value[index];
   }
 
-  public addMeasurement(): void {
+  public addMeasurement(event?: Event): void {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     if ((this.hasCustom.value && !this.custom.value) || !this.name.value) {
       return;
     }
@@ -184,6 +191,39 @@ export class PhysicalMeasurementSetComponent implements OnInit, OnDestroy {
       this.custom.setValue(null);
       this.custom.markAsDirty();
       this.custom.updateValueAndValidity();
+    }
+  }
+
+  public addBatchMeasurements(): void {
+    // parse from batch.value with form "name=value unit;name=value unit;..."
+    const entries = this.batch.value
+      ?.split(';')
+      .filter((s) => s.trim().length > 0);
+    if (!entries?.length) {
+      return;
+    }
+    let prevUnit: string | undefined = undefined;
+    for (let i = 0; i < entries.length; i++) {
+      // match: 1=name, 2=value, 3=unit, 4=tag
+      const m = entries[i].match(
+        /^\s*([^=]+)\s*=\s*([0-9]+(?:\.[0-9]+)?)\s*([^(]+)?(?:\s*\(([^)]+)\))?\s*$/
+      );
+      if (m) {
+        const name = m[1]?.trim();
+        const value = parseFloat(m[2]);
+        const unit: string | undefined = m[3]?.trim() || prevUnit;
+        const tag = m[4]?.trim();
+        if (unit) {
+          const measure: PhysicalMeasurement = {
+            name: name,
+            value: value,
+            unit: unit,
+            tag: tag,
+          };
+          this.measures.value.push(measure);
+          prevUnit = unit;
+        }
+      }
     }
   }
 

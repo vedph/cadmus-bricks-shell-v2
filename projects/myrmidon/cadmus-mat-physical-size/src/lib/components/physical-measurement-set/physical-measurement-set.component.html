@@ -1,6 +1,5 @@
 <form [formGroup]="form">
   <div class="form-row">
-    <!-- measure -->
     <!-- measure (bound) -->
     @if (nameEntries?.length) {
     <mat-form-field>
@@ -26,7 +25,7 @@
         <input
           matInput
           [formControl]="custom"
-          (keydown.enter)="addMeasurement()"
+          (keydown.enter)="addMeasurement($event)"
           #cstn
         />
         @if ($any(custom).errors?.required && (custom.dirty || custom.touched))
@@ -63,6 +62,22 @@
     >
       <mat-icon class="mat-primary">add_circle</mat-icon>
     </button>
+
+    <!-- batch -->
+    <mat-form-field>
+      <mat-label>batch</mat-label>
+      <input matInput [formControl]="batch" />
+      <mat-hint>Name=ValueUnit (Tag); ...</mat-hint>
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="addBatchMeasurements()"
+        [attr.aria-label]="'Add batch measurements'"
+      >
+        <mat-icon color="primary">add_circle</mat-icon>
+      </button>
+    </mat-form-field>
   </div>
 
   <!-- measurements -->
