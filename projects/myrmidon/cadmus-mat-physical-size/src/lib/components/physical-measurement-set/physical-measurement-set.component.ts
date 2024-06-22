@@ -143,6 +143,11 @@ export class PhysicalMeasurementSetComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this._sub = this.hasCustom.valueChanges.subscribe((value) => {
+      if (value) {
+        this.name.disable();
+      } else {
+        this.name.enable();
+      }
       if (value && this.customCtl) {
         setTimeout(() => this.customCtl!.nativeElement.focus(), 0);
       }

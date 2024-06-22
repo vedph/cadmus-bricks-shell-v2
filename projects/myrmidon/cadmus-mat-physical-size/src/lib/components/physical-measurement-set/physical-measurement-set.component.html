@@ -5,7 +5,7 @@
     @if (nameEntries?.length) {
     <mat-form-field>
       <mat-label>measure</mat-label>
-      <mat-select [formControl]="name" [disabled]="hasCustom.value">
+      <mat-select [formControl]="name">
         <mat-option *ngFor="let e of nameEntries" [value]="e.id">{{
           e.value
         }}</mat-option>
