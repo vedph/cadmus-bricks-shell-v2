@@ -30,6 +30,7 @@ import {
 })
 export class PhysicalMeasurementSetPgComponent {
   public measurements: PhysicalMeasurement[] = [];
+  // public nameEntries: ThesaurusEntry[] = [];
   public nameEntries: ThesaurusEntry[] = [
     { id: 'a', value: 'alpha' },
     { id: 'b', value: 'beta' },

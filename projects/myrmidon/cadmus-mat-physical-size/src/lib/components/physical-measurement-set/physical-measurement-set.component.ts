@@ -172,29 +172,47 @@ export class PhysicalMeasurementSetComponent implements OnInit, OnDestroy {
   }
 
   public addMeasurement(event?: Event): void {
+    if (this.hasCustom.value) {
+      this.addCustomMeasurement(event);
+      return;
+    }
     if (event) {
       event.preventDefault();
       event.stopPropagation();
     }
-    if (
-      (this.hasCustom.value && !this.custom.value) ||
-      (!this.hasCustom.value && !this.name.value)
-    ) {
+    if (!this.name.value) {
       return;
     }
 
     this.editedIndex = -1;
     this.edited = {
-      name: this.hasCustom.value ? this.custom.value! : this.name.value,
+      name: this.name.value,
       value: 0,
       unit: this.defaultUnit || this.unitEntries?.[0]?.id || 'cm',
     } as PhysicalMeasurement;
 
-    if (this.hasCustom.value) {
-      this.custom.setValue(null);
-      this.custom.markAsDirty();
-      this.custom.updateValueAndValidity();
+    if (!this.nameEntries?.length) {
+      this.name.reset();
     }
+  }
+
+  public addCustomMeasurement(event?: Event): void {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    if (!this.custom.value) {
+      return;
+    }
+
+    this.editedIndex = -1;
+    this.edited = {
+      name: this.custom.value,
+      value: 0,
+      unit: this.defaultUnit || this.unitEntries?.[0]?.id || 'cm',
+    } as PhysicalMeasurement;
+
+    this.custom.reset();
   }
 
   public addBatchMeasurements(): void {

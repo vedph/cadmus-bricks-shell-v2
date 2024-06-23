@@ -13,8 +13,25 @@
       <mat-error>measure required</mat-error>
       }
     </mat-form-field>
+    } @else {
+    <!-- measure (free) -->
+    <mat-form-field>
+      <mat-label>measure</mat-label>
+      <input
+        matInput
+        [formControl]="name"
+        (keydown.enter)="addMeasurement($event)"
+      />
+      @if ($any(name).errors?.required && (name.dirty || name.touched)) {
+      <mat-error>name required</mat-error>
+      } @if ($any(name).errors?.maxLength && (name.dirty || name.touched)) {
+      <mat-error>measure too long</mat-error>
+      }
+    </mat-form-field>
+    }
 
-    @if (allowCustomName) {
+    <!-- custom -->
+    @if (nameEntries?.length && allowCustomName) {
     <div class="form-row">
       <mat-checkbox [formControl]="hasCustom">custom</mat-checkbox>
 
@@ -24,7 +41,7 @@
         <input
           matInput
           [formControl]="custom"
-          (keydown.enter)="addMeasurement($event)"
+          (keydown.enter)="addCustomMeasurement($event)"
           #cstn
         />
         @if ($any(custom).errors?.required && (custom.dirty || custom.touched))
@@ -36,19 +53,8 @@
         }
       </mat-form-field>
     </div>
-    } } @else {
-    <!-- measure (free) -->
-    <mat-form-field>
-      <mat-label>measure</mat-label>
-      <input matInput [formControl]="custom" />
-      @if ($any(custom).errors?.required && (custom.dirty || custom.touched)) {
-      <mat-error>name required</mat-error>
-      } @if ($any(custom).errors?.maxLength && (custom.dirty || custom.touched))
-      {
-      <mat-error>measure too long</mat-error>
-      }
-    </mat-form-field>
     }
+    <!-- add -->
     <button
       type="button"
       mat-icon-button
@@ -149,7 +155,9 @@
   <div>
     <mat-expansion-panel [expanded]="edited" [disabled]="!edited">
       <mat-expansion-panel-header>
-        <mat-panel-title>{{ edited.name }}</mat-panel-title>
+        <mat-panel-title>{{
+          edited.name | flatLookup : nameEntries : "id" : "value"
+        }}</mat-panel-title>
       </mat-expansion-panel-header>
       <div class="form-row">
         <cadmus-physical-dimension

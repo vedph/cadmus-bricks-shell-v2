@@ -234,6 +234,7 @@ Then, the code for each library has been imported except for their module, and e
 
 ## History
 
+- 2024-06-23: fixes to physical measurements set (`@myrmidon/cadmus-mat-physical-size` version 5.1.2).
 - 2024-06-22:
   - added physical measurements set (`@myrmidon/cadmus-mat-physical-size` version 5.1.1).
   - fixed not allowed decimals in physical size.
