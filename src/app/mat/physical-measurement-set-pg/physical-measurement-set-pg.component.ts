@@ -29,7 +29,13 @@ import {
   styleUrl: './physical-measurement-set-pg.component.scss',
 })
 export class PhysicalMeasurementSetPgComponent {
-  public measurements: PhysicalMeasurement[] = [];
+  public measurements: PhysicalMeasurement[] = [
+    {
+      name: 'width',
+      value: 10,
+      unit: 'cm',
+    },
+  ];
   // public nameEntries: ThesaurusEntry[] = [];
   public nameEntries: ThesaurusEntry[] = [
     { id: 'a', value: 'alpha' },

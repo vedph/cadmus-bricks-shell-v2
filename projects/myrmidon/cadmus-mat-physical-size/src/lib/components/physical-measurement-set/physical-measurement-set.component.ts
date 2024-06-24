@@ -86,6 +86,7 @@ export class PhysicalMeasurementSetComponent implements OnInit, OnDestroy {
       return;
     }
     this._measurements = value || undefined;
+    this.measures.setValue(this._measurements || []);
   }
 
   /**
