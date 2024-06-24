@@ -23,11 +23,7 @@
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/env.js"
-            ],
+            "assets": ["src/favicon.ico", "src/assets", "src/env.js"],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/@recogito/annotorious/dist/annotorious.min.css",
@@ -84,15 +80,14 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           }
@@ -121,10 +116,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-text-ed/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-text-ed/tsconfig.spec.json"
           }
         }
       }
@@ -151,10 +146,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-text-ed-md/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-text-ed-md/tsconfig.spec.json"
           }
         }
       }
@@ -181,10 +176,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-cod-location/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-cod-location/tsconfig.spec.json"
           }
         }
       }
@@ -211,10 +206,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-img-annotator/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-img-annotator/tsconfig.spec.json"
           }
         }
       }
@@ -241,10 +236,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-img-gallery-iiif/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-img-gallery-iiif/tsconfig.spec.json"
           }
         }
       }
@@ -271,10 +266,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-mat-physical-size/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-mat-physical-size/tsconfig.spec.json"
           }
         }
       }
@@ -301,10 +296,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-refs-asserted-chronotope/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-refs-asserted-chronotope/tsconfig.spec.json"
           }
         }
       }
@@ -331,10 +326,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-refs-asserted-ids/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-refs-asserted-ids/tsconfig.spec.json"
           }
         }
       }
@@ -361,10 +356,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-refs-assertion/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-refs-assertion/tsconfig.spec.json"
           }
         }
       }
@@ -391,10 +386,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-refs-chronotope/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-refs-chronotope/tsconfig.spec.json"
           }
         }
       }
@@ -421,10 +416,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-refs-dbpedia-lookup/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-refs-dbpedia-lookup/tsconfig.spec.json"
           }
         }
       }
@@ -451,10 +446,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-refs-decorated-counts/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-refs-decorated-counts/tsconfig.spec.json"
           }
         }
       }
@@ -481,10 +476,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-refs-decorated-ids/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-refs-decorated-ids/tsconfig.spec.json"
           }
         }
       }
@@ -511,10 +506,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-refs-doc-references/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-refs-doc-references/tsconfig.spec.json"
           }
         }
       }
@@ -541,10 +536,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-refs-external-ids/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-refs-external-ids/tsconfig.spec.json"
           }
         }
       }
@@ -571,10 +566,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-refs-historical-date/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-refs-historical-date/tsconfig.spec.json"
           }
         }
       }
@@ -601,10 +596,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-refs-lookup/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-refs-lookup/tsconfig.spec.json"
           }
         }
       }
@@ -631,10 +626,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-refs-proper-name/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-refs-proper-name/tsconfig.spec.json"
           }
         }
       }
@@ -661,10 +656,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-refs-viaf-lookup/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-refs-viaf-lookup/tsconfig.spec.json"
           }
         }
       }
@@ -691,10 +686,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-sdimg-annotator/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-sdimg-annotator/tsconfig.spec.json"
           }
         }
       }
@@ -721,10 +716,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-sdimg-gallery/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-sdimg-gallery/tsconfig.spec.json"
           }
         }
       }
@@ -751,10 +746,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-text-block-view/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-text-block-view/tsconfig.spec.json"
           }
         }
       }
@@ -781,10 +776,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-ui-custom-action-bar/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-ui-custom-action-bar/tsconfig.spec.json"
           }
         }
       }
@@ -811,10 +806,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-ui-flags-picker/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-ui-flags-picker/tsconfig.spec.json"
           }
         }
       }
@@ -841,10 +836,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-ui-note-set/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-ui-note-set/tsconfig.spec.json"
           }
         }
       }
@@ -871,10 +866,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-img-gallery/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-img-gallery/tsconfig.spec.json"
           }
         }
       }
@@ -901,13 +896,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-refs-geonames-lookup/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-refs-geonames-lookup/tsconfig.spec.json"
           }
         }
       }
@@ -934,13 +926,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/myrmidon/cadmus-text-ed-txt/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/myrmidon/cadmus-text-ed-txt/tsconfig.spec.json"
           }
         }
       }
