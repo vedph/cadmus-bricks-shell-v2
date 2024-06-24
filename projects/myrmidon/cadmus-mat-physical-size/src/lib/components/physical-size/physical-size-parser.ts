@@ -96,4 +96,61 @@ export class PhysicalSizeParser {
 
     return size;
   }
+
+  /**
+   * Convert the received size to a parsable string.
+   *
+   * @param size The size to convert.
+   * @param hBeforeW True to put height before width.
+   * @returns String representation of the size.
+   */
+  public static toString(
+    size?: PhysicalSize | null,
+    hBeforeW = false
+  ): string | null {
+    if (!size?.w || !size.h) {
+      return null;
+    }
+    const sb: string[] = [];
+
+    // tag
+    if (size.tag) {
+      sb.push(`(${size.tag}) `);
+    }
+
+    // WxH or HxW
+    if (hBeforeW) {
+      sb.push(
+        `${size.h.value}${size.h.unit}${
+          size.h.tag ? ` (${size.h.tag})` : ''
+        } x ${size.w.value}${size.w.unit}${
+          size.w.tag ? ` (${size.w.tag})` : ''
+        }`
+      );
+    } else {
+      sb.push(
+        `${size.w.value}${size.w.unit}${
+          size.w.tag ? ` (${size.w.tag})` : ''
+        } x ${size.h.value}${size.h.unit}${
+          size.h.tag ? ` (${size.h.tag})` : ''
+        }`
+      );
+
+      // D if any
+      if (size.d) {
+        sb.push(
+          ` x ${size.d.value}${size.d.unit}${
+            size.d.tag ? ` (${size.d.tag})` : ''
+          }`
+        );
+      }
+
+      // note if any
+      if (size.note) {
+        sb.push(` {${size.note}}`);
+      }
+    }
+
+    return sb.join('');
+  }
 }

@@ -51,6 +51,7 @@ export class PhysicalSizePgComponent implements OnInit {
       h: {
         value: 29.7,
         unit: 'cm',
+        tag: 'incomplete'
       },
     };
     this.unitEntries = [

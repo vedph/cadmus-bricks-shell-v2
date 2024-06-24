@@ -8,10 +8,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -21,6 +22,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ThesaurusEntry } from '@myrmidon/cadmus-core';
 
 import { PhysicalDimension } from '../physical-dimension/physical-dimension.component';
+import { PhysicalSizeParser } from './physical-size-parser';
 
 /**
  * A physical 1D, 2D or 3D size.
@@ -45,18 +47,20 @@ export interface PhysicalSize {
     // material
     MatButtonModule,
     MatCheckboxModule,
+    MatExpansionModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-  ]
+  ],
 })
 export class PhysicalSizeComponent implements OnInit {
   private _size: PhysicalSize | undefined | null;
   private _defaultWUnit?: string;
   private _defaultHUnit?: string;
   private _defaultDUnit?: string;
+  private _hBeforeW = false;
 
   @Input()
   public parentForm?: FormGroup;
@@ -75,7 +79,7 @@ export class PhysicalSizeComponent implements OnInit {
   @Input()
   public get defaultWUnit(): string | undefined | null {
     return this._defaultWUnit;
-  };
+  }
   public set defaultWUnit(value: string | undefined | null) {
     if (this._defaultWUnit !== value) {
       this._defaultWUnit = value || undefined;
@@ -88,7 +92,7 @@ export class PhysicalSizeComponent implements OnInit {
   @Input()
   public get defaultHUnit(): string | undefined | null {
     return this._defaultHUnit;
-  };
+  }
   public set defaultHUnit(value: string | undefined | null) {
     if (this._defaultHUnit !== value) {
       this._defaultHUnit = value || undefined;
@@ -101,7 +105,7 @@ export class PhysicalSizeComponent implements OnInit {
   @Input()
   public get defaultDUnit(): string | undefined | null {
     return this._defaultDUnit;
-  };
+  }
   public set defaultDUnit(value: string | undefined | null) {
     if (this._defaultDUnit !== value) {
       this._defaultDUnit = value || undefined;
@@ -124,7 +128,17 @@ export class PhysicalSizeComponent implements OnInit {
   public dimTagEntries?: ThesaurusEntry[];
 
   @Input()
-  public hBeforeW?: boolean;
+  public get hBeforeW(): boolean {
+    return this._hBeforeW;
+  }
+  public set hBeforeW(value: boolean | undefined | null) {
+    if (this._hBeforeW !== value) {
+      this._hBeforeW = value || false;
+      this.text.setValue(
+        PhysicalSizeParser.toString(this._size, this.hBeforeW)
+      );
+    }
+  }
 
   @Input()
   public noTag?: boolean;
@@ -144,6 +158,8 @@ export class PhysicalSizeComponent implements OnInit {
   public dUnit: FormControl<string>;
   public dTag: FormControl<string | null>;
   public note: FormControl<string | null>;
+
+  public text: FormControl<string | null>;
 
   public label?: string;
 
@@ -185,23 +201,48 @@ export class PhysicalSizeComponent implements OnInit {
         validators: this.validateUnit,
       }
     );
+
+    this.text = formBuilder.control(null, {
+      validators: Validators.maxLength(1000),
+    });
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     if (this.parentForm) {
       this.parentForm.addControl('size', this.form);
     }
 
-    this.form.valueChanges.pipe(debounceTime(400)).subscribe((_) => {
-      this._size = this.getModel();
+    this.form.valueChanges
+      .pipe(distinctUntilChanged(), debounceTime(400))
+      .subscribe((_) => {
+        this._size = this.getSize();
 
-      if (this.isModelValid(this._size) && this.tag.valid && this.note.valid) {
-        this.updateLabel();
-        this.sizeChange.emit(this._size);
-      }
-    });
+        if (
+          this.isModelValid(this._size) &&
+          this.tag.valid &&
+          this.note.valid
+        ) {
+          this.updateLabel();
+          this.sizeChange.emit(this._size);
+          this.text.setValue(
+            PhysicalSizeParser.toString(this._size, this.hBeforeW)
+          );
+        }
+      });
 
     this.updateForm(this.size);
+  }
+
+  public parseText(event?: Event): void {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    if (!this.text.value) {
+      return;
+    }
+    const size = PhysicalSizeParser.parse(this.text.value, this.hBeforeW);
+    this.updateForm(size);
   }
 
   private validateUnit(form: FormGroup): { [key: string]: any } | null {
@@ -391,7 +432,7 @@ export class PhysicalSizeComponent implements OnInit {
     };
   }
 
-  private getModel(): PhysicalSize {
+  private getSize(): PhysicalSize {
     return {
       tag: this.tag.value?.trim(),
       note: this.note.value?.trim(),
