@@ -50,6 +50,11 @@ call npm publish --access=public
 cd ..\..\..
 pause
 
+cd .\dist\myrmidon\cadmus-refs-dbpedia-lookup
+call npm publish --access=public
+cd ..\..\..
+pause
+
 cd .\dist\myrmidon\cadmus-refs-decorated-counts
 call npm publish --access=public
 cd ..\..\..
@@ -95,7 +100,7 @@ call npm publish --access=public
 cd ..\..\..
 pause
 
-cd .\dist\myrmidon\cadmus-refs-dbpedia-lookup
+cd .\dist\myrmidon\cadmus-refs-whg-lookup
 call npm publish --access=public
 cd ..\..\..
 pause
