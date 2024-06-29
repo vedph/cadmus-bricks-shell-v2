@@ -1,7 +1,11 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { HTTP_INTERCEPTORS, provideHttpClient, withJsonpSupport } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withJsonpSupport,
+} from '@angular/common/http';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 import { NgeMonacoModule } from '@cisstech/nge/monaco';
@@ -28,6 +32,7 @@ import {
 } from '../../projects/myrmidon/cadmus-img-gallery-iiif/src/public-api';
 import { GEONAMES_USERNAME_TOKEN } from '../../projects/myrmidon/cadmus-refs-geonames-lookup/src/public-api';
 import { environment } from '../environments/environment.prod';
+import { WHG_USERNAME_TOKEN } from '../../projects/myrmidon/cadmus-refs-whg-lookup/src/public-api';
 
 // for lookup in asserted IDs - note that this would require a backend
 const INDEX_LOOKUP_DEFINITIONS: IndexLookupDefinitions = {
@@ -122,6 +127,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: GEONAMES_USERNAME_TOKEN,
       useValue: environment.geoNamesUserName,
+    },
+    {
+      provide: WHG_USERNAME_TOKEN,
+      useValue: environment.whgUserName,
     },
   ],
 };

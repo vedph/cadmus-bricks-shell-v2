@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  geoNamesUserName: 'myrmex'
+  geoNamesUserName: 'myrmex',
+  whgUserName: 'myrmex'
 };

@@ -18,7 +18,7 @@ As Cadmus projects increase, the prototype code reveals more and more portions w
 
 1. `npm run build-lib`.
 2. ensure to update the version in `env.js` (and `docker-compose.yml`), and `ng build --configuration production`.
-3. `docker build . -t vedph2020/cadmus-bricks-app:5.1.3 -t vedph2020/cadmus-bricks-app:latest` (replace with the current version).
+3. `docker build . -t vedph2020/cadmus-bricks-app:5.1.4 -t vedph2020/cadmus-bricks-app:latest` (replace with the current version).
 
 Use [publish.bat](publish.bat) to publish the libraries to NPM.
 
@@ -43,6 +43,7 @@ Use [publish.bat](publish.bat) to publish the libraries to NPM.
 - [@myrmidon/cadmus-refs-lookup](./projects/myrmidon/cadmus-refs-lookup/README.md)
 - [@myrmidon/cadmus-refs-proper-name](./projects/myrmidon/cadmus-refs-proper-name/README.md)
 - [@myrmidon/cadmus-refs-viaf-lookup](./projects/myrmidon/cadmus-refs-viaf-lookup/README.md)
+- [@myrmidon/cadmus-refs-whg-lookup](./projects/myrmidon/cadmus-refs-whg-lookup/README.md)
 - `@myrmidon/cadmus-sdimg-annotator`
 - `@myrmidon/cadmus-sdimg-gallery`
 - [@myrmidon/cadmus-text-block-view](./projects/myrmidon/cadmus-text-block-view/README.md)
@@ -234,6 +235,11 @@ Then, the code for each library has been imported except for their module, and e
 
 ## History
 
+### 5.1.4
+
+- 2024-06-29:
+  - added WHG lookup (new library: `@myrmidon/cadmus-refs-whg-lookup`).
+  - style fixes in `@myrmidon/cadmus-refs-asserted-ids`.
 - 2024-06-24: added text parsing to physical size (`@myrmidon/cadmus-mat-physical-size` version 5.1.4).
 - 2024-06-23: fixes to physical measurements set (`@myrmidon/cadmus-mat-physical-size` version 5.1.2).
 - 2024-06-22:

@@ -1,10 +1,11 @@
 {
-  "name": "@myrmidon/cadmus-refs-asserted-ids",
-  "version": "5.1.6",
-  "description": "Cadmus - asserted IDs components.",
+  "name": "@myrmidon/cadmus-refs-whg-lookup",
+  "version": "0.0.1",
+  "description": "Cadmus - WHG lookup.",
   "keywords": [
     "Cadmus",
-    "bricks"
+    "bricks",
+    "WHG"
   ],
   "homepage": "https://github.com/vedph/cadmus-bricks",
   "repository": {
@@ -17,8 +18,7 @@
   "peerDependencies": {
     "@angular/common": "^18.0.0",
     "@angular/core": "^18.0.0",
-    "@myrmidon/ng-mat-tools": "^3.1.0",
-    "@myrmidon/cadmus-refs-assertion": "^5.1.0"
+    "@myrmidon/ng-tools": "^3.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

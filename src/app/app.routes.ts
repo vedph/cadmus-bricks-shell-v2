@@ -34,6 +34,7 @@ import { TextEdPgComponent } from './text/text-ed-pg/text-ed-pg.component';
 import { CustomActionBarPgComponent } from './ui/custom-action-bar-pg/custom-action-bar-pg.component';
 import { FlagsPickerPgComponent } from './ui/flags-picker-pg/flags-picker-pg.component';
 import { NoteSetPgComponent } from './ui/note-set-pg/note-set-pg.component';
+import { WhgRefLookupPgComponent } from './refs/whg-ref-lookup-pg/whg-ref-lookup-pg.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -76,6 +77,7 @@ export const routes: Routes = [
   { path: 'refs/viaf-lookup', component: ViafRefLookupPgComponent },
   { path: 'refs/dbpedia-lookup', component: DbpediaRefLookupPgComponent },
   { path: 'refs/geonames-lookup', component: GeonamesRefLookupPgComponent },
+  { path: 'refs/whg-lookup', component: WhgRefLookupPgComponent },
   { path: 'ui/flags-picker', component: FlagsPickerPgComponent },
   { path: 'ui/note-set', component: NoteSetPgComponent },
   {

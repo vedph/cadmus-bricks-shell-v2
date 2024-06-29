@@ -60,6 +60,9 @@
       "@myrmidon/cadmus-refs-viaf-lookup": [
         "./dist/myrmidon/cadmus-refs-viaf-lookup"
       ],
+      "@myrmidon/cadmus-refs-whg-lookup": [
+        "./dist/myrmidon/cadmus-refs-whg-lookup"
+      ],
       "@myrmidon/cadmus-sdimg-annotator": [
         "./dist/myrmidon/cadmus-sdimg-annotator"
       ],

@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 
@@ -14,6 +13,10 @@ import { ViafRefLookupService } from '../../projects/myrmidon/cadmus-refs-viaf-l
 import { ASSERTED_COMPOSITE_ID_CONFIGS_KEY } from '../../projects/myrmidon/cadmus-refs-asserted-ids/src/public-api';
 import { RefLookupConfig } from '../../projects/myrmidon/cadmus-refs-lookup/src/public-api';
 import { GeoNamesRefLookupService } from '../../projects/myrmidon/cadmus-refs-geonames-lookup/src/public-api';
+import {
+  GeoJsonFeature,
+  WhgRefLookupService,
+} from '../../projects/myrmidon/cadmus-refs-whg-lookup/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -24,8 +27,8 @@ import { GeoNamesRefLookupService } from '../../projects/myrmidon/cadmus-refs-ge
     MatButtonModule,
     MatDividerModule,
     MatMenuModule,
-    MatToolbarModule
-],
+    MatToolbarModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -36,7 +39,8 @@ export class AppComponent {
     env: EnvService,
     storage: RamStorageService,
     viaf: ViafRefLookupService,
-    geonames: GeoNamesRefLookupService
+    geonames: GeoNamesRefLookupService,
+    whg: WhgRefLookupService
   ) {
     this.version = env.get('version') || '';
     // configure external lookup for asserted composite IDs
@@ -67,6 +71,15 @@ export class AppComponent {
         service: geonames,
         itemIdGetter: (item: any) => item?.geonameId,
         itemLabelGetter: (item: any) => item?.name,
+      },
+      {
+        name: 'whg',
+        iconUrl: '/assets/img/whg128.png',
+        description: 'World Historical Gazetteer',
+        label: 'ID',
+        service: whg,
+        itemIdGetter: (item: GeoJsonFeature) => item?.properties.place_id,
+        itemLabelGetter: (item: GeoJsonFeature) => item?.properties.title,
       },
     ] as RefLookupConfig[]);
   }
