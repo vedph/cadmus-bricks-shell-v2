@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   // TODO: when debugging, set this to your own GeoNames username
-  geoNamesUserName: 'myrmex'
+  geoNamesUserName: 'myrmex',
+  whgUserName: 'myrmex'
 };
 
 /*
