@@ -73,10 +73,15 @@ interface PhysicalGridCell {
   styleUrl: './physical-grid-location.component.css',
 })
 export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
+  private readonly _excelColumnPipe: ExcelColumnPipe = new ExcelColumnPipe();
+
   private _location?: PhysicalGridLocation;
   private _required: boolean = false;
   private _sub?: Subscription;
 
+  /**
+   * The location of the grid together with the grid's size.
+   */
   @Input()
   public get location(): PhysicalGridLocation | undefined {
     return this._location;
@@ -86,9 +91,12 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
       return;
     }
     this._location = value || undefined;
+    // update the grid size
     this.rowCount.setValue(this._location?.rows || 1);
     this.columnCount.setValue(this._location?.columns || 1);
-    this.setRows();
+    // update grid and text
+    this.updateGrid();
+    this.updateText();
   }
 
   @Input()
@@ -191,6 +199,8 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
         }
       }
     });
+    this.updateGrid();
+    this.updateText();
   }
 
   public ngOnDestroy(): void {
@@ -208,19 +218,25 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
     }
   }
 
-  private setRows(): void {
+  private updateGrid(): void {
     this.rows = [];
-    for (let i = 0; i < this.rowCount.value; i++) {
+    for (let y = 1; y <= this.rowCount.value; y++) {
       const row: PhysicalGridCell[] = [];
-      for (let j = 0; j < this.columnCount.value; j++) {
-        row.push({ row: i + 1, column: j + 1 });
+      for (let x = 1; x <= this.columnCount.value; x++) {
+        row.push({
+          row: y,
+          column: x,
+          selected: this._location?.coords.some(
+            (c) => c.row === y && c.column === x
+          ),
+        });
       }
       this.rows.push(row);
     }
   }
 
   public setGridSize(): void {
-    this.setRows();
+    this.updateGrid();
     this.location = {
       rows: this.rowCount.value,
       columns: this.columnCount.value,
@@ -248,7 +264,9 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
   private buildText(): string {
     return (
       this.location?.coords
-        .map((c) => String.fromCharCode(65 + c.column) + (c.row + 1))
+        .map((c) => {
+          return this._excelColumnPipe.transform(c.column) + c.row;
+        })
         .join(' ') || ''
     );
   }
@@ -266,6 +284,12 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
       coords: [],
     };
     this.locationChange.emit(this._location);
+  }
+
+  private updateText() {
+    this.text.setValue(this.buildText());
+    this.text.markAsDirty();
+    this.text.updateValueAndValidity();
   }
 
   public selectCell(cell: PhysicalGridCell) {
@@ -295,23 +319,22 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
     // select the clicked cell
     cell.selected = true;
 
-    // update the selected cells text
-    this.text.setValue(this.buildText());
-    this.text.markAsDirty();
-    this.text.updateValueAndValidity();
-
     // update the location
     this._location = {
-      rows: this.rows.length || 1,
-      columns: this.rows[0].length || 1,
+      rows: this.rowCount.value,
+      columns: this.columnCount.value,
       coords: this.rows
         .map((row, i) =>
           row
-            .map((c, j) => (c.selected ? { row: i, column: j } : null))
+            .map((c, j) => (c.selected ? { row: i + 1, column: j + 1 } : null))
             .filter((c): c is PhysicalGridCoords => c !== null)
         )
         .reduce((acc, val) => acc.concat(val), []),
     };
+
+    // update the selected cells text
+    this.updateText();
+
     this.locationChange.emit(this._location);
   }
 
@@ -351,6 +374,7 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
             c.column >= 1 &&
             c.column <= this.columnCount.value
         );
+        this.updateGrid();
         this.location = {
           rows: this.rowCount.value,
           columns: this.columnCount.value,
