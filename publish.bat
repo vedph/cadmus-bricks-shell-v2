@@ -25,6 +25,11 @@ call npm publish --access=public
 cd ..\..\..
 pause
 
+cd .\dist\myrmidon\cadmus-mat-physical-grid
+call npm publish --access=public
+cd ..\..\..
+pause
+
 cd .\dist\myrmidon\cadmus-mat-physical-size
 call npm publish --access=public
 cd ..\..\..

@@ -44,6 +44,8 @@ export interface PhysicalGridLocation {
   coords: PhysicalGridCoords[];
 }
 
+export type PhysicalGridMode = 'single' | 'multiple' | 'contiguous';
+
 /**
  * A viewmodel for the cell in the physical grid.
  */
@@ -75,6 +77,7 @@ interface PhysicalGridCell {
 export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
   private readonly _excelColumnPipe: ExcelColumnPipe = new ExcelColumnPipe();
 
+  private _mode: PhysicalGridMode = 'contiguous';
   private _location?: PhysicalGridLocation;
   private _required: boolean = false;
   private _sub?: Subscription;
@@ -151,7 +154,16 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
    * to select only contiguous cells.
    */
   @Input()
-  public mode: 'single' | 'multiple' | 'contiguous' = 'contiguous';
+  public get mode(): PhysicalGridMode {
+    return this._mode;
+  }
+  public set mode(value: PhysicalGridMode) {
+    if (value === this._mode) {
+      return;
+    }
+    this._mode = value;
+    this.resetCells();
+  }
 
   @Output()
   public readonly locationChange: EventEmitter<PhysicalGridLocation> =
@@ -192,7 +204,7 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this._sub = this.preset.valueChanges.subscribe((value) => {
       if (value && this.presets?.length) {
-        const m = value.match(/^(\d+)x(\d+)$/);
+        const m = value.match(/(\d+)[x×](\d+)$/);
         if (m) {
           this.rowCount.setValue(parseInt(m[2], 10));
           this.columnCount.setValue(parseInt(m[1], 10));
@@ -236,12 +248,12 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
   }
 
   public setGridSize(): void {
-    this.updateGrid();
     this.location = {
       rows: this.rowCount.value,
       columns: this.columnCount.value,
       coords: [],
     };
+    this.updateGrid();
     this.locationChange.emit(this._location);
   }
 
