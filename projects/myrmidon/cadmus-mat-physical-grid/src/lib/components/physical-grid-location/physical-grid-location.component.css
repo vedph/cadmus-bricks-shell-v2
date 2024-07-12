@@ -1,0 +1,28 @@
+.form-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.form-row * {
+  flex: 0 0 auto;
+}
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.cell {
+  flex: 0 0 auto;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+.cell.selected {
+  background-color: #e4ee2e;
+}

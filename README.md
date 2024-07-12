@@ -28,6 +28,7 @@ Use [publish.bat](publish.bat) to publish the libraries to NPM.
 - [@myrmidon/cadmus-img-annotator](./projects/myrmidon/cadmus-img-annotator/README.md): image annotation.
 - [@myrmidon/cadmus-img-gallery](./projects/myrmidon/cadmus-img-gallery/README.md): images gallery for annotations.
 - [@myrmidon/cadmus-img-gallery-iiif](./projects/myrmidon/cadmus-img-gallery-iiif/README.md): IIIF implementation of images gallery for annotation.
+- `@myrmidon/cadmus-mat-physical-grid`
 - `@myrmidon/cadmus-mat-physical-size`
 - `@myrmidon/cadms-refs-asserted-chronotope`
 - [@myrmidon/cadmus-refs-asserted-ids](./projects/myrmidon/cadmus-refs-asserted-ids/README.md)
@@ -234,6 +235,8 @@ ng g library @myrmidon/cadmus-ui-note-set --prefix cadmus
 Then, the code for each library has been imported except for their module, and each component or directive has been refactored for standalone. Also, `@myrmidon` peer dependencies have been explicitly added to those libraries implying them.
 
 ## History
+
+- 2024-07-12: added `@myrmidon/cadmus-mat-physical-grid`.
 
 ### 5.1.4
 

@@ -1,0 +1,77 @@
+<div>
+  @if (allowResize) {
+  <div class="form-row">
+    <!-- columnCount -->
+    <mat-form-field>
+      <mat-label>columns</mat-label>
+      <input
+        matInput
+        [formControl]="columnCount"
+        type="number"
+        min="1"
+        [readonly]="!allowCustomSize"
+      />
+    </mat-form-field>
+
+    <!-- rowCount -->
+    <mat-form-field>
+      <mat-label>rows</mat-label>
+      <input
+        matInput
+        [formControl]="rowCount"
+        type="number"
+        min="1"
+        [readonly]="!allowCustomSize"
+      />
+    </mat-form-field>
+
+    @if (presets?.length) {
+    <mat-form-field>
+      <mat-label>preset</mat-label>
+      <mat-select [formControl]="preset">
+        @for (p of presets; track p) {
+        <mat-option [value]="p">{{ p }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    }
+  </div>
+  }
+
+  <!-- text -->
+  <div>
+    <mat-form-field>
+      <mat-label>cells</mat-label>
+      <input matInput [formControl]="text" />
+      <mat-hint>cell coordinate(s) like A1</mat-hint>
+    </mat-form-field>
+  </div>
+
+  @if (!noGrid) {
+  <!-- grid -->
+  <mat-expansion-panel
+    [expanded]="!collapsedGrid"
+    (expandedChange)="onExpandedChange($event)"
+  >
+    <mat-expansion-panel-header>
+      <mat-icon>window</mat-icon>
+    </mat-expansion-panel-header>
+    <div>
+      @for (r of rows; track r) {
+      <div class="row">
+        @for (c of r; track c) {
+        <div
+          matRipple
+          class="cell"
+          [class.selected]="c.selected"
+          (click)="selectCell(c)"
+        >
+          {{ c.column | excelColumn }}{{ c.row }}
+        </div>
+        }
+      </div>
+      }
+    </div>
+  </mat-expansion-panel>
+  }
+</div>
