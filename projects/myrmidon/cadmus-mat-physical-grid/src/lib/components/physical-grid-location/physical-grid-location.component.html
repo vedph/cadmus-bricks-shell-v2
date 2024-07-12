@@ -2,7 +2,7 @@
   @if (allowResize) {
   <div class="form-row">
     <!-- columnCount -->
-    <mat-form-field>
+    <mat-form-field class="nr-input">
       <mat-label>columns</mat-label>
       <input
         matInput
@@ -14,7 +14,7 @@
     </mat-form-field>
 
     <!-- rowCount -->
-    <mat-form-field>
+    <mat-form-field class="nr-input">
       <mat-label>rows</mat-label>
       <input
         matInput
@@ -25,6 +25,7 @@
       />
     </mat-form-field>
 
+    <!-- preset -->
     @if (presets?.length) {
     <mat-form-field>
       <mat-label>preset</mat-label>
@@ -35,6 +36,15 @@
       </mat-select>
     </mat-form-field>
     }
+    <!-- button -->
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="Set size"
+      (click)="setGridSize()"
+    >
+      <mat-icon class="mat-primary">check_circle</mat-icon>
+    </button>
   </div>
   }
 
@@ -45,6 +55,23 @@
       <input matInput [formControl]="text" />
       <mat-hint>cell coordinate(s) like A1</mat-hint>
     </mat-form-field>
+    <!-- buttons -->
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="Reset cells"
+      (click)="resetCells()"
+    >
+      <mat-icon class="mat-warn">clear</mat-icon>
+    </button>
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="Set cells from text"
+      (click)="setCellsFromText()"
+    >
+      <mat-icon class="mat-primary">check_circle</mat-icon>
+    </button>
   </div>
 
   @if (!noGrid) {

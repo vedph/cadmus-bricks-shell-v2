@@ -35,6 +35,7 @@ import { CustomActionBarPgComponent } from './ui/custom-action-bar-pg/custom-act
 import { FlagsPickerPgComponent } from './ui/flags-picker-pg/flags-picker-pg.component';
 import { NoteSetPgComponent } from './ui/note-set-pg/note-set-pg.component';
 import { WhgRefLookupPgComponent } from './refs/whg-ref-lookup-pg/whg-ref-lookup-pg.component';
+import { PhysicalGridPgComponent } from './mat/physical-grid-pg/physical-grid-pg.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -88,6 +89,7 @@ export const routes: Routes = [
   { path: 'text/emoji-ime', component: EmojiImePgComponent },
   { path: 'text/edit', component: TextEdPgComponent },
   { path: 'mat/physical-size', component: PhysicalSizePgComponent },
+  { path: 'mat/physical-grid', component: PhysicalGridPgComponent },
   {
     path: 'mat/physical-measurement-set',
     component: PhysicalMeasurementSetPgComponent,

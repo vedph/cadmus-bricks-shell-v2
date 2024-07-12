@@ -26,3 +26,6 @@
 .cell.selected {
   background-color: #e4ee2e;
 }
+.nr-input {
+  width: 6em;
+}

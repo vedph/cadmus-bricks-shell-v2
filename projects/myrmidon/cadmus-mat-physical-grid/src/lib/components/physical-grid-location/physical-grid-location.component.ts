@@ -86,6 +86,8 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
       return;
     }
     this._location = value || undefined;
+    this.rowCount.setValue(this._location?.rows || 1);
+    this.columnCount.setValue(this._location?.columns || 1);
     this.setRows();
   }
 
@@ -211,10 +213,20 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
     for (let i = 0; i < this.rowCount.value; i++) {
       const row: PhysicalGridCell[] = [];
       for (let j = 0; j < this.columnCount.value; j++) {
-        row.push({ row: i, column: j });
+        row.push({ row: i + 1, column: j + 1 });
       }
       this.rows.push(row);
     }
+  }
+
+  public setGridSize(): void {
+    this.setRows();
+    this.location = {
+      rows: this.rowCount.value,
+      columns: this.columnCount.value,
+      coords: [],
+    };
+    this.locationChange.emit(this._location);
   }
 
   /**
@@ -241,6 +253,21 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
     );
   }
 
+  public resetCells() {
+    if (!this._location) {
+      return;
+    }
+    this.rows.forEach((row) => row.forEach((c) => (c.selected = false)));
+    this.text.setValue('');
+    this.text.markAsDirty();
+    this.text.updateValueAndValidity();
+    this._location = {
+      ...this._location,
+      coords: [],
+    };
+    this.locationChange.emit(this._location);
+  }
+
   public selectCell(cell: PhysicalGridCell) {
     switch (this.mode) {
       case 'single':
@@ -248,14 +275,20 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
         this.rows.forEach((row) => row.forEach((c) => (c.selected = false)));
         break;
       case 'contiguous':
-        // deselect all the non-contiguous cells
-        this.rows.forEach((row) =>
-          row.forEach((c) => {
-            if (c.selected && !this.areContiguous(cell, c)) {
-              c.selected = false;
-            }
-          })
-        );
+        // deselect all cells which are not contiguous to the clicked one
+        const selected = this.rows
+          .map((row) => row.filter((c) => c.selected))
+          .reduce((acc, val) => acc.concat(val), []);
+        if (selected.length) {
+          const contiguous = selected.some((c) => this.areContiguous(c, cell));
+          if (!contiguous) {
+            this.rows.forEach((row) =>
+              row.forEach((c) => (c.selected = c === cell))
+            );
+          }
+        } else {
+          cell.selected = !cell.selected;
+        }
         break;
     }
 
@@ -269,8 +302,8 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
 
     // update the location
     this._location = {
-      rows: this.rows.length,
-      columns: this.rows[0].length,
+      rows: this.rows.length || 1,
+      columns: this.rows[0].length || 1,
       coords: this.rows
         .map((row, i) =>
           row
@@ -299,21 +332,28 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
           if (!m) {
             return null;
           }
-          const col = m[1].toUpperCase().charCodeAt(0) - 65;
-          const row = parseInt(m[2], 10) - 1;
+          // calculate col from m[1] being an Excel coordinate like AB,
+          // and row from m[2] being a 1-based number
+          const col = m[1].split('').reduce((acc, val) => {
+            return acc * 26 + val.charCodeAt(0) - 64;
+          }, 0);
+          const row = parseInt(m[2], 10);
+
           return { row, column: col };
         })
         .filter((c): c is PhysicalGridCoords => c !== null);
 
       if (coords.length) {
-        const maxRow = Math.max(...coords.map((c) => c.row));
-        const maxColumn = Math.max(...coords.map((c) => c.column));
         const filteredCoords = coords.filter(
-          (c) => c.row <= maxRow && c.column <= maxColumn
+          (c) =>
+            c.row >= 1 &&
+            c.row <= this.rowCount.value &&
+            c.column >= 1 &&
+            c.column <= this.columnCount.value
         );
         this.location = {
-          rows: this.location?.rows || 0,
-          columns: this.location?.columns || 0,
+          rows: this.rowCount.value,
+          columns: this.columnCount.value,
           coords: filteredCoords,
         };
       }

@@ -16,7 +16,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ExcelColumnPipe implements PipeTransform {
   transform(value: number): string {
     if (value < 1) {
-      throw new Error('Input must be a positive integer starting from 1');
+      return '';
     }
 
     let columnLabel = '';
