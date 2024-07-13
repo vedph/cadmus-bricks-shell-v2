@@ -2,23 +2,12 @@
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.0.
 
-## Code scaffolding
+This library contains a component representing a bounding rectangle ideally overlaid on top of a 2D physical surface. The surface of the rectangle is covered by a grid, where columns are labeled with letters like in an Excel spreadsheet, and rows are numbered. So, each cell in it can be identified by the combination of column label and row number, just like a cell in a spreadsheet.
 
-Run `ng generate component component-name --project cadmus-mat-physical-grid` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project cadmus-mat-physical-grid`.
-> Note: Don't forget to add `--project cadmus-mat-physical-grid` or else it will be added to the default project in your `angular.json` file. 
+This is typically used to roughly divide the surface into cells, and locate parts of it via cell coordinates. This approach for labelling parts of a surface is used in many scenarios where it is necessary to provide a location strategy for its fragments; for instance this happens for fragments from inscriptions or manuscripts. A typical 3x3 grid for example allows to tell whether a fragment belongs to any of the edges or corners, or belongs to an inner portion of a fragmentary object.
 
-## Build
+This general component allows you to specify the location of 1 or more cells, according to different modes:
 
-Run `ng build cadmus-mat-physical-grid` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build cadmus-mat-physical-grid`, go to the dist folder `cd dist/cadmus-mat-physical-grid` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test cadmus-mat-physical-grid` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- single: you can select only 1 cell at a time.
+- multiple: you can select as many cells as you want.
+- contiguous (default): you can select 1 or more cells as far as they are contiguous.
