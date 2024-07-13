@@ -93,7 +93,7 @@
           matRipple
           class="cell"
           [class.selected]="c.selected"
-          (click)="selectCell(c)"
+          (click)="toggleCell(c)"
           matTooltip="{{ c.column | excelColumn }}{{ c.row }} ({{ c.ordinal }})"
         >
           {{ c.column | excelColumn }}{{ c.row }}

@@ -325,50 +325,60 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
       .sort((a, b) => (a.ordinal || 0) - (b.ordinal || 0));
   }
 
-  public selectCell(cell: PhysicalGridCell) {
-    switch (this.mode) {
-      case 'single':
-        // deselect all cells
-        this.rows.forEach((row) =>
-          row.forEach((c) => {
-            c.selected = false;
-            c.ordinal = 0;
-          })
-        );
-        break;
-      case 'contiguous':
-        // deselect all cells which are not contiguous to the clicked one
-        const selected = this.rows
-          .map((row) => row.filter((c) => c.selected))
-          .reduce((acc, val) => acc.concat(val), []);
-        if (selected.length) {
-          const contiguous = selected.some((c) => this.areContiguous(c, cell));
-          if (!contiguous) {
-            this.rows.forEach((row) =>
-              row.forEach((c) => {
-                if (c !== cell) {
-                  c.selected = false;
-                  c.ordinal = 0;
-                }
-              })
-            );
-          }
-        }
-        break;
-    }
-
-    // update the ordinal of the selected cells
+  private updateSelectedOrdinals(): number {
     let ordinal = 1;
     const selected = this.getSelectedCells();
     selected.forEach((c) => {
       c.ordinal = ordinal++;
     });
+    return ordinal;
+  }
 
-    // add the clicked cell to selection as last
-    cell.selected = true;
-    cell.ordinal = ordinal;
+  public toggleCell(cell: PhysicalGridCell) {
+    if (cell.selected) {
+      cell.selected = false;
+      cell.ordinal = 0;
+      this.updateSelectedOrdinals();
+    } else {
+      switch (this.mode) {
+        case 'single':
+          // deselect all cells
+          this.rows.forEach((row) =>
+            row.forEach((c) => {
+              c.selected = false;
+              c.ordinal = 0;
+            })
+          );
+          break;
+        case 'contiguous':
+          // deselect all cells which are not contiguous to the clicked one
+          const selected = this.rows
+            .map((row) => row.filter((c) => c.selected))
+            .reduce((acc, val) => acc.concat(val), []);
+          if (selected.length) {
+            const contiguous = selected.some((c) =>
+              this.areContiguous(c, cell)
+            );
+            if (!contiguous) {
+              this.rows.forEach((row) =>
+                row.forEach((c) => {
+                  if (c !== cell) {
+                    c.selected = false;
+                    c.ordinal = 0;
+                  }
+                })
+              );
+            }
+          }
+          break;
+      }
+      const next = this.updateSelectedOrdinals();
+      cell.selected = true;
+      cell.ordinal = next;
+    }
 
     // update the location
+    const selected = this.getSelectedCells();
     this._location = {
       rows: this.rowCount.value,
       columns: this.columnCount.value,
