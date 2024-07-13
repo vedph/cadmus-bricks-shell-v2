@@ -44,6 +44,11 @@ export interface PhysicalGridLocation {
   coords: PhysicalGridCoords[];
 }
 
+/**
+ * The mode of selection in the grid: single allows to select a single cell,
+ * multiple allows to select multiple cells wherever they are, contiguous allows
+ * to select only contiguous cells.
+ */
 export type PhysicalGridMode = 'single' | 'multiple' | 'contiguous';
 
 /**
@@ -56,6 +61,11 @@ interface PhysicalGridCell {
   ordinal: number;
 }
 
+/**
+ * A component to select a location in a physical grid, with a text box to enter
+ * the selected cells in Excel-like format, and an interactive grid to select
+ * the cells visually.
+ */
 @Component({
   selector: 'cadmus-physical-grid-location',
   standalone: true,
@@ -103,6 +113,9 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
     this.updateText();
   }
 
+  /**
+   * True if selecting at least 1 cell is required.
+   */
   @Input()
   public get required(): boolean {
     return this._required;
@@ -166,10 +179,16 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
     this.resetCells();
   }
 
+  /**
+   * Emitted when the location changes.
+   */
   @Output()
   public readonly locationChange: EventEmitter<PhysicalGridLocation> =
     new EventEmitter<PhysicalGridLocation>();
 
+  /**
+   * Emitted when the grid is collapsed.
+   */
   @Output()
   public readonly collapsedGridChange: EventEmitter<boolean> =
     new EventEmitter<boolean>();
