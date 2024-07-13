@@ -9,7 +9,8 @@
 }
 .row {
   display: flex;
-  gap: 8px;
+  gap: 4px;
+  margin: 4px 0;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -19,6 +20,7 @@
   width: 48px;
   height: 48px;
   border: 1px solid #bbb;
+  border-radius: 4px;
   text-align: center;
   font-size: 0.9em;
   cursor: pointer;

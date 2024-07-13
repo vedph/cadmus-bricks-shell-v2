@@ -14,6 +14,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -24,7 +25,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { ExcelColumnPipe } from '../../pipes/excel-column.pipe';
-import { Subscription } from 'rxjs';
 
 /**
  * Coordinates of a cell in the physical grid.
@@ -53,6 +53,7 @@ interface PhysicalGridCell {
   row: number;
   column: number;
   selected?: boolean;
+  ordinal: number;
 }
 
 @Component({
@@ -235,12 +236,17 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
     for (let y = 1; y <= this.rowCount.value; y++) {
       const row: PhysicalGridCell[] = [];
       for (let x = 1; x <= this.columnCount.value; x++) {
+        const selIndex =
+          this._location?.coords.findIndex(
+            (c) => c.row === y && c.column === x
+          ) || -1;
         row.push({
           row: y,
           column: x,
           selected: this._location?.coords.some(
             (c) => c.row === y && c.column === x
           ),
+          ordinal: selIndex + 1,
         });
       }
       this.rows.push(row);
@@ -287,7 +293,12 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
     if (!this._location) {
       return;
     }
-    this.rows.forEach((row) => row.forEach((c) => (c.selected = false)));
+    this.rows.forEach((row) =>
+      row.forEach((c) => {
+        c.selected = false;
+        c.ordinal = 0;
+      })
+    );
     this.text.setValue('');
     this.text.markAsDirty();
     this.text.updateValueAndValidity();
@@ -304,11 +315,24 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
     this.text.updateValueAndValidity();
   }
 
+  private getSelectedCells(): PhysicalGridCell[] {
+    // get all the selected cells in their ordinal order
+    return this.rows
+      .map((row) => row.filter((c) => c.selected))
+      .reduce((acc, val) => acc.concat(val), [])
+      .sort((a, b) => (a.ordinal || 0) - (b.ordinal || 0));
+  }
+
   public selectCell(cell: PhysicalGridCell) {
     switch (this.mode) {
       case 'single':
         // deselect all cells
-        this.rows.forEach((row) => row.forEach((c) => (c.selected = false)));
+        this.rows.forEach((row) =>
+          row.forEach((c) => {
+            c.selected = false;
+            c.ordinal = 0;
+          })
+        );
         break;
       case 'contiguous':
         // deselect all cells which are not contiguous to the clicked one
@@ -319,29 +343,36 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
           const contiguous = selected.some((c) => this.areContiguous(c, cell));
           if (!contiguous) {
             this.rows.forEach((row) =>
-              row.forEach((c) => (c.selected = c === cell))
+              row.forEach((c) => {
+                if (c !== cell) {
+                  c.selected = false;
+                  c.ordinal = 0;
+                }
+              })
             );
           }
-        } else {
-          cell.selected = !cell.selected;
         }
         break;
     }
 
-    // select the clicked cell
+    // update the ordinal of the selected cells
+    let ordinal = 1;
+    const selected = this.getSelectedCells();
+    selected.forEach((c) => {
+      c.ordinal = ordinal++;
+    });
+
+    // add the clicked cell to selection as last
     cell.selected = true;
+    cell.ordinal = ordinal;
 
     // update the location
     this._location = {
       rows: this.rowCount.value,
       columns: this.columnCount.value,
-      coords: this.rows
-        .map((row, i) =>
-          row
-            .map((c, j) => (c.selected ? { row: i + 1, column: j + 1 } : null))
-            .filter((c): c is PhysicalGridCoords => c !== null)
-        )
-        .reduce((acc, val) => acc.concat(val), []),
+      coords: selected.map((c) => {
+        return { row: c.row, column: c.column };
+      }),
     };
 
     // update the selected cells text
