@@ -212,8 +212,10 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
         }
       }
     });
-    this.updateGrid();
-    this.updateText();
+    setTimeout(() => {
+      this.updateGrid();
+      this.updateText();
+    });
   }
 
   public ngOnDestroy(): void {
@@ -232,20 +234,20 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
   }
 
   private updateGrid(): void {
+    console.log('updateGrid');
     this.rows = [];
     for (let y = 1; y <= this.rowCount.value; y++) {
       const row: PhysicalGridCell[] = [];
       for (let x = 1; x <= this.columnCount.value; x++) {
-        const selIndex =
-          this._location?.coords.findIndex(
-            (c) => c.row === y && c.column === x
-          ) || -1;
+        const selIndex = this._location
+          ? this._location?.coords.findIndex(
+              (c) => c.row === y && c.column === x
+            )
+          : -1;
         row.push({
           row: y,
           column: x,
-          selected: this._location?.coords.some(
-            (c) => c.row === y && c.column === x
-          ),
+          selected: selIndex > -1,
           ordinal: selIndex + 1,
         });
       }
