@@ -31,6 +31,12 @@
 .cell.selected {
   background-color: #e4ee2e;
 }
+.cell.selected:hover {
+  background-color: #f8ff6e;
+}
+.cell:hover {
+  background-color: #f0f0f0;
+}
 .nr-input {
   width: 6em;
 }
