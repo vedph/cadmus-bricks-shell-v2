@@ -284,6 +284,85 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
     this.locationChange.emit(this._location);
   }
 
+  private getNeighbors(
+    coords: PhysicalGridCoords,
+    selected: boolean | undefined = undefined
+  ): PhysicalGridCoords[] {
+    const neighbors: PhysicalGridCoords[] = [];
+    for (let row = coords.row - 1; row <= coords.row + 1; row++) {
+      for (
+        let column = coords.column - 1;
+        column <= coords.column + 1;
+        column++
+      ) {
+        if (
+          row > 0 &&
+          column > 0 &&
+          row <= this.rowCount.value &&
+          column <= this.columnCount.value &&
+          (row !== coords.row || column !== coords.column)
+        ) {
+          // filter by selected if not undefined
+          if (selected !== undefined) {
+            const cell = this.rows[row - 1][column - 1];
+            if (cell.selected === selected) {
+              neighbors.push({ row, column });
+            }
+          } else {
+            neighbors.push({ row, column });
+          }
+        }
+      }
+    }
+    return neighbors;
+  }
+
+  private checkContiguity(
+    a: PhysicalGridCoords,
+    b: PhysicalGridCoords,
+    visited: Set<string>
+  ): boolean {
+    // corner case: same cell
+    if (a === b) {
+      return true;
+    }
+
+    // start from b
+    const stack: PhysicalGridCoords[] = [];
+    stack.push(b);
+
+    // visit all cells
+    while (stack.length > 0) {
+      const current = stack.pop()!;
+
+      // if already visited, skip
+      const key = `R${current.row}C${current.column}`;
+      if (visited.has(key)) {
+        continue;
+      }
+      // mark as visited
+      visited.add(key);
+
+      // if we reached a, we are done
+      if (
+        current.row >= a.row - 1 &&
+        current.row <= a.row + 1 &&
+        current.column >= a.column - 1 &&
+        current.column <= a.column + 1
+      ) {
+        return true;
+      }
+
+      // add neighbors to the stack
+      const neighbors = this.getNeighbors(current, true);
+      for (const neighbor of neighbors) {
+        stack.push(neighbor);
+      }
+    }
+
+    return false;
+  }
+
   /**
    * Check whether the specified cells are contiguous, i.e. cell B is adjacent
    * to cell A, in any direction.
@@ -292,12 +371,8 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
    * @returns True if the two coordinates are contiguous.
    */
   public areContiguous(a: PhysicalGridCoords, b: PhysicalGridCoords): boolean {
-    return (
-      b.row >= a.row - 1 &&
-      b.row <= a.row + 1 &&
-      b.column >= a.column - 1 &&
-      b.column <= a.column + 1
-    );
+    const visited: Set<string> = new Set();
+    return this.checkContiguity(a, b, visited);
   }
 
   private buildText(): string {
@@ -353,47 +428,75 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
     return ordinal;
   }
 
+  /**
+   * Deselects all the selected cells which are not contiguous to any
+   * of the other selected cells, excluding cell itself.
+   * @param cell The reference cell.
+   */
+  private deselectNonContiguousCells(cell: PhysicalGridCell): void {
+    const selected = this.getSelectedCells();
+    selected.forEach((c) => {
+      if (c !== cell && !this.areContiguous(c, cell)) {
+        c.selected = false;
+        c.ordinal = 0;
+      }
+    });
+  }
+
   public toggleCell(cell: PhysicalGridCell) {
+    // (a) DESELECT
     if (cell.selected) {
+      // deselect cell
+      const n = cell.ordinal;
       cell.selected = false;
       cell.ordinal = 0;
-      this.updateSelectedOrdinals();
+
+      // if not contiguous, we are done, just update ordinals
+      if (this.mode !== 'contiguous') {
+        this.updateSelectedOrdinals();
+        return;
+      }
+
+      // else find the new reference cell as the one before or after the deselected cell
+      let cells = this.rows
+        .map((row) => row.find((c) => c.ordinal === n - 1))
+        .filter((c): c is PhysicalGridCell => !!c);
+      if (!cells.length) {
+        cells = this.rows
+          .map((row) => row.find((c) => c.ordinal === n + 1))
+          .filter((c): c is PhysicalGridCell => !!c);
+      }
+      if (cells.length) {
+        cell = cells[0];
+      }
+      // if found, deselect all non-contiguous cells and update ordinals
+      if (cell) {
+        this.deselectNonContiguousCells(cell);
+        this.updateSelectedOrdinals();
+      }
     } else {
+      // (b) SELECT
       switch (this.mode) {
         case 'single':
-          // deselect all cells
+          // deselect all cells and select the new one
           this.rows.forEach((row) =>
             row.forEach((c) => {
               c.selected = false;
               c.ordinal = 0;
             })
           );
+          cell.selected = true;
           break;
         case 'contiguous':
-          // deselect all cells which are not contiguous to the clicked one
-          const selected = this.rows
-            .map((row) => row.filter((c) => c.selected))
-            .reduce((acc, val) => acc.concat(val), []);
-          if (selected.length) {
-            const contiguous = selected.some((c) =>
-              this.areContiguous(c, cell)
-            );
-            if (!contiguous) {
-              this.rows.forEach((row) =>
-                row.forEach((c) => {
-                  if (c !== cell) {
-                    c.selected = false;
-                    c.ordinal = 0;
-                  }
-                })
-              );
-            }
-          }
+          this.deselectNonContiguousCells(cell);
+          cell.selected = true;
+          break;
+        case 'multiple':
+          cell.selected = true;
           break;
       }
-      const next = this.updateSelectedOrdinals();
-      cell.selected = true;
-      cell.ordinal = next;
+      // update ordinals
+      cell.ordinal = this.updateSelectedOrdinals();
     }
 
     // update the location
