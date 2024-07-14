@@ -94,9 +94,11 @@
           class="cell"
           [class.selected]="c.selected"
           (click)="toggleCell(c)"
-          matTooltip="{{ c.column | excelColumn }}{{ c.row }} ({{ c.ordinal }})"
         >
           {{ c.column | excelColumn }}{{ c.row }}
+          @if (c.ordinal) {
+          <span class="super">{{ c.ordinal }}</span>
+          }
         </div>
         }
       </div>

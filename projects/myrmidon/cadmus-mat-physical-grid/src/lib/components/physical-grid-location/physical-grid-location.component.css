@@ -40,3 +40,8 @@
 .nr-input {
   width: 6em;
 }
+.super {
+  font-size: 0.8em;
+  margin-top: -1.5em;
+  color: #6db376;
+}

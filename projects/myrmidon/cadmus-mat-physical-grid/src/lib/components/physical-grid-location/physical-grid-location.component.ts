@@ -443,6 +443,11 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
     });
   }
 
+  private getMaxSelectedOrdinal(): number {
+    const selected = this.getSelectedCells();
+    return selected.reduce((acc, val) => Math.max(acc, val.ordinal || 0), 0);
+  }
+
   public toggleCell(cell: PhysicalGridCell) {
     // (a) DESELECT
     if (cell.selected) {
@@ -496,7 +501,8 @@ export class PhysicalGridLocationComponent implements OnInit, OnDestroy {
           break;
       }
       // update ordinals
-      cell.ordinal = this.updateSelectedOrdinals();
+      cell.ordinal = this.getMaxSelectedOrdinal() + 1;
+      this.updateSelectedOrdinals();
     }
 
     // update the location
