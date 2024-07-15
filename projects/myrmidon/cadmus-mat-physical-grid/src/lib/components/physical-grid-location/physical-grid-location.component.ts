@@ -51,6 +51,19 @@ export interface PhysicalGridLocation {
  */
 export type PhysicalGridMode = 'single' | 'multiple' | 'contiguous';
 
+export function physicalGridLocationToString(
+  location: PhysicalGridLocation
+): string {
+  const pipe = new ExcelColumnPipe();
+  return location.coords
+    .map((c) => {
+      return `${pipe.transform(c.column)}${c.row}`;
+    })
+    .join(' ');
+}
+
+// TODO
+
 /**
  * A viewmodel for the cell in the physical grid.
  */
