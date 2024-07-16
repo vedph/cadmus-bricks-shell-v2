@@ -18,7 +18,7 @@ As Cadmus projects increase, the prototype code reveals more and more portions w
 
 1. `npm run build-lib`.
 2. ensure to update the version in `env.js` (and `docker-compose.yml`), and `ng build --configuration production`.
-3. `docker build . -t vedph2020/cadmus-bricks-app:5.1.4 -t vedph2020/cadmus-bricks-app:latest` (replace with the current version).
+3. `docker build . -t vedph2020/cadmus-bricks-app:5.1.5 -t vedph2020/cadmus-bricks-app:latest` (replace with the current version).
 
 Use [publish.bat](publish.bat) to publish the libraries to NPM.
 
@@ -236,7 +236,9 @@ Then, the code for each library has been imported except for their module, and e
 
 ## History
 
-- 2024-07-16: adding physical state (`@myrmidon/cadmus-mat-physical-state`).
+### 5.1.5
+
+- 2024-07-16: added physical state (`@myrmidon/cadmus-mat-physical-state`).
 - 2024-07-15: added service for physical grid.
 - 2024-07-12: added `@myrmidon/cadmus-mat-physical-grid`.
 
