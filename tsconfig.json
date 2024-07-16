@@ -21,6 +21,9 @@
       "@myrmidon/cadmus-mat-physical-size": [
         "./dist/myrmidon/cadmus-mat-physical-size"
       ],
+      "@myrmidon/cadmus-mat-physical-state": [
+        "./dist/myrmidon/cadmus-mat-physical-state"
+      ],
       "@myrmidon/cadmus-refs-asserted-chronotope": [
         "./dist/myrmidon/cadmus-refs-asserted-chronotope"
       ],

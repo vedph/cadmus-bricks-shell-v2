@@ -236,6 +236,7 @@ Then, the code for each library has been imported except for their module, and e
 
 ## History
 
+- 2024-07-16: adding physical state (`@myrmidon/cadmus-mat-physical-state`).
 - 2024-07-15: added service for physical grid.
 - 2024-07-12: added `@myrmidon/cadmus-mat-physical-grid`.
 

@@ -12,7 +12,9 @@ For example, a typical 3x3 grid allows to tell whether a fragment belongs to any
 
 ## Component
 
-- 🔑 `cadmus-physical-grid-location`
+- 🚩 `cadmus-mat-physical-grid-location`
+- 🔑 `PhysicalGridLocationComponent`
+- thesauri: none (but you can map a thesaurus to `presets`)
 
 This general component allows you to specify the location (`PhysicalGridLocation`) of 1 or more cells, according to different **modes**:
 

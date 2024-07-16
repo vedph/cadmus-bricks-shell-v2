@@ -67,7 +67,7 @@ interface PhysicalGridCell {
  * the cells visually.
  */
 @Component({
-  selector: 'cadmus-physical-grid-location',
+  selector: 'cadmus-mat-physical-grid-location',
   standalone: true,
   imports: [
     CommonModule,

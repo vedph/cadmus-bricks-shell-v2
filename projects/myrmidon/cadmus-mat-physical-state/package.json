@@ -1,7 +1,7 @@
 {
-  "name": "@myrmidon/cadmus-mat-physical-grid",
-  "version": "0.0.3",
-  "description": "Cadmus - material description: physical grid.",
+  "name": "@myrmidon/cadmus-mat-physical-state",
+  "version": "0.0.1",
+  "description": "Cadmus - material description: physical state.",
   "keywords": [
     "Cadmus",
     "bricks"
@@ -15,8 +15,9 @@
     "name": "Daniele Fusi"
   },
   "peerDependencies": {
-    "@angular/common": "^18.0.0",
-    "@angular/core": "^18.0.0"
+    "@angular/common": "^18.1.0",
+    "@angular/core": "^18.1.0",
+    "@myrmidon/cadmus-ui-flags-picker": "^5.1.1"
   },
   "dependencies": {
     "tslib": "^2.3.0"
