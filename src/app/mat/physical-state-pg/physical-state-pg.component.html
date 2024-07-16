@@ -1,0 +1,15 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>Physical State</h2>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <cadmus-mat-physical-state
+      [stateEntries]="stateEntries"
+      [featEntries]="featEntries"
+      [state]="state"
+      (stateChange)="onStateChange($event)"
+    />
+  </mat-card-content>
+</mat-card>
