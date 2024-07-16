@@ -66,7 +66,7 @@ export class PhysicalStatePgComponent {
     },
   ];
   public state: PhysicalState = {
-    type: 'good',
+    type: 'q2',
     features: ['broken', 'scratched'],
     date: '2021-01-01',
     reporter: 'John Doe',

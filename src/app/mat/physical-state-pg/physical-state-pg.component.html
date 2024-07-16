@@ -11,5 +11,11 @@
       [state]="state"
       (stateChange)="onStateChange($event)"
     />
+    <hr />
+    <div>
+      <code>
+        <pre>{{ state | json }}</pre>
+      </code>
+    </div>
   </mat-card-content>
 </mat-card>

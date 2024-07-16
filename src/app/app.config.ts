@@ -33,6 +33,7 @@ import {
 import { GEONAMES_USERNAME_TOKEN } from '../../projects/myrmidon/cadmus-refs-geonames-lookup/src/public-api';
 import { environment } from '../environments/environment.prod';
 import { WHG_USERNAME_TOKEN } from '../../projects/myrmidon/cadmus-refs-whg-lookup/src/public-api';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 // for lookup in asserted IDs - note that this would require a backend
 const INDEX_LOOKUP_DEFINITIONS: IndexLookupDefinitions = {
@@ -51,6 +52,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(withJsonpSupport()),
+    provideNativeDateAdapter(),
     importProvidersFrom(NgeMonacoModule.forRoot({})),
     EnvServiceProvider,
     {

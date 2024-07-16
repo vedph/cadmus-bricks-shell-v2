@@ -46,6 +46,7 @@
     <div class="form-row">
       <!-- date -->
       <mat-checkbox [formControl]="hasDate">date</mat-checkbox>
+      @if (hasDate.value) {
       <mat-form-field class="date">
         <input matInput [matDatepicker]="picker" [formControl]="date" />
         <mat-datepicker-toggle
@@ -57,6 +58,7 @@
         <mat-error>date required</mat-error>
         }
       </mat-form-field>
+      }
 
       <!-- reporter (bound) -->
       @if (reporterEntries?.length) {
