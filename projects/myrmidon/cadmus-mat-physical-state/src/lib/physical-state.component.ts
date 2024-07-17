@@ -180,7 +180,7 @@ export class PhysicalStateComponent {
     return {
       type: this.type.value?.trim(),
       features: this._flagAdapter.getOptionalCheckedFlagIds('features'),
-      date: this.hasDate.value ? this.date.value?.trim() : undefined,
+      date: this.hasDate.value && this.date.value ? this.date.value : undefined,
       reporter: this.reporter.value?.trim(),
       note: this.note.value?.trim(),
     };
