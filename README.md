@@ -30,6 +30,7 @@ Use [publish.bat](publish.bat) to publish the libraries to NPM.
 - [@myrmidon/cadmus-img-gallery-iiif](./projects/myrmidon/cadmus-img-gallery-iiif/README.md): IIIF implementation of images gallery for annotation.
 - [@myrmidon/cadmus-mat-physical-grid](./projects/myrmidon/cadmus-mat-physical-grid/README.md)
 - `@myrmidon/cadmus-mat-physical-size`
+- [@myrmidon/cadmus-mat-physical-state](./projects/myrmidon/cadmus-mat-physical-state/README.md)
 - `@myrmidon/cadms-refs-asserted-chronotope`
 - [@myrmidon/cadmus-refs-asserted-ids](./projects/myrmidon/cadmus-refs-asserted-ids/README.md)
 - `@myrmidon/cadmus-refs-assertion`
