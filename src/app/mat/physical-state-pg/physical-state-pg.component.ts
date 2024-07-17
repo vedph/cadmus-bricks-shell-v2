@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 import {
-  CadmusMatPhysicalStateComponent,
+  PhysicalStateComponent,
   PhysicalState,
 } from '../../../../projects/myrmidon/cadmus-mat-physical-state/src/public-api';
 import { ThesaurusEntry } from '@myrmidon/cadmus-core';
@@ -27,7 +27,7 @@ import { ThesaurusEntry } from '@myrmidon/cadmus-core';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    CadmusMatPhysicalStateComponent,
+    PhysicalStateComponent,
   ],
   templateUrl: './physical-state-pg.component.html',
   styleUrl: './physical-state-pg.component.scss',

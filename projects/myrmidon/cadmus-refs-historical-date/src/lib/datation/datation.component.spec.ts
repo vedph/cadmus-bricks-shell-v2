@@ -5,7 +5,6 @@ import { DatationComponent } from './datation.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CadmusMaterialModule } from '@myrmidon/cadmus-material';
 import { HAMMER_LOADER } from '@angular/platform-browser';
 
 describe('DatationEditorComponent', () => {
@@ -20,7 +19,6 @@ describe('DatationEditorComponent', () => {
         RouterModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
-        CadmusMaterialModule,
       ],
       // https://github.com/angular/components/issues/14668
       providers: [

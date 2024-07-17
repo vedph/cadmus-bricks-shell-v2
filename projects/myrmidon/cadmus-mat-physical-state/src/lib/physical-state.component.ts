@@ -63,7 +63,7 @@ export interface PhysicalState {
   templateUrl: './physical-state.component.html',
   styleUrls: ['./physical-state.component.css'],
 })
-export class CadmusMatPhysicalStateComponent {
+export class PhysicalStateComponent {
   private _state?: PhysicalState;
   // flags
   private _featEntries?: ThesaurusEntry[];

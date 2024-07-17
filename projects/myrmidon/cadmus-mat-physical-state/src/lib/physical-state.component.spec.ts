@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CadmusMatPhysicalStateComponent } from './physical-state.component';
+import { PhysicalStateComponent } from './physical-state.component';
 
-describe('CadmusMatPhysicalStateComponent', () => {
-  let component: CadmusMatPhysicalStateComponent;
-  let fixture: ComponentFixture<CadmusMatPhysicalStateComponent>;
+describe('PhysicalStateComponent', () => {
+  let component: PhysicalStateComponent;
+  let fixture: ComponentFixture<PhysicalStateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CadmusMatPhysicalStateComponent]
+      imports: [PhysicalStateComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CadmusMatPhysicalStateComponent);
+    fixture = TestBed.createComponent(PhysicalStateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
