@@ -237,6 +237,10 @@ Then, the code for each library has been imported except for their module, and e
 
 ## History
 
+- 2024-07-29:
+  - updated Angular and packages.
+  - fixed icon color in asserted composite IDs.
+
 ### 5.1.5
 
 - 2024-07-16: added physical state (`@myrmidon/cadmus-mat-physical-state`).
