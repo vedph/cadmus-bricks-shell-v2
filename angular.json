@@ -29,7 +29,8 @@
               "node_modules/@recogito/annotorious/dist/annotorious.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": ["openseadragon"]
           },
           "configurations": {
             "production": {
