@@ -26,6 +26,10 @@ import { ProperName } from './models';
   name: 'cadmusProperName',
 })
 export class CadmusProperNamePipe implements PipeTransform {
+  private purgeId(value: string): string {
+    return value.replace(/\*$/, '');
+  }
+
   private getMappedValue(
     value: string | undefined | null,
     map: Array<any> | Object | undefined | null,
@@ -41,7 +45,7 @@ export class CadmusProperNamePipe implements PipeTransform {
         return value;
       }
       const m = map as Array<any>;
-      const item = m.find((i) => i[keyName] === value);
+      const item = m.find((i) => this.purgeId(i[keyName]) === value);
       return item ? item[valueName] : value;
     } else {
       // single object
@@ -86,7 +90,7 @@ export class CadmusProperNamePipe implements PipeTransform {
     }
 
     return legend && types.length
-      ? values.join(' ') + ' (' + types.join(' ') + ')'
-      : values.join(' ');
+      ? values.join(', ') + ' (' + types.join(', ') + ')'
+      : values.join(', ');
   }
 }

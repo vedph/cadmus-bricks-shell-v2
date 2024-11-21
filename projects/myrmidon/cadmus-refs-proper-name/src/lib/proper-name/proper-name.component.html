@@ -78,7 +78,7 @@
           <span class="nr">{{ i + 1 }}.</span>
         </td>
         <td class="type">
-          {{ piece.type | flatLookup : typeEntries : "id" : "value" }}
+          {{ piece.type | flatLookup : purgedTypeEntries : "id" : "value" }}
         </td>
         <td class="value">
           {{ piece.value | flatLookup : valueEntries : "id" : "value" }}

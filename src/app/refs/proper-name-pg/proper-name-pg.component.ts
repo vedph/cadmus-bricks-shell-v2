@@ -48,13 +48,19 @@ export class ProperNamePgComponent implements OnInit {
     // for pipe: these are all the children values as collected
     // from the types entries
     this.namePieceValueEntries = [
-      { id: 'continent.europe', value: 'Europe' },
-      { id: 'continent.n-america', value: 'North America' },
-      { id: 'continent.s-america', value: 'South America' },
-      { id: 'continent.africa', value: 'Africa' },
-      { id: 'continent.asia', value: 'Asia' },
-      { id: 'continent.australia', value: 'Australia' },
-      { id: 'continent.antarctica', value: 'Antarctica' },
+      // { id: 'continent.europe', value: 'Europe' },
+      // { id: 'continent.n-america', value: 'North America' },
+      // { id: 'continent.s-america', value: 'South America' },
+      // { id: 'continent.africa', value: 'Africa' },
+      // { id: 'continent.asia', value: 'Asia' },
+      // { id: 'continent.australia', value: 'Australia' },
+      // { id: 'continent.antarctica', value: 'Antarctica' },
+      { id: 'a.cr', value: 'Cannareggio' },
+      { id: 'a.cs', value: 'Castello' },
+      { id: 'a.dd', value: 'Dorsoduro' },
+      { id: 'a.sm', value: 'San Marco' },
+      { id: 'a.sp', value: 'San Polo' },
+      { id: 'a.sc', value: 'Santa Croce' },
     ];
     this.configureAsAnthroponym();
   }
@@ -95,26 +101,35 @@ export class ProperNamePgComponent implements OnInit {
 
   public configureAsToponym(): void {
     this.namePieceTypeEntries = [
-      { id: 'continent*', value: 'continent' },
-      { id: 'continent.europe', value: 'Europe' },
-      { id: 'continent.n-america', value: 'North America' },
-      { id: 'continent.s-america', value: 'South America' },
-      { id: 'continent.africa', value: 'Africa' },
-      { id: 'continent.asia', value: 'Asia' },
-      { id: 'continent.australia', value: 'Australia' },
-      { id: 'continent.antarctica', value: 'Antarctica' },
-      { id: 'country*', value: 'country' },
-      { id: 'region*', value: 'region' },
-      { id: '_order', value: 'continent country region' },
+      // { id: 'continent*', value: 'continent' },
+      // { id: 'continent.europe', value: 'Europe' },
+      // { id: 'continent.n-america', value: 'North America' },
+      // { id: 'continent.s-america', value: 'South America' },
+      // { id: 'continent.africa', value: 'Africa' },
+      // { id: 'continent.asia', value: 'Asia' },
+      // { id: 'continent.australia', value: 'Australia' },
+      // { id: 'continent.antarctica', value: 'Antarctica' },
+      // { id: 'country*', value: 'country' },
+      // { id: 'region*', value: 'region' },
+      // { id: '_order', value: 'continent country region' },
+      { id: 'p*', value: 'provincia'},
+      { id: 'c*', value: 'città'},
+      { id: 'a*', value: 'area'},
+      { id: '_order', value: 'p c a l s'},
     ];
 
     this.initialName = {
       language: 'eng',
       tag: 'sample',
       pieces: [
-        { type: 'continent', value: 'continent.europe' },
-        { type: 'country', value: 'Italy' },
-        { type: 'region', value: 'Tuscany' },
+        // { type: 'continent', value: 'continent.europe' },
+        // { type: 'country', value: 'Italy' },
+        // { type: 'region', value: 'Tuscany' },
+        { type: 'p', value: 'VE' },
+        { type: 'c', value: 'Venezia' },
+        { type: 'a', value: 'Cannareggio' },
+        { type: 'l', value: 'Fondamenta Daniele Canal' },
+        { type: 's', value: 'Chiesa Santa Maria dei Servi' },
       ],
     };
   }

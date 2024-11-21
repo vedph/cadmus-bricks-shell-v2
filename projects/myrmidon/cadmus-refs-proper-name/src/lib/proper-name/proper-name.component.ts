@@ -1,4 +1,3 @@
-
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -66,8 +65,8 @@ export interface AssertedProperName extends ProperName {
     MatTooltipModule,
     NgToolsModule,
     AssertionComponent,
-    ProperNamePieceComponent
-]
+    ProperNamePieceComponent,
+  ],
 })
 export class ProperNameComponent implements OnInit {
   private _name: AssertedProperName | undefined;
@@ -78,6 +77,7 @@ export class ProperNameComponent implements OnInit {
   public pieceTypes: TypeThesaurusEntry[];
   public editedPieceIndex: number;
   public editedPiece?: ProperNamePiece;
+  public purgedTypeEntries?: ThesaurusEntry[];
 
   /**
    * The proper name.
@@ -102,6 +102,7 @@ export class ProperNameComponent implements OnInit {
   }
   public set typeEntries(value: ThesaurusEntry[] | undefined) {
     this._typeEntries$.next(value);
+    this.updatePurgedTypeEntries();
   }
 
   /**
@@ -208,6 +209,19 @@ export class ProperNameComponent implements OnInit {
       .subscribe((_) => {
         this.emitNameChange();
       });
+  }
+
+  private updatePurgedTypeEntries(): void {
+    if (this._typeEntries$.value) {
+      // copy all entries by removing last * from IDs if present
+      this.purgedTypeEntries = this._typeEntries$.value.map((e) => {
+        return e.id[e.id.length - 1] === '*'
+          ? { ...e, id: e.id.substring(0, e.id.length - 1) }
+          : e;
+      });
+    } else {
+      this.purgedTypeEntries = undefined;
+    }
   }
 
   //#region Pieces
