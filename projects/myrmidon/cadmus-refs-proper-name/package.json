@@ -1,6 +1,6 @@
 {
   "name": "@myrmidon/cadmus-refs-proper-name",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "Cadmus - proper name component.",
   "keywords": [
     "Cadmus",
@@ -18,8 +18,8 @@
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0",
     "@myrmidon/ng-tools": "^4.0.0",
-    "@myrmidon/cadmus-core": "^8.1.0",
-    "@myrmidon/cadmus-refs-assertion": "^5.1.1"
+    "@myrmidon/cadmus-core": "^9.0.0",
+    "@myrmidon/cadmus-refs-assertion": "^6.0.1"
   },
   "dependencies": {
     "tslib": "^2.3.0"
