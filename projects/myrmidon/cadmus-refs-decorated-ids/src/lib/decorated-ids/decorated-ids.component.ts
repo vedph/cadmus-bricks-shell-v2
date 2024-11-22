@@ -1,4 +1,3 @@
-
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -38,7 +37,6 @@ export interface DecoratedId {
  * and handle idsChange for ids.setValue.
  */
 @Component({
-  standalone: true,
   selector: 'cadmus-refs-decorated-ids',
   templateUrl: './decorated-ids.component.html',
   styleUrls: ['./decorated-ids.component.css'],
@@ -51,8 +49,8 @@ export interface DecoratedId {
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    DocReferencesComponent
-],
+    DocReferencesComponent,
+  ],
 })
 export class DecoratedIdsComponent implements OnInit {
   private _ids: DecoratedId[];

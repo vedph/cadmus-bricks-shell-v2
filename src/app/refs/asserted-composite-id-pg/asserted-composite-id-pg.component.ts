@@ -19,7 +19,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-refs-asserted-ids/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-asserted-composite-id-pg',
   templateUrl: './asserted-composite-id-pg.component.html',
   styleUrls: ['./asserted-composite-id-pg.component.css'],

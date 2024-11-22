@@ -10,17 +10,14 @@ import { ThesaurusEntry } from '@myrmidon/cadmus-core';
 
 import {
   GalleryImageAnnotation,
-  GalleryListComponent,
   GalleryOptionsService,
   GalleryService,
   IMAGE_GALLERY_SERVICE_KEY,
 } from '../../../../projects/myrmidon/cadmus-img-gallery/src/public-api';
 import { GalleryImage } from '../../../../projects/myrmidon/cadmus-img-annotator/src/public-api';
-import { GallerySdimgAnnotatorComponent } from '../../../../projects/myrmidon/cadmus-sdimg-gallery/src/public-api';
 import { MyGallerySdImageAnnotatorComponent } from '../my-gallery-sd-image-annotator/my-gallery-sd-image-annotator.component';
 
 @Component({
-  standalone: true,
   selector: 'app-sd-img-gallery-pg',
   templateUrl: './sd-img-gallery-pg.component.html',
   styleUrls: ['./sd-img-gallery-pg.component.css'],
@@ -30,8 +27,6 @@ import { MyGallerySdImageAnnotatorComponent } from '../my-gallery-sd-image-annot
     ReactiveFormsModule,
     MatCardModule,
     MatTabsModule,
-    GalleryListComponent,
-    GallerySdimgAnnotatorComponent,
     MyGallerySdImageAnnotatorComponent,
   ],
 })

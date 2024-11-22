@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -21,7 +20,6 @@ import {
 
 @Component({
   selector: 'app-emoji-ime-pg',
-  standalone: true,
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -29,8 +27,7 @@ import {
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    EmojiImeComponent
-],
+  ],
   templateUrl: './emoji-ime-pg.component.html',
   styleUrl: './emoji-ime-pg.component.css',
 })

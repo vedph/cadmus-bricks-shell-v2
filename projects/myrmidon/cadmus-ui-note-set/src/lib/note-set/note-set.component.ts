@@ -52,7 +52,6 @@ export interface NoteSet {
  * NOTE: requires ngx-markdown.
  */
 @Component({
-  standalone: true,
   selector: 'cadmus-ui-note-set',
   templateUrl: './note-set.component.html',
   styleUrls: ['./note-set.component.css'],

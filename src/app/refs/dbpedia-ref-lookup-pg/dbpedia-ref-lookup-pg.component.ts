@@ -27,7 +27,6 @@ import { DbpediaRefLookupService } from '../../../../projects/myrmidon/cadmus-re
 import { RefLookupComponent } from '../../../../projects/myrmidon/cadmus-refs-lookup/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-dbpedia-ref-lookup-pg',
   imports: [
     CommonModule,

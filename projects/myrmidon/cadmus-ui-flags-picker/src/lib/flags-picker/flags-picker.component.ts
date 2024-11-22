@@ -1,4 +1,3 @@
-
 import {
   Component,
   EventEmitter,
@@ -47,7 +46,6 @@ export interface Flag {
  *        ></cadmus-ui-flags-picker>
  */
 @Component({
-  standalone: true,
   selector: 'cadmus-ui-flags-picker',
   templateUrl: './flags-picker.component.html',
   styleUrls: ['./flags-picker.component.css'],
@@ -59,8 +57,8 @@ export interface Flag {
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatTooltipModule
-],
+    MatTooltipModule,
+  ],
 })
 export class FlagsPickerComponent implements OnInit, OnDestroy {
   private _flags: Flag[];

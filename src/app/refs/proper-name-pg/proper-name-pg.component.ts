@@ -13,7 +13,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-refs-proper-name/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-proper-name-pg',
   templateUrl: './proper-name-pg.component.html',
   styleUrls: ['./proper-name-pg.component.css'],
@@ -112,10 +111,10 @@ export class ProperNamePgComponent implements OnInit {
       // { id: 'country*', value: 'country' },
       // { id: 'region*', value: 'region' },
       // { id: '_order', value: 'continent country region' },
-      { id: 'p*', value: 'provincia'},
-      { id: 'c*', value: 'città'},
-      { id: 'a*', value: 'area'},
-      { id: '_order', value: 'p c a l s'},
+      { id: 'p*', value: 'provincia' },
+      { id: 'c*', value: 'città' },
+      { id: 'a*', value: 'area' },
+      { id: '_order', value: 'p c a l s' },
     ];
 
     this.initialName = {

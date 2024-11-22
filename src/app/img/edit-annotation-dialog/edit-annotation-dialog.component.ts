@@ -9,7 +9,6 @@ import { EditAnnotationComponent } from '../edit-annotation/edit-annotation.comp
  * data with the editor.
  */
 @Component({
-  standalone: true,
   selector: 'app-edit-annotation-dialog',
   templateUrl: './edit-annotation-dialog.component.html',
   styleUrls: ['./edit-annotation-dialog.component.css'],

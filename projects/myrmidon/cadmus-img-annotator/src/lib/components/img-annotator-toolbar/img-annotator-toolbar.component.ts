@@ -27,18 +27,17 @@ export interface ImgAnnotatorToolbarTool {
 }
 
 @Component({
-  standalone: true,
-  selector: 'cadmus-img-annotator-toolbar',
-  templateUrl: './img-annotator-toolbar.component.html',
-  styleUrls: ['./img-annotator-toolbar.component.css'],
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatIconModule,
-    MatTooltipModule
-],
+    selector: 'cadmus-img-annotator-toolbar',
+    templateUrl: './img-annotator-toolbar.component.html',
+    styleUrls: ['./img-annotator-toolbar.component.css'],
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatIconModule,
+        MatTooltipModule
+    ]
 })
 export class ImgAnnotatorToolbarComponent implements OnInit, OnDestroy {
   private _tools: ImgAnnotatorToolbarTool[];

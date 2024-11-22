@@ -1,4 +1,3 @@
-
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -31,7 +30,6 @@ export interface Assertion {
 }
 
 @Component({
-  standalone: true,
   selector: 'cadmus-refs-assertion',
   templateUrl: './assertion.component.html',
   styleUrls: ['./assertion.component.css'],
@@ -45,8 +43,8 @@ export interface Assertion {
     MatInputModule,
     MatSelectModule,
     CadmusCoreModule,
-    DocReferencesComponent
-],
+    DocReferencesComponent,
+  ],
 })
 export class AssertionComponent implements OnInit {
   private _updatingForm: boolean | undefined;

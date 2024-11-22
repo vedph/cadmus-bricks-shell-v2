@@ -36,7 +36,6 @@ export interface PhysicalSize {
 }
 
 @Component({
-  standalone: true,
   selector: 'cadmus-mat-physical-size',
   templateUrl: './physical-size.component.html',
   styleUrls: ['./physical-size.component.css'],

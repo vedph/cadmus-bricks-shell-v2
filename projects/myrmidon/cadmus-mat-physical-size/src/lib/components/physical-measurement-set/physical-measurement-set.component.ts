@@ -25,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { Subscription } from 'rxjs';
 
 import { ThesaurusEntry } from '@myrmidon/cadmus-core';
 import { NgToolsModule, NgToolsValidators } from '@myrmidon/ng-tools';
@@ -34,7 +35,6 @@ import {
   PhysicalDimension,
   PhysicalDimensionComponent,
 } from '../physical-dimension/physical-dimension.component';
-import { Subscription } from 'rxjs';
 
 /**
  * A physical measurement.
@@ -48,7 +48,6 @@ export interface PhysicalMeasurement extends PhysicalDimension {
  */
 @Component({
   selector: 'cadmus-physical-measurement-set',
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,
@@ -64,7 +63,6 @@ export interface PhysicalMeasurement extends PhysicalDimension {
     MatTooltipModule,
     // local
     PhysicalDimensionComponent,
-    PhysicalSizePipe,
     NgToolsModule,
   ],
   templateUrl: './physical-measurement-set.component.html',

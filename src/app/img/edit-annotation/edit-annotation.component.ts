@@ -15,7 +15,6 @@ import {
   Validators,
 } from '@angular/forms';
 
-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -24,7 +23,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { ListAnnotation } from '../../../../projects/myrmidon/cadmus-img-annotator/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-edit-annotation',
   templateUrl: './edit-annotation.component.html',
   styleUrls: ['./edit-annotation.component.css'],
@@ -34,8 +32,8 @@ import { ListAnnotation } from '../../../../projects/myrmidon/cadmus-img-annotat
     MatButtonModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule
-],
+    MatInputModule,
+  ],
 })
 export class EditAnnotationComponent {
   private _annotation?: ListAnnotation<any>;

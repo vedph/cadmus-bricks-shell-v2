@@ -56,28 +56,27 @@ interface GalleryImgAnnotatorData {
  * changed.
  */
 @Component({
-  standalone: true,
-  selector: 'cadmus-gallery-img-annotator',
-  templateUrl: './gallery-img-annotator.component.html',
-  styleUrls: ['./gallery-img-annotator.component.css'],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatSelectModule,
-    MatTooltipModule,
-    NgToolsModule,
-    CustomActionBarComponent,
-    ImgAnnotatorDirective
-  ]
+    selector: 'cadmus-gallery-img-annotator',
+    templateUrl: './gallery-img-annotator.component.html',
+    styleUrls: ['./gallery-img-annotator.component.css'],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatPaginatorModule,
+        MatProgressBarModule,
+        MatSelectModule,
+        MatTooltipModule,
+        NgToolsModule,
+        CustomActionBarComponent,
+        ImgAnnotatorDirective
+    ]
 })
 export class GalleryImgAnnotatorComponent implements OnInit, OnDestroy {
   private _frozen?: boolean;

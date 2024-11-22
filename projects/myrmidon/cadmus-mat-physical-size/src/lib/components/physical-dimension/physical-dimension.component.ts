@@ -1,4 +1,3 @@
-
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -29,7 +28,6 @@ export interface PhysicalDimension {
 }
 
 @Component({
-  standalone: true,
   selector: 'cadmus-physical-dimension',
   templateUrl: './physical-dimension.component.html',
   styleUrls: ['./physical-dimension.component.css'],
@@ -42,8 +40,8 @@ export interface PhysicalDimension {
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule
-]
+    MatTooltipModule,
+  ],
 })
 export class PhysicalDimensionComponent implements OnInit {
   private _disabled?: boolean;

@@ -62,7 +62,6 @@ export interface MyAnnotationPayload {
  * Sample gallery.
  */
 @Component({
-  standalone: true,
   selector: 'app-my-gallery-image-annotator',
   templateUrl: './my-gallery-image-annotator.component.html',
   styleUrls: ['./my-gallery-image-annotator.component.css'],
@@ -78,8 +77,8 @@ export interface MyAnnotationPayload {
     ImgAnnotatorDirective,
     ImgAnnotatorToolbarComponent,
     GalleryListComponent,
-    MyImgAnnotationListComponent
-],
+    MyImgAnnotationListComponent,
+  ],
 })
 export class MyGalleryImageAnnotatorComponent implements OnInit, OnDestroy {
   private _sub?: Subscription;

@@ -42,7 +42,6 @@ export interface EmojiImeComponentData {
 
 @Component({
   selector: 'cadmus-emoji-ime',
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

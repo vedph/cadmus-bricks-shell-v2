@@ -237,6 +237,9 @@ Then, the code for each library has been imported except for their module, and e
 
 ## History
 
+### 6.0.0
+
+- 2024-11-22: ⚠️ upgraded to Angular 19.
 - 2024-11-21: better UI and pipe for proper name.
 - 2024-09-27: updated Angular and packages.
 - 2024-07-29:

@@ -11,7 +11,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-refs-doc-references/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-doc-references-pg',
   templateUrl: './doc-references-pg.component.html',
   styleUrls: ['./doc-references-pg.component.css'],

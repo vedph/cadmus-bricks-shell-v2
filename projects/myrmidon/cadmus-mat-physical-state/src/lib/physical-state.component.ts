@@ -46,7 +46,6 @@ export interface PhysicalState {
 
 @Component({
   selector: 'cadmus-mat-physical-state',
-  standalone: true,
   imports: [
     CommonModule,
     ReactiveFormsModule,

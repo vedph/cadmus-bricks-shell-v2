@@ -24,18 +24,17 @@ import {
 } from '../cod-location-parser';
 
 @Component({
-  standalone: true,
-  selector: 'cadmus-cod-location',
-  templateUrl: './cod-location.component.html',
-  styleUrls: ['./cod-location.component.css'],
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    NgToolsModule
-]
+    selector: 'cadmus-cod-location',
+    templateUrl: './cod-location.component.html',
+    styleUrls: ['./cod-location.component.css'],
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        NgToolsModule
+    ]
 })
 export class CodLocationComponent implements OnInit {
   private _initPending: boolean | undefined;

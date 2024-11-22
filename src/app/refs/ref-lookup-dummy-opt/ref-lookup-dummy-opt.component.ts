@@ -1,4 +1,3 @@
-
 import { Component, Inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -16,7 +15,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { RefLookupOptionsComponent } from '../../../../projects/myrmidon/cadmus-refs-lookup/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-ref-lookup-dummy-opt',
   templateUrl: './ref-lookup-dummy-opt.component.html',
   styleUrls: ['./ref-lookup-dummy-opt.component.css'],
@@ -25,8 +23,8 @@ import { RefLookupOptionsComponent } from '../../../../projects/myrmidon/cadmus-
     ReactiveFormsModule,
     MatFormFieldModule,
     MatIconModule,
-    MatSelectModule
-],
+    MatSelectModule,
+  ],
 })
 export class RefLookupDummyOptComponent implements OnInit {
   public letter: FormControl<string>;

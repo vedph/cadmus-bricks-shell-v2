@@ -11,7 +11,6 @@ import { MatCardModule } from '@angular/material/card';
 import { AssertedChronotopesPipe } from '../../../../projects/myrmidon/cadmus-refs-asserted-chronotope/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-asserted-chronotope-pg',
   templateUrl: './asserted-chronotope-pg.component.html',
   styleUrls: ['./asserted-chronotope-pg.component.css'],

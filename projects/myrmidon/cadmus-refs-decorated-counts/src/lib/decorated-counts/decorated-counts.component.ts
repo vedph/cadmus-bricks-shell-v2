@@ -1,4 +1,3 @@
-
 import {
   Component,
   EventEmitter,
@@ -39,7 +38,6 @@ export interface DecoratedCount {
 }
 
 @Component({
-  standalone: true,
   selector: 'cadmus-refs-decorated-counts',
   templateUrl: './decorated-counts.component.html',
   styleUrls: ['./decorated-counts.component.css'],
@@ -51,8 +49,8 @@ export interface DecoratedCount {
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatSelectModule
-],
+    MatSelectModule,
+  ],
 })
 export class DecoratedCountsComponent implements OnInit, OnDestroy {
   private _counts: DecoratedCount[] | undefined;

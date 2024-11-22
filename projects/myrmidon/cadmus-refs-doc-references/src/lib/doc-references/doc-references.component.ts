@@ -1,4 +1,3 @@
-
 import {
   AfterViewInit,
   Component,
@@ -52,7 +51,6 @@ export interface DocReference {
  * emits changes a few milliseconds after they happen.
  */
 @Component({
-  standalone: true,
   selector: 'cadmus-refs-doc-references',
   templateUrl: './doc-references.component.html',
   styleUrls: ['./doc-references.component.css'],
@@ -64,8 +62,8 @@ export interface DocReference {
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    CadmusCoreModule
-],
+    CadmusCoreModule,
+  ],
 })
 export class DocReferencesComponent implements AfterViewInit, OnDestroy {
   private _references: DocReference[];

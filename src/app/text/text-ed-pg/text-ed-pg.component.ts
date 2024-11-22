@@ -40,7 +40,6 @@ import {
 
 @Component({
   selector: 'app-text-ed-pg',
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,
@@ -54,7 +53,6 @@ import {
     MatSelectModule,
     MatTabsModule,
     NgeMonacoModule,
-    EmojiImeComponent,
   ],
   providers: [
     CadmusTextEdService,

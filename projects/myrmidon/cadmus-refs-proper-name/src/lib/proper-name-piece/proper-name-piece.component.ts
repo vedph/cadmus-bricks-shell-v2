@@ -22,7 +22,6 @@ import {
   Subscription,
 } from 'rxjs';
 
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
@@ -41,7 +40,6 @@ import { ProperNamePiece, TypeThesaurusEntry } from '../models';
  * value or a thesaurus entity.
  */
 @Component({
-  standalone: true,
   selector: 'cadmus-refs-proper-name-piece',
   templateUrl: './proper-name-piece.component.html',
   styleUrls: ['./proper-name-piece.component.css'],
@@ -54,8 +52,8 @@ import { ProperNamePiece, TypeThesaurusEntry } from '../models';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    NgToolsModule
-]
+    NgToolsModule,
+  ],
 })
 export class ProperNamePieceComponent implements OnInit, OnDestroy {
   // input sources to be combined

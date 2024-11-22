@@ -22,7 +22,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MyGalleryImageAnnotatorComponent } from '../my-gallery-image-annotator/my-gallery-image-annotator.component';
 
 @Component({
-  standalone: true,
   selector: 'app-img-gallery-pg',
   templateUrl: './img-gallery-pg.component.html',
   styleUrls: ['./img-gallery-pg.component.css'],

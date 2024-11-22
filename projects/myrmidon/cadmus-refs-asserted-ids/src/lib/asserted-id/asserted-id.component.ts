@@ -1,4 +1,3 @@
-
 import {
   Component,
   EventEmitter,
@@ -39,7 +38,6 @@ export interface AssertedId {
 }
 
 @Component({
-  standalone: true,
   selector: 'cadmus-refs-asserted-id',
   templateUrl: './asserted-id.component.html',
   styleUrls: ['./asserted-id.component.css'],
@@ -53,8 +51,8 @@ export interface AssertedId {
     MatInputModule,
     MatSelectModule,
     AssertionComponent,
-    ScopedPinLookupComponent
-],
+    ScopedPinLookupComponent,
+  ],
 })
 export class AssertedIdComponent implements OnInit {
   private _updatingForm: boolean | undefined;

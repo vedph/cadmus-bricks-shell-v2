@@ -38,7 +38,6 @@ import {
   AnnotationEvent,
   GalleryImage,
   ImgAnnotationList,
-  ImgAnnotatorDirective,
   ImgAnnotatorToolbarComponent,
   ListAnnotation,
 } from '../../../../projects/myrmidon/cadmus-img-annotator/src/public-api';
@@ -55,7 +54,6 @@ import { SdImgAnnotatorDirective } from '../../../../projects/myrmidon/cadmus-sd
 
 @Component({
   selector: 'app-my-gallery-sd-image-annotator',
-  standalone: true,
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -68,8 +66,8 @@ import { SdImgAnnotatorDirective } from '../../../../projects/myrmidon/cadmus-sd
     SdImgAnnotatorDirective,
     ImgAnnotatorToolbarComponent,
     GalleryListComponent,
-    MyImgAnnotationListComponent
-],
+    MyImgAnnotationListComponent,
+  ],
   templateUrl: './my-gallery-sd-image-annotator.component.html',
   styleUrl: './my-gallery-sd-image-annotator.component.scss',
 })

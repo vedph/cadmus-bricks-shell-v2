@@ -22,7 +22,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-ui-flags-picker/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-flags-picker-pg',
   templateUrl: './flags-picker-pg.component.html',
   styleUrls: ['./flags-picker-pg.component.css'],

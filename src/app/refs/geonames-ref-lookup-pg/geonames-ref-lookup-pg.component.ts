@@ -33,7 +33,6 @@ interface Pair<T> {
 
 @Component({
   selector: 'app-geonames-ref-lookup-pg',
-  standalone: true,
   imports: [
     CommonModule,
     ReactiveFormsModule,

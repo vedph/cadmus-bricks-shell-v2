@@ -21,7 +21,6 @@ export interface TextBlockEventArgs {
 }
 
 @Component({
-  standalone: true,
   selector: 'cadmus-text-block-view',
   templateUrl: './text-block-view.component.html',
   styleUrls: ['./text-block-view.component.css'],

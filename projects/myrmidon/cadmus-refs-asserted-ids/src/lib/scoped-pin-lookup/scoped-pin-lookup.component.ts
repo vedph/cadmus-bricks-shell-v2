@@ -1,4 +1,3 @@
-
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -52,7 +51,6 @@ interface LookupInfo {
  * some EID by variously assembling these components.
  */
 @Component({
-  standalone: true,
   selector: 'cadmus-scoped-pin-lookup',
   templateUrl: './scoped-pin-lookup.component.html',
   styleUrls: ['./scoped-pin-lookup.component.css'],
@@ -65,8 +63,8 @@ interface LookupInfo {
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    RefLookupComponent
-],
+    RefLookupComponent,
+  ],
 })
 export class ScopedPinLookupComponent {
   // lookup

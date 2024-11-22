@@ -29,25 +29,24 @@ import { GalleryOptionsService } from '../../services/gallery-options.service';
 import { GalleryFilterComponent } from '../gallery-filter/gallery-filter.component';
 
 @Component({
-  standalone: true,
-  selector: 'cadmus-gallery-list',
-  templateUrl: './gallery-list.component.html',
-  styleUrls: ['./gallery-list.component.css'],
-  imports: [
-    CommonModule,
-    NgOptimizedImage,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatIconModule,
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatSelectModule,
-    MatTooltipModule,
-    GalleryFilterComponent,
-  ],
+    selector: 'cadmus-gallery-list',
+    templateUrl: './gallery-list.component.html',
+    styleUrls: ['./gallery-list.component.css'],
+    imports: [
+        CommonModule,
+        NgOptimizedImage,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatIconModule,
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatPaginatorModule,
+        MatProgressBarModule,
+        MatSelectModule,
+        MatTooltipModule,
+        GalleryFilterComponent,
+    ]
 })
 export class GalleryListComponent implements OnDestroy {
   private _sub?: Subscription;

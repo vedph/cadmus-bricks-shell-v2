@@ -11,7 +11,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-refs-decorated-counts/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-decorated-counts-pg',
   templateUrl: './decorated-counts-pg.component.html',
   styleUrls: ['./decorated-counts-pg.component.css'],

@@ -35,7 +35,6 @@ export interface BarCustomActionRequest {
  * Each custom action is defined by an object implementing BarCustomAction.
  */
 @Component({
-  standalone: true,
   selector: 'cadmus-custom-action-bar',
   templateUrl: './custom-action-bar.component.html',
   styleUrls: ['./custom-action-bar.component.css'],
@@ -47,7 +46,7 @@ export interface BarCustomActionRequest {
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-  ]
+  ],
 })
 export class CustomActionBarComponent implements OnInit {
   /**

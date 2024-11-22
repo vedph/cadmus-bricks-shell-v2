@@ -62,7 +62,6 @@ export const ASSERTED_COMPOSITE_ID_CONFIGS_KEY =
  * composite ID, which can be an external ID or a lookup ID.
  */
 @Component({
-  standalone: true,
   selector: 'cadmus-refs-asserted-composite-id',
   templateUrl: './asserted-composite-id.component.html',
   styleUrls: ['./asserted-composite-id.component.css'],

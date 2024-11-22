@@ -1,4 +1,3 @@
-
 import {
   Component,
   EventEmitter,
@@ -48,7 +47,6 @@ export interface RankedExternalId extends ExternalId {
 }
 
 @Component({
-  standalone: true,
   selector: 'cadmus-refs-external-ids',
   templateUrl: './external-ids.component.html',
   styleUrls: ['./external-ids.component.css'],
@@ -62,8 +60,8 @@ export interface RankedExternalId extends ExternalId {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    AssertionComponent
-],
+    AssertionComponent,
+  ],
 })
 export class ExternalIdsComponent implements OnDestroy {
   private _ids: ExternalId[];

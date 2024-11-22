@@ -61,7 +61,6 @@ export interface RefLookupService {
  * more button for more complex lookup.
  */
 @Component({
-  standalone: true,
   selector: 'cadmus-ref-lookup',
   templateUrl: './ref-lookup.component.html',
   styleUrls: ['./ref-lookup.component.css'],
@@ -76,8 +75,8 @@ export interface RefLookupService {
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatSelectModule
-  ]
+    MatSelectModule,
+  ],
 })
 export class RefLookupComponent implements OnInit {
   private _service: RefLookupService | undefined;

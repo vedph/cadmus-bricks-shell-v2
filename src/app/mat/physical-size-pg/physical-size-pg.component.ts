@@ -20,7 +20,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-mat-physical-size/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-physical-size-pg',
   templateUrl: './physical-size-pg.component.html',
   styleUrls: ['./physical-size-pg.component.css'],
@@ -51,7 +50,7 @@ export class PhysicalSizePgComponent implements OnInit {
       h: {
         value: 29.7,
         unit: 'cm',
-        tag: 'incomplete'
+        tag: 'incomplete',
       },
     };
     this.unitEntries = [

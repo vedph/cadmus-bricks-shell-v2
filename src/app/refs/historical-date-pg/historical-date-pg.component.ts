@@ -12,7 +12,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-refs-historical-date/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-historical-date-pg',
   templateUrl: './historical-date-pg.component.html',
   styleUrls: ['./historical-date-pg.component.css'],

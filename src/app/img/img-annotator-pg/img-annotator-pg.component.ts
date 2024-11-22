@@ -1,4 +1,3 @@
-
 import { Component, Inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -27,7 +26,6 @@ import { MyImgAnnotationListComponent } from '../img-annotation-list/my-img-anno
  * the annotations list, and the annotation editor component.
  */
 @Component({
-  standalone: true,
   selector: 'app-img-annotator-pg',
   templateUrl: './img-annotator-pg.component.html',
   styleUrls: ['./img-annotator-pg.component.css'],
@@ -37,8 +35,8 @@ import { MyImgAnnotationListComponent } from '../img-annotation-list/my-img-anno
     MatCardModule,
     ImgAnnotatorDirective,
     ImgAnnotatorToolbarComponent,
-    MyImgAnnotationListComponent
-],
+    MyImgAnnotationListComponent,
+  ],
 })
 export class ImgAnnotatorPgComponent {
   // the list core used by the annotations list child component

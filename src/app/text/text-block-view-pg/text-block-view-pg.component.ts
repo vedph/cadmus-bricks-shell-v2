@@ -8,7 +8,6 @@ import {
   Validators,
 } from '@angular/forms';
 
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,7 +22,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-text-block-view/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-text-block-view-pg',
   templateUrl: './text-block-view-pg.component.html',
   styleUrls: ['./text-block-view-pg.component.css'],
@@ -38,8 +36,8 @@ import {
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    TextBlockViewComponent
-],
+    TextBlockViewComponent,
+  ],
 })
 export class TextBlockViewPgComponent implements OnInit {
   public text: FormControl<string | null>;

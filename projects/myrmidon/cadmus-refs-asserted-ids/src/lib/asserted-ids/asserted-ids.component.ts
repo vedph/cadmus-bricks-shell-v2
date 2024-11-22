@@ -1,4 +1,3 @@
-
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -27,7 +26,6 @@ import {
  * Asserted IDs editor.
  */
 @Component({
-  standalone: true,
   selector: 'cadmus-refs-asserted-ids',
   templateUrl: './asserted-ids.component.html',
   styleUrls: ['./asserted-ids.component.css'],
@@ -39,8 +37,8 @@ import {
     MatExpansionModule,
     MatIconModule,
     MatTooltipModule,
-    AssertedIdComponent
-],
+    AssertedIdComponent,
+  ],
 })
 export class AssertedIdsComponent {
   private _ids: AssertedId[];

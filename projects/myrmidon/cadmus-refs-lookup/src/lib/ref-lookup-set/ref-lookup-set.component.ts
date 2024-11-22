@@ -140,7 +140,6 @@ export interface RefLookupSetEvent {
 }
 
 @Component({
-  standalone: true,
   selector: 'cadmus-ref-lookup-set',
   templateUrl: './ref-lookup-set.component.html',
   styleUrls: ['./ref-lookup-set.component.css'],

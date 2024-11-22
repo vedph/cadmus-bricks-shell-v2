@@ -10,7 +10,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-refs-decorated-ids/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-decorated-ids-pg',
   templateUrl: './decorated-ids-pg.component.html',
   styleUrls: ['./decorated-ids-pg.component.css'],

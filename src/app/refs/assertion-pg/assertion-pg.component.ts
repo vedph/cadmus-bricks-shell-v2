@@ -11,7 +11,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-refs-assertion/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-assertion-pg',
   templateUrl: './assertion-pg.component.html',
   styleUrls: ['./assertion-pg.component.css'],

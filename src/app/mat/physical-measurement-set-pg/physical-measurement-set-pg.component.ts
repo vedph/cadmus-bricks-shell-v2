@@ -15,7 +15,6 @@ import {
 
 @Component({
   selector: 'app-physical-measurement-set-pg',
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

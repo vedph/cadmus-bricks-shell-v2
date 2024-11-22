@@ -39,7 +39,6 @@ export interface LinkEditorComponentData {
 
 @Component({
   selector: 'cadmus-link-editor',
-  standalone: true,
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -50,8 +49,8 @@ export interface LinkEditorComponentData {
     MatButtonModule,
     MatDialogModule,
     MatSelectModule,
-    AssertedCompositeIdComponent
-],
+    AssertedCompositeIdComponent,
+  ],
   templateUrl: './link-editor.component.html',
   styleUrl: './link-editor.component.css',
 })

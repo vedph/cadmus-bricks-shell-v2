@@ -30,7 +30,12 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "allowedCommonJsDependencies": ["openseadragon"]
+            "allowedCommonJsDependencies": [
+              "openseadragon",
+              "@recogito/annotorious",
+              "@recogito/annotorious-selector-pack",
+              "@recogito/annotorious-openseadragon"
+            ]
           },
           "configurations": {
             "production": {
@@ -960,10 +965,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/myrmidon/cadmus-refs-whg-lookup/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
+            "polyfills": ["zone.js", "zone.js/testing"]
           }
         }
       }
@@ -993,10 +995,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/myrmidon/cadmus-mat-physical-grid/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
+            "polyfills": ["zone.js", "zone.js/testing"]
           }
         }
       }
@@ -1026,10 +1025,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/myrmidon/cadmus-mat-physical-state/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
+            "polyfills": ["zone.js", "zone.js/testing"]
           }
         }
       }

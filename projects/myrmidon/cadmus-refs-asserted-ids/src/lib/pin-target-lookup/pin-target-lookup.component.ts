@@ -101,7 +101,6 @@ export interface PinTarget {
  * some EID by variously assembling these components.
  */
 @Component({
-  standalone: true,
   selector: 'cadmus-pin-target-lookup',
   templateUrl: './pin-target-lookup.component.html',
   styleUrls: ['./pin-target-lookup.component.css'],

@@ -10,7 +10,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-img-annotator/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-my-img-annotation-list',
   templateUrl: './my-img-annotation-list.component.html',
   styleUrls: ['./my-img-annotation-list.component.css'],

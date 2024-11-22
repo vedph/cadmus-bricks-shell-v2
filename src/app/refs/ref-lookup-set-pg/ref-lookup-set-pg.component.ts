@@ -13,7 +13,6 @@ import {
 import { ViafRefLookupService } from '../../../../projects/myrmidon/cadmus-refs-viaf-lookup/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-ref-lookup-set-pg',
   templateUrl: './ref-lookup-set-pg.component.html',
   styleUrls: ['./ref-lookup-set-pg.component.css'],

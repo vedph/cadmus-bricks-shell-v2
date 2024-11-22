@@ -1,6 +1,6 @@
 {
   "name": "@myrmidon/cadmus-refs-historical-date",
-  "version": "5.1.2",
+  "version": "6.0.0",
   "description": "Cadmus - historical date component.",
   "keywords": [
     "Cadmus",
@@ -15,8 +15,8 @@
     "name": "Daniele Fusi"
   },
   "peerDependencies": {
-    "@angular/common": "^18.0.0",
-    "@angular/core": "^18.0.0"
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

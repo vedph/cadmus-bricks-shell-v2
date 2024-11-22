@@ -14,7 +14,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-refs-chronotope/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-chronotope-pg',
   templateUrl: './chronotope-pg.component.html',
   styleUrls: ['./chronotope-pg.component.css'],

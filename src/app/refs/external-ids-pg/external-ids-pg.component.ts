@@ -17,7 +17,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-refs-external-ids/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-external-ids-pg',
   templateUrl: './external-ids-pg.component.html',
   styleUrls: ['./external-ids-pg.component.css'],

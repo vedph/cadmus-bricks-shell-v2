@@ -32,7 +32,6 @@ import { DatationComponent } from '../datation/datation.component';
  * Historical date editor.
  */
 @Component({
-  standalone: true,
   selector: 'cadmus-refs-historical-date',
   templateUrl: './historical-date.component.html',
   styleUrls: ['./historical-date.component.css'],
@@ -48,8 +47,8 @@ import { DatationComponent } from '../datation/datation.component';
     MatIconModule,
     MatInputModule,
     MatSlideToggleModule,
-    DatationComponent
-  ]
+    DatationComponent,
+  ],
 })
 export class HistoricalDateComponent implements OnInit {
   private _sub?: Subscription;

@@ -23,7 +23,6 @@ import {
 import { RefLookupComponent } from '../../../../projects/myrmidon/cadmus-refs-lookup/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-viaf-ref-lookup-pg',
   templateUrl: './viaf-ref-lookup-pg.component.html',
   styleUrls: ['./viaf-ref-lookup-pg.component.css'],

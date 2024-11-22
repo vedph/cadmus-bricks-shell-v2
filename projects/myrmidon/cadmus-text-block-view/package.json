@@ -1,6 +1,6 @@
 {
   "name": "@myrmidon/cadmus-text-block-view",
-  "version": "5.1.0",
+  "version": "6.0.0",
   "description": "Cadmus - text blocks view.",
   "keywords": [
     "Cadmus",
@@ -15,9 +15,9 @@
     "name": "Daniele Fusi"
   },
   "peerDependencies": {
-    "@angular/common": "^18.0.0",
-    "@angular/core": "^18.0.0",
-    "@myrmidon/ng-mat-tools": "^3.0.0"
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@myrmidon/ng-mat-tools": "^4.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

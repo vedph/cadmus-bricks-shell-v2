@@ -21,7 +21,6 @@ import {
 
 @Component({
   selector: 'app-physical-grid-pg',
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

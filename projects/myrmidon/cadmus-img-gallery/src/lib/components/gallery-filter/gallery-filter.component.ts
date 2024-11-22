@@ -28,20 +28,19 @@ interface FilterMetadatum {
 }
 
 @Component({
-  standalone: true,
-  selector: 'cadmus-gallery-filter',
-  templateUrl: './gallery-filter.component.html',
-  styleUrls: ['./gallery-filter.component.css'],
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatSelectModule,
-    MatTooltipModule
-]
+    selector: 'cadmus-gallery-filter',
+    templateUrl: './gallery-filter.component.html',
+    styleUrls: ['./gallery-filter.component.css'],
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatSelectModule,
+        MatTooltipModule
+    ]
 })
 export class GalleryFilterComponent {
   private _filter?: GalleryFilter;

@@ -192,7 +192,6 @@ export class WebColorLookup implements RefLookupService {
 }
 
 @Component({
-  standalone: true,
   selector: 'app-ref-lookup-pg',
   templateUrl: './ref-lookup-pg.component.html',
   styleUrls: ['./ref-lookup-pg.component.css'],

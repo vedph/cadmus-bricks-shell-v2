@@ -11,7 +11,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-refs-asserted-chronotope/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-asserted-chronotope-set-pg',
   templateUrl: './asserted-chronotope-set-pg.component.html',
   styleUrls: ['./asserted-chronotope-set-pg.component.css'],

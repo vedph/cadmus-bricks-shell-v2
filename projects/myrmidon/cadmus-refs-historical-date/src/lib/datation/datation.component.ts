@@ -1,4 +1,3 @@
-
 import {
   Component,
   EventEmitter,
@@ -28,7 +27,6 @@ import { Datation, DatationModel } from './datation';
  * Editor for a single point in a historical date.
  */
 @Component({
-  standalone: true,
   selector: 'cadmus-refs-datation',
   templateUrl: './datation.component.html',
   styleUrls: ['./datation.component.css'],
@@ -37,8 +35,8 @@ import { Datation, DatationModel } from './datation';
     ReactiveFormsModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatInputModule
-]
+    MatInputModule,
+  ],
 })
 export class DatationComponent implements OnInit, OnDestroy {
   private _sub?: Subscription;

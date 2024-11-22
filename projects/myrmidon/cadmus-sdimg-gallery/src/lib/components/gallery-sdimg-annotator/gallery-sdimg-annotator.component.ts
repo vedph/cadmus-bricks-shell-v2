@@ -6,7 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
@@ -32,7 +32,6 @@ interface GalleryImgAnnotatorData {
 }
 
 @Component({
-  standalone: true,
   selector: 'cadmus-gallery-sdimg-annotator',
   templateUrl: './gallery-sdimg-annotator.component.html',
   styleUrls: ['./gallery-sdimg-annotator.component.css'],
@@ -40,7 +39,6 @@ interface GalleryImgAnnotatorData {
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NgOptimizedImage,
     // material
     MatButtonModule,
     MatButtonToggleModule,

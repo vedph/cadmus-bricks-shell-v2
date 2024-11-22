@@ -1,4 +1,3 @@
-
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -27,7 +26,6 @@ import {
 } from '../asserted-chronotope/asserted-chronotope.component';
 
 @Component({
-  standalone: true,
   selector: 'cadmus-asserted-chronotope-set',
   templateUrl: './asserted-chronotope-set.component.html',
   styleUrls: ['./asserted-chronotope-set.component.css'],
@@ -41,8 +39,8 @@ import {
     MatIconModule,
     MatInputModule,
     AssertedChronotopeComponent,
-    HistoricalDatePipe
-],
+    HistoricalDatePipe,
+  ],
 })
 export class AssertedChronotopeSetComponent implements OnInit {
   private _chronotopes: AssertedChronotope[] | undefined;

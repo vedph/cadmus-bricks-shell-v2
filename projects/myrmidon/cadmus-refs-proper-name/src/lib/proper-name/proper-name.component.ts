@@ -50,7 +50,6 @@ export interface AssertedProperName extends ProperName {
  *   a single entry of this type to the pieces.
  */
 @Component({
-  standalone: true,
   selector: 'cadmus-refs-proper-name',
   templateUrl: './proper-name.component.html',
   styleUrls: ['./proper-name.component.css'],

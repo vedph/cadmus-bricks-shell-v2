@@ -18,7 +18,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-cod-location/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-cod-location-pg',
   templateUrl: './cod-location-pg.component.html',
   styleUrls: ['./cod-location-pg.component.css'],
@@ -29,7 +28,7 @@ import {
     MatCardModule,
     MatCheckboxModule,
     CodLocationComponent,
-    CodLocationRangePipe
+    CodLocationRangePipe,
   ],
 })
 export class CodLocationPgComponent implements OnInit {

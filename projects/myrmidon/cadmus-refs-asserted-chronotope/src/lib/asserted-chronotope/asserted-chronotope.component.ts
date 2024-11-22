@@ -1,4 +1,3 @@
-
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -44,7 +43,6 @@ export interface AssertedChronotope {
 }
 
 @Component({
-  standalone: true,
   selector: 'cadmus-refs-asserted-chronotope',
   templateUrl: './asserted-chronotope.component.html',
   styleUrls: ['./asserted-chronotope.component.css'],
@@ -61,8 +59,8 @@ export interface AssertedChronotope {
     NgToolsModule,
     NgMatToolsModule,
     AssertionComponent,
-    HistoricalDateComponent
-],
+    HistoricalDateComponent,
+  ],
 })
 export class AssertedChronotopeComponent implements OnInit {
   private _updatingForm: boolean | undefined;

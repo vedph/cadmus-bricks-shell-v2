@@ -16,7 +16,6 @@ import { ThesaurusEntry } from '@myrmidon/cadmus-core';
 
 @Component({
   selector: 'app-physical-state-pg',
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

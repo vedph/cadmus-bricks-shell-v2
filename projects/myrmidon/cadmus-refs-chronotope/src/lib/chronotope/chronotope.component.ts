@@ -1,4 +1,3 @@
-
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -20,7 +19,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { ThesaurusEntry } from '@myrmidon/cadmus-core';
-import { HistoricalDateComponent, HistoricalDateModel } from '@myrmidon/cadmus-refs-historical-date';
+import {
+  HistoricalDateComponent,
+  HistoricalDateModel,
+} from '@myrmidon/cadmus-refs-historical-date';
 
 /**
  * Chronotopic coordinates: a place with a date.
@@ -32,7 +34,6 @@ export interface Chronotope {
 }
 
 @Component({
-  standalone: true,
   selector: 'cadmus-refs-chronotope',
   templateUrl: './chronotope.component.html',
   styleUrls: ['./chronotope.component.css'],
@@ -47,8 +48,8 @@ export interface Chronotope {
     MatInputModule,
     MatSelectModule,
     MatSlideToggleModule,
-    HistoricalDateComponent
-]
+    HistoricalDateComponent,
+  ],
 })
 export class ChronotopeComponent implements OnInit {
   private _updatingForm: boolean | undefined;

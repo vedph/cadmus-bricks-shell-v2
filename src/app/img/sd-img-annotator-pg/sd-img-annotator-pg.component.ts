@@ -1,4 +1,3 @@
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component, Inject } from '@angular/core';
 
@@ -25,7 +24,6 @@ import { MyImgAnnotationListComponent } from '../img-annotation-list/my-img-anno
 import { EditAnnotationDialogComponent } from '../edit-annotation-dialog/edit-annotation-dialog.component';
 
 @Component({
-  standalone: true,
   selector: 'app-sd-img-annotator-pg',
   templateUrl: './sd-img-annotator-pg.component.html',
   styleUrls: ['./sd-img-annotator-pg.component.css'],
@@ -37,8 +35,8 @@ import { EditAnnotationDialogComponent } from '../edit-annotation-dialog/edit-an
     MatIconModule,
     SdImgAnnotatorDirective,
     ImgAnnotatorToolbarComponent,
-    MyImgAnnotationListComponent
-],
+    MyImgAnnotationListComponent,
+  ],
 })
 export class SdImgAnnotatorPgComponent {
   // the list core used by the annotations list child component

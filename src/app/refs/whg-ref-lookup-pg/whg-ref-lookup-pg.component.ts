@@ -20,7 +20,6 @@ import {
 
 @Component({
   selector: 'app-whg-ref-lookup-pg',
-  standalone: true,
   imports: [
     CommonModule,
     ReactiveFormsModule,

@@ -9,7 +9,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-ui-note-set/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-note-set-pg',
   templateUrl: './note-set-pg.component.html',
   styleUrls: ['./note-set-pg.component.css'],

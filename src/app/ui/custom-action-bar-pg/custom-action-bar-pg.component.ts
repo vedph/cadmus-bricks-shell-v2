@@ -11,7 +11,6 @@ import {
 } from '../../../../projects/myrmidon/cadmus-ui-custom-action-bar/src/public-api';
 
 @Component({
-  standalone: true,
   selector: 'app-custom-action-bar-pg',
   templateUrl: './custom-action-bar-pg.component.html',
   styleUrls: ['./custom-action-bar-pg.component.css'],
