@@ -8,7 +8,7 @@ import {
   ItemInfo,
   Part,
 } from '@myrmidon/cadmus-core';
-import { ErrorWrapper, DataPage } from '@myrmidon/ng-tools';
+import { ErrorWrapper, DataPage } from '@myrmidon/ngx-tools';
 
 const EIDS = [
   'alpha',

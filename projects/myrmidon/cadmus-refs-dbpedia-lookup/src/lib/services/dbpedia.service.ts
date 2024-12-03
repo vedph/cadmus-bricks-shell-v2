@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable, catchError, retry } from 'rxjs';
 
-import { ErrorService } from '@myrmidon/ng-tools';
+import { ErrorService } from '@myrmidon/ngx-tools';
 
 /**
  * Options for DBPedia keyword lookup.

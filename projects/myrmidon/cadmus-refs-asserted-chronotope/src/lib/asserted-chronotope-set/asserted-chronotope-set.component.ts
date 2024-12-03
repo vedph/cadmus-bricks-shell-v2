@@ -16,8 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
 import { ThesaurusEntry } from '@myrmidon/cadmus-core';
-import { NgToolsValidators } from '@myrmidon/ng-tools';
-import { DialogService } from '@myrmidon/ng-mat-tools';
+import { NgxToolsValidators } from '@myrmidon/ngx-tools';
+import { DialogService } from '@myrmidon/ngx-mat-tools';
 import { HistoricalDatePipe } from '@myrmidon/cadmus-refs-historical-date';
 
 import {
@@ -86,7 +86,7 @@ export class AssertedChronotopeSetComponent implements OnInit {
     this.chronotopesChange = new EventEmitter<AssertedChronotope[]>();
     // form
     this.entries = formBuilder.control([], {
-      validators: NgToolsValidators.strictMinLengthValidator(1),
+      validators: NgxToolsValidators.strictMinLengthValidator(1),
       nonNullable: true,
     });
     this.form = formBuilder.group({

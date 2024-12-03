@@ -21,7 +21,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { ThesaurusEntry } from '@myrmidon/cadmus-core';
 import { GalleryImage } from '@myrmidon/cadmus-img-annotator';
-import { DataPage } from '@myrmidon/ng-tools';
+import { DataPage } from '@myrmidon/ngx-tools';
 
 import { GalleryListRepository } from '../../gallery-list.repository';
 import { GalleryOptions } from '../../models';

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
-import { ErrorService } from '@myrmidon/ng-tools';
+import { ErrorService } from '@myrmidon/ngx-tools';
 
 // http://viaf.org/ : suggest UI
 // http://viaf.org/viaf/search/viaf : search UI

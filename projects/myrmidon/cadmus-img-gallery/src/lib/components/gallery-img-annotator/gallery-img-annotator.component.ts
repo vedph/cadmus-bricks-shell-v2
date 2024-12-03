@@ -21,8 +21,12 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { NgToolsModule } from '@myrmidon/ng-tools';
-import { AnnotationEvent, GalleryImage, ImgAnnotatorDirective } from '@myrmidon/cadmus-img-annotator';
+import { JoinPipe } from '@myrmidon/ngx-tools';
+import {
+  AnnotationEvent,
+  GalleryImage,
+  ImgAnnotatorDirective,
+} from '@myrmidon/cadmus-img-annotator';
 import {
   BarCustomAction,
   BarCustomActionRequest,
@@ -56,27 +60,28 @@ interface GalleryImgAnnotatorData {
  * changed.
  */
 @Component({
-    selector: 'cadmus-gallery-img-annotator',
-    templateUrl: './gallery-img-annotator.component.html',
-    styleUrls: ['./gallery-img-annotator.component.css'],
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatButtonModule,
-        MatButtonToggleModule,
-        MatExpansionModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        MatPaginatorModule,
-        MatProgressBarModule,
-        MatSelectModule,
-        MatTooltipModule,
-        NgToolsModule,
-        CustomActionBarComponent,
-        ImgAnnotatorDirective
-    ]
+  selector: 'cadmus-gallery-img-annotator',
+  templateUrl: './gallery-img-annotator.component.html',
+  styleUrls: ['./gallery-img-annotator.component.css'],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatSelectModule,
+    MatTooltipModule,
+    // myrmidon
+    JoinPipe,
+    CustomActionBarComponent,
+    ImgAnnotatorDirective,
+  ],
 })
 export class GalleryImgAnnotatorComponent implements OnInit, OnDestroy {
   private _frozen?: boolean;

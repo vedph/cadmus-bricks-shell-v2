@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, retry } from 'rxjs';
 
-import { ErrorService } from '@myrmidon/ng-tools';
+import { ErrorService } from '@myrmidon/ngx-tools';
 
 /**
  * A GeoNames request.

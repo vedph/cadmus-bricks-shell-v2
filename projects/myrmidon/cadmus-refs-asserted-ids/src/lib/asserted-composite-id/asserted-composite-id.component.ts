@@ -23,7 +23,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
-import { RamStorageService } from '@myrmidon/ng-tools';
+import { RamStorageService } from '@myrmidon/ngx-tools';
 import { IndexLookupDefinitions, ThesaurusEntry } from '@myrmidon/cadmus-core';
 import { Assertion, AssertionComponent } from '@myrmidon/cadmus-refs-assertion';
 import {

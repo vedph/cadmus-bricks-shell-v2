@@ -89,7 +89,7 @@ import { NgeMonacoModule } from '@cisstech/nge/monaco';
 
 // in your imports, add:
 // NgeMonacoModule.forRoot({})
-````
+```
 
 >To quickly find all the parts using Monaco, usually you can look for `MonacoEditorModule` in code, and for `<ngx-monaco-editor` in templates.
 
@@ -201,7 +201,7 @@ import { NgeMarkdownModule } from '@cisstech/nge/markdown';
 This is derived from [Cadmus bricks shell v1](https://github.com/vedph/cadmus-bricks-shell) by recreating a workspace in Angular 17 and adding libraries to it (via `ng g library`):
 
 ```bash
-npm i @myrmidon/auth-jwt-admin @myrmidon/auth-jwt-login @myrmidon/cadmus-api @myrmidon/cadmus-core @myrmidon/ng-mat-tools @myrmidon/ng-tools @myrmidon/paged-data-browsers @recogito/annotorious @recogito/annotorious-openseadragon @recogito/annotorious-selector-pack gravatar marked monaco-editor ngx-markdown ngx-monaco-editor-v2 openseadragon
+npm i @myrmidon/auth-jwt-admin @myrmidon/auth-jwt-login @myrmidon/cadmus-api @myrmidon/cadmus-core @myrmidon/ngx-mat-tools @myrmidon/ngx-tools @myrmidon/paged-data-browsers @recogito/annotorious @recogito/annotorious-openseadragon @recogito/annotorious-selector-pack gravatar marked monaco-editor ngx-markdown ngx-monaco-editor-v2 openseadragon
 
 npm i @types/marked @types/openseadragon --save-dev
 
@@ -236,6 +236,10 @@ ng g library @myrmidon/cadmus-ui-note-set --prefix cadmus
 Then, the code for each library has been imported except for their module, and each component or directive has been refactored for standalone. Also, `@myrmidon` peer dependencies have been explicitly added to those libraries implying them.
 
 ## History
+
+### 7.0.1
+
+- 2024-12-02: ⚠️ replaced `@myrmidon/ng-tools` and `@myrmidon/ng-mat-tools` with `@myrmidon/ngx-tools` and `@myrmidon/ngx-mat-tools`. These are the standalone versions of the older libraries, so you must update your dependencies and references when upgrading.
 
 ### 6.0.1
 

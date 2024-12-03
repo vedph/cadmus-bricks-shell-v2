@@ -1,6 +1,6 @@
 {
   "name": "@myrmidon/cadmus-ui-note-set",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "Cadmus - note set component.",
   "keywords": [
     "Cadmus",
@@ -17,7 +17,7 @@
   "peerDependencies": {
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0",
-    "@myrmidon/ng-mat-tools": "^4.0.0",
+    "@myrmidon/ngx-mat-tools": "^0.0.1",
     "@cisstech/nge": "^18.0.4"
   },
   "dependencies": {

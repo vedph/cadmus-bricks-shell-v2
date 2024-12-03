@@ -7,7 +7,7 @@ import {
   GalleryOptions,
   GalleryService,
 } from '@myrmidon/cadmus-img-gallery';
-import { DataPage } from '@myrmidon/ng-tools';
+import { DataPage } from '@myrmidon/ngx-tools';
 
 import { IiifUri } from './iiif-uri';
 import { GalleryImage } from '@myrmidon/cadmus-img-annotator';

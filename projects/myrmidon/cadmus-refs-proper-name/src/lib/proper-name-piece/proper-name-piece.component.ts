@@ -28,7 +28,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { NgToolsModule } from '@myrmidon/ng-tools';
 
 import { ThesaurusEntry } from '@myrmidon/cadmus-core';
 
@@ -52,7 +51,6 @@ import { ProperNamePiece, TypeThesaurusEntry } from '../models';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    NgToolsModule,
   ],
 })
 export class ProperNamePieceComponent implements OnInit, OnDestroy {

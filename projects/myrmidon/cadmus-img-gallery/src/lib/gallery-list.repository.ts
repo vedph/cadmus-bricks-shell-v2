@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 
-import { DataPage } from '@myrmidon/ng-tools';
+import { DataPage } from '@myrmidon/ngx-tools';
 import { PagedListStore } from '@myrmidon/paged-data-browsers';
 import { GalleryImage } from '@myrmidon/cadmus-img-annotator';
 

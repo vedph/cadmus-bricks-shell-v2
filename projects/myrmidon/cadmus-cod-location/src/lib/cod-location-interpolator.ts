@@ -1,4 +1,4 @@
-import { RomanNumber } from '@myrmidon/ng-tools';
+import { RomanNumber } from '@myrmidon/ngx-tools';
 
 const ALPHA_IT = [
   'A',

@@ -21,7 +21,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { NgToolsModule } from '@myrmidon/ng-tools';
+import { JoinPipe } from '@myrmidon/ngx-tools';
 import { AnnotationEvent, GalleryImage } from '@myrmidon/cadmus-img-annotator';
 import { GalleryImageAnnotation } from '@myrmidon/cadmus-img-gallery';
 import { SdImgAnnotatorDirective } from '@myrmidon/cadmus-sdimg-annotator';
@@ -50,7 +50,7 @@ interface GalleryImgAnnotatorData {
     MatProgressBarModule,
     MatSelectModule,
     MatTooltipModule,
-    NgToolsModule,
+    JoinPipe,
     // Cadmus
     SdImgAnnotatorDirective,
   ],

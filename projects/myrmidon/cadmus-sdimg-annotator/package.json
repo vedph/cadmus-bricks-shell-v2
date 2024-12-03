@@ -1,6 +1,6 @@
 {
   "name": "@myrmidon/cadmus-sdimg-annotator",
-  "version": "6.0.1",
+  "version": "7.0.0",
   "description": "Cadmus - OSD image annotator.",
   "keywords": [
     "Cadmus",
@@ -17,7 +17,7 @@
   "peerDependencies": {
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0",
-    "@myrmidon/cadmus-img-annotator": "^6.0.0"
+    "@myrmidon/cadmus-img-annotator": "^7.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

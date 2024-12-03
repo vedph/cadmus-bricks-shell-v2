@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { DataPage } from '@myrmidon/ng-tools';
+import { DataPage } from '@myrmidon/ngx-tools';
 import { GalleryImage } from '@myrmidon/cadmus-img-annotator';
 
 /**

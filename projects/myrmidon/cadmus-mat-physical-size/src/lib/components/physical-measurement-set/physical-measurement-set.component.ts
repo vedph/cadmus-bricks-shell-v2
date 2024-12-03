@@ -28,9 +28,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { Subscription } from 'rxjs';
 
 import { ThesaurusEntry } from '@myrmidon/cadmus-core';
-import { NgToolsModule, NgToolsValidators } from '@myrmidon/ng-tools';
+import { FlatLookupPipe, NgxToolsValidators } from '@myrmidon/ngx-tools';
 
-import { PhysicalSizePipe } from '../../pipes/physical-size.pipe';
 import {
   PhysicalDimension,
   PhysicalDimensionComponent,
@@ -61,9 +60,10 @@ export interface PhysicalMeasurement extends PhysicalDimension {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    // myrmidon
+    FlatLookupPipe,
     // local
     PhysicalDimensionComponent,
-    NgToolsModule,
   ],
   templateUrl: './physical-measurement-set.component.html',
   styleUrl: './physical-measurement-set.component.css',
@@ -131,7 +131,7 @@ export class PhysicalMeasurementSetComponent implements OnInit, OnDestroy {
     this.custom = formBuilder.control(null);
     this.measures = formBuilder.control([], {
       nonNullable: true,
-      validators: NgToolsValidators.strictMinLengthValidator(1),
+      validators: NgxToolsValidators.strictMinLengthValidator(1),
     });
     this.batch = formBuilder.control(null);
     this.form = formBuilder.group({

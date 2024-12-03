@@ -10,7 +10,7 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 import { NgeMonacoModule } from '@cisstech/nge/monaco';
 
-import { EnvServiceProvider } from '@myrmidon/ng-tools';
+import { EnvServiceProvider } from '@myrmidon/ngx-tools';
 import { ItemService, ThesaurusService } from '@myrmidon/cadmus-api';
 import { IndexLookupDefinitions } from '@myrmidon/cadmus-core';
 

@@ -17,9 +17,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
+import { FlatLookupPipe, NgxToolsValidators } from '@myrmidon/ngx-tools';
 import { ThesaurusEntry } from '@myrmidon/cadmus-core';
 import { Assertion, AssertionComponent } from '@myrmidon/cadmus-refs-assertion';
-import { NgToolsModule, NgToolsValidators } from '@myrmidon/ng-tools';
 
 import { ProperName, ProperNamePiece, TypeThesaurusEntry } from '../models';
 import { ProperNameService } from '../services/proper-name.service';
@@ -62,9 +62,9 @@ export interface AssertedProperName extends ProperName {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    NgToolsModule,
     AssertionComponent,
     ProperNamePieceComponent,
+    FlatLookupPipe
   ],
 })
 export class ProperNameComponent implements OnInit {
@@ -169,7 +169,7 @@ export class ProperNameComponent implements OnInit {
     ]);
     this.tag = formBuilder.control(null, Validators.maxLength(50));
     this.pieces = formBuilder.control([], {
-      validators: NgToolsValidators.strictMinLengthValidator(1),
+      validators: NgxToolsValidators.strictMinLengthValidator(1),
       nonNullable: true,
     });
     this.assertion = formBuilder.control(null);

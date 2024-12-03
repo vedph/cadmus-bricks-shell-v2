@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DataPage } from '@myrmidon/ng-tools';
+import { DataPage } from '@myrmidon/ngx-tools';
 
 import { Observable, of } from 'rxjs';
 

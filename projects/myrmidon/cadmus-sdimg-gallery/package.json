@@ -1,6 +1,6 @@
 {
   "name": "@myrmidon/cadmus-sdimg-gallery",
-  "version": "6.0.1",
+  "version": "7.0.0",
   "description": "Cadmus - minimalist OSD image gallery.",
   "keywords": [
     "Cadmus",
@@ -17,9 +17,9 @@
   "peerDependencies": {
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0",
-    "@myrmidon/ng-mat-tools": "^4.0.0",
-    "@myrmidon/cadmus-img-annotator": "^6.0.0",
-    "@myrmidon/cadmus-sdimg-annotator": "^6.0.1",
+    "@myrmidon/ngx-mat-tools": "^0.0.1",
+    "@myrmidon/cadmus-img-annotator": "^7.0.0",
+    "@myrmidon/cadmus-sdimg-annotator": "^7.0.0",
     "@myrmidon/cadmus-img-gallery": "^6.0.0"
   },
   "dependencies": {

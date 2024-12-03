@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { NgToolsModule } from '@myrmidon/ng-tools';
+import { SafeHtmlPipe } from '@myrmidon/ngx-tools';
 
 import { ArrayIntersectPipe } from '../../pipes/array-intersect.pipe';
 
@@ -28,8 +28,8 @@ export interface TextBlockEventArgs {
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NgToolsModule,
     ArrayIntersectPipe,
+    SafeHtmlPipe
   ],
 })
 export class TextBlockViewComponent implements OnInit {

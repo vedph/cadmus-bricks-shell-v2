@@ -43,7 +43,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { NgToolsModule } from '@myrmidon/ng-tools';
 import {
   RefLookupComponent,
   RefLookupConfig,
@@ -56,6 +55,7 @@ import {
   PinRefLookupService,
 } from '../services/pin-ref-lookup.service';
 import { ItemRefLookupService } from '../services/item-ref-lookup.service';
+import { FlatLookupPipe } from '@myrmidon/ngx-tools';
 
 // from Cadmus general parts
 const METADATA_PART_ID = 'it.vedph.metadata';
@@ -115,9 +115,9 @@ export interface PinTarget {
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    NgToolsModule,
     RefLookupComponent,
     RefLookupSetComponent,
+    FlatLookupPipe
   ],
 })
 export class PinTargetLookupComponent implements OnInit, OnDestroy {

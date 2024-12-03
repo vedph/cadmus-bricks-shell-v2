@@ -17,8 +17,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
-import { NgMatToolsModule } from '@myrmidon/ng-mat-tools';
-import { NgToolsModule } from '@myrmidon/ng-tools';
 import { ThesaurusEntry } from '@myrmidon/cadmus-core';
 import { Assertion, AssertionComponent } from '@myrmidon/cadmus-refs-assertion';
 import {
@@ -56,8 +54,6 @@ export interface AssertedChronotope {
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    NgToolsModule,
-    NgMatToolsModule,
     AssertionComponent,
     HistoricalDateComponent,
   ],

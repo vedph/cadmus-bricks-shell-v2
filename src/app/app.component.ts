@@ -6,7 +6,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { EnvService, RamStorageService } from '@myrmidon/ng-tools';
+import { EnvService, RamStorageService } from '@myrmidon/ngx-tools';
 
 import { WebColorLookup } from './refs/ref-lookup-pg/ref-lookup-pg.component';
 import { ViafRefLookupService } from '../../projects/myrmidon/cadmus-refs-viaf-lookup/src/public-api';

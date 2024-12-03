@@ -14,8 +14,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
-import { NgToolsModule } from '@myrmidon/ng-tools';
-
 import {
   CodLocationParser,
   CodLocationRange,
@@ -33,7 +31,6 @@ import {
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
-        NgToolsModule
     ]
 })
 export class CodLocationComponent implements OnInit {

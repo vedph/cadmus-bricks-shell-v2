@@ -7,7 +7,7 @@ import {
   RefLookupFilter,
   RefLookupService,
 } from '@myrmidon/cadmus-refs-lookup';
-import { DataPage, ErrorWrapper } from '@myrmidon/ng-tools';
+import { DataPage, ErrorWrapper } from '@myrmidon/ngx-tools';
 
 /**
  * Pin-based lookup filter. This is a RefLookupFilter with the addition

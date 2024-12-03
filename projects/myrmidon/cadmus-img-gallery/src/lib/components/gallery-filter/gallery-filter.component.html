@@ -43,12 +43,7 @@
         }
       </mat-form-field>
 
-      <button
-        type="submit"
-        [disabled]="metaForm.invalid"
-        mat-icon-button
-        color="primary"
-      >
+      <button type="submit" [disabled]="metaForm.invalid" mat-icon-button>
         <mat-icon class="mat-primary">add_circle</mat-icon>
       </button>
     </fieldset>
@@ -67,12 +62,7 @@
       @for (m of metadata.value; track m; let i = $index) {
       <tr>
         <td class="fit-width">
-          <button
-            type="button"
-            mat-icon-button
-            color="warn"
-            (click)="deleteMetadatum(i)"
-          >
+          <button type="button" mat-icon-button (click)="deleteMetadatum(i)">
             <mat-icon class="mat-warn">clear</mat-icon>
           </button>
         </td>
@@ -88,17 +78,11 @@
       mat-icon-button
       type="button"
       (click)="reset()"
-      color="warn"
       matTooltip="Reset filters"
     >
       <mat-icon class="mat-warn">clear</mat-icon>
     </button>
-    <button
-      type="submit"
-      mat-icon-button
-      color="primary"
-      matTooltip="Apply filters"
-    >
+    <button type="submit" mat-icon-button matTooltip="Apply filters">
       <mat-icon class="mat-primary">check_circle</mat-icon>
     </button>
   </div>

@@ -21,7 +21,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { NgeMarkdownModule } from '@cisstech/nge/markdown';
 
-import { DialogService, NgMatToolsModule } from '@myrmidon/ng-mat-tools';
+import { DialogService } from '@myrmidon/ngx-mat-tools';
 
 /**
  * The definition of a note in a set of notes.
@@ -60,7 +60,6 @@ export interface NoteSet {
     FormsModule,
     ReactiveFormsModule,
     // vendor
-    NgMatToolsModule,
     NgeMarkdownModule,
     // material
     MatButtonModule,
