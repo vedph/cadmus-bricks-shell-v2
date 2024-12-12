@@ -237,6 +237,13 @@ Then, the code for each library has been imported except for their module, and e
 
 ## History
 
+- 2024-12-12:
+  - updated packages.
+  - added `@myrmidon/cadmus-ui-flag-set`. This will replace `@myrmidon/cadmus-ui-flags-picker`, providing the following advantages on it:
+    - much easier usage pattern: just add the component and its bindings, no need for services.
+    - flags can have colors.
+    - flags can be configured to automatically uncheck specific flags when checked.
+
 ### 7.0.1
 
 - 2024-12-02: ⚠️ replaced `@myrmidon/ng-tools` and `@myrmidon/ng-mat-tools` with `@myrmidon/ngx-tools` and `@myrmidon/ngx-mat-tools`. These are the standalone versions of the older libraries, so you must update your dependencies and references when upgrading.

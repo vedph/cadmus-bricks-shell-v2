@@ -90,6 +90,9 @@
       "@myrmidon/cadmus-ui-custom-action-bar": [
         "./dist/myrmidon/cadmus-ui-custom-action-bar"
       ],
+      "@myrmidon/cadmus-ui-flag-set": [
+        "./dist/myrmidon/cadmus-ui-flag-set"
+      ],
       "@myrmidon/cadmus-ui-flags-picker": [
         "./dist/myrmidon/cadmus-ui-flags-picker"
       ],

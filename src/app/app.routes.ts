@@ -37,6 +37,7 @@ import { NoteSetPgComponent } from './ui/note-set-pg/note-set-pg.component';
 import { WhgRefLookupPgComponent } from './refs/whg-ref-lookup-pg/whg-ref-lookup-pg.component';
 import { PhysicalGridPgComponent } from './mat/physical-grid-pg/physical-grid-pg.component';
 import { PhysicalStatePgComponent } from './mat/physical-state-pg/physical-state-pg.component';
+import { FlagSetPgComponent } from './ui/flag-set-pg/flag-set-pg.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -81,6 +82,7 @@ export const routes: Routes = [
   { path: 'refs/geonames-lookup', component: GeonamesRefLookupPgComponent },
   { path: 'refs/whg-lookup', component: WhgRefLookupPgComponent },
   { path: 'ui/flags-picker', component: FlagsPickerPgComponent },
+  { path: 'ui/flag-set', component: FlagSetPgComponent },
   { path: 'ui/note-set', component: NoteSetPgComponent },
   {
     path: 'ui/custom-actions-bar',
