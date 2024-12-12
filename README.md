@@ -238,7 +238,7 @@ Then, the code for each library has been imported except for their module, and e
 ## History
 
 - 2024-12-12:
-  - updated packages.
+  - updated Angular and packages.
   - added `@myrmidon/cadmus-ui-flag-set`. This will replace `@myrmidon/cadmus-ui-flags-picker`, providing the following advantages on it:
     - much easier usage pattern: just add the component and its bindings, no need for services.
     - flags can have colors.
