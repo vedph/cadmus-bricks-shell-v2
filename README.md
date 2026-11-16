@@ -1,5 +1,7 @@
 # Cadmus Bricks Shell V2
 
+⚠️⚠️⚠️ **THIS IS OBSOLETE CODE. SEE <https://github.com/vedph/cadmus-bricks-shell-v3>** ⚠️⚠️⚠️
+
 👀 [Bricks Demo](https://cadmus-bricks.fusi-soft.com): an online demo showing all the bricks in action. Just pick the desired one from the menu and play with it.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3. It is a shell for incubating a number of Cadmus sub-models, implemented as Angular components with their editing UI.
